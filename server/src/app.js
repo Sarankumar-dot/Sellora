@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import router from './routes/health.routes.js';
+import errorHandler from './middleware/error.middleware.js';
 
 const app = express();
 
@@ -25,6 +26,9 @@ app.use(cookieParser());
 // Logger
 app.use(morgan('dev'));
 
-app.use(router);
+app.use('/api', router);
+
+//Error Middleware
+app.use(errorHandler);
 
 export default app;
