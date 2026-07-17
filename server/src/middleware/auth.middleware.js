@@ -20,4 +20,16 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-export default verifyToken;
+const authorize = (...roles) => {
+  return (req, res, next) => {
+    const role = req.user.role;
+
+    if (roles.includes(role)) {
+      next();
+    } else {
+      throw new ApiError(403, 'Forbidden access');
+    }
+  };
+};
+
+export { verifyToken, authorize };
