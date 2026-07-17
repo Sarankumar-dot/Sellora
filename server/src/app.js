@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import router from './routes/health.routes.js';
 import errorHandler from './middleware/error.middleware.js';
+import authRoutes from './routes/auth.routes.js';
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 
 app.use('/api', router);
+app.use('/api/auth', authRoutes);
 
 //Error Middleware
 app.use(errorHandler);
