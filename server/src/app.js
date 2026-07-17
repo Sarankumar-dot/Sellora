@@ -4,8 +4,8 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import router from './routes/health.routes.js';
-import errorHandler from './middleware/error.middleware.js';
 import authRoutes from './routes/auth.routes.js';
+import errorHandler from './middleware/error.middleware.js';
 
 const app = express();
 
