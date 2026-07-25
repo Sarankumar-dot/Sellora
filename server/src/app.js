@@ -7,7 +7,8 @@ import router from './routes/health.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import sellerRouter from './routes/seller.routes.js';
 import errorHandler from './middleware/error.middleware.js';
-
+import productRouter from './routes/product.route.js';
+import categoryRouter from './routes/category.route.js';
 const app = express();
 
 // Security Headers
@@ -31,6 +32,8 @@ app.use(morgan('dev'));
 app.use('/api', router);
 app.use('/api/auth', authRoutes);
 app.use('/api/seller', sellerRouter);
+app.use('/api/products', productRouter);
+app.use('/api/categories', categoryRouter);
 
 //Error Middleware
 app.use(errorHandler);
