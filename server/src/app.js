@@ -9,6 +9,7 @@ import sellerRouter from './routes/seller.routes.js';
 import errorHandler from './middleware/error.middleware.js';
 import productRouter from './routes/product.route.js';
 import categoryRouter from './routes/category.route.js';
+import cartRouter from './routes/cart.route.js';
 const app = express();
 
 // Security Headers
@@ -34,6 +35,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/seller', sellerRouter);
 app.use('/api/products', productRouter);
 app.use('/api/categories', categoryRouter);
+app.use('/api/cart', cartRouter);
 
 //Error Middleware
 app.use(errorHandler);
