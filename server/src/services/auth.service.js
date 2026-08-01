@@ -47,6 +47,10 @@ const loginUser = async (userData) => {
     throw new ApiError(401, 'Invalid email or password');
   }
 
+  console.log('Received userData:', userData);
+  console.log('Password:', password);
+  console.log('Password type:', typeof password);
+  console.log('Hash type:', typeof existingUser.password);
   const isPasswordValid = await bcrypt.compare(password, existingUser.password);
 
   if (!isPasswordValid) {

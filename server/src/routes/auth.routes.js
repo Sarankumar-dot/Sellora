@@ -7,15 +7,28 @@ import {
   resetPassword,
   changePassword,
 } from '../controllers/auth.controller.js';
-import { verifyToken, authorize } from '../middleware/auth.middleware.js';
+import validate from '../middleware/validation.middleware.js';
+import { verifyToken } from '../middleware/auth.middleware.js';
+import {
+  registerSchema,
+  loginSchema,
+  forgotPasswordSchema,
+  resetPasswordSchema,
+  changePasswordSchema,
+} from '../validations/auth.validation.js';
 
 const router = express.Router();
 
-router.post('/register', register);
-router.post('/login', login);
+router.post('/register', validate({ body: registerSchema }), register);
+router.post('/login', validate({ body: loginSchema }), login);
 router.get('/me', verifyToken, getMe);
-router.post('/forgot-password', forgotPassword);
-router.post('/reset-password', resetPassword);
-router.put('/change-password', verifyToken, changePassword);
+router.post('/forgot-password', validate({ body: forgotPasswordSchema }), forgotPassword);
+router.post('/reset-password', validate({ body: resetPasswordSchema }), resetPassword);
+router.put(
+  '/change-password',
+  verifyToken,
+  validate({ body: changePasswordSchema }),
+  changePassword
+);
 
 export default router;

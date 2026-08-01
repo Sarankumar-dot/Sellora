@@ -16,15 +16,21 @@ export const createProductService = async (userId, productData) => {
     throw new ApiError(404, 'Seller profile not found');
   }
 
-  const productId = await createProductInDB({
+  const dbProduct = {
     seller_id: seller.id,
-    ...productData,
-  });
+    name: productData.name,
+    description: productData.description,
+    price: productData.price,
+    stock: productData.stock,
+    category_id: productData.categoryId,
+    image_url: productData.imageUrl ?? null,
+  };
+
+  const productId = await createProductInDB(dbProduct);
 
   return {
     id: productId,
-    seller_id: seller.id,
-    ...productData,
+    ...dbProduct,
   };
 };
 
@@ -87,7 +93,16 @@ export const updateProductService = async (userId, productId, productData) => {
     throw new ApiError(403, 'You are not allowed to update this product');
   }
 
-  await updateProductInDB(productId, productData);
+  const dbProduct = {
+    name: productData.name,
+    description: productData.description,
+    price: productData.price,
+    stock: productData.stock,
+    category_id: productData.categoryId,
+    image_url: productData.imageUrl ?? null,
+  };
+
+  await updateProductInDB(productId, dbProduct);
 
   return await findProductById(productId);
 };

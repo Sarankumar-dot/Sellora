@@ -46,4 +46,13 @@ const updateSellerProfileInDB = async (sellerData) => {
   );
 };
 
+export const updateUserRole = async (userId, role) => {
+  await pool.execute(
+    `UPDATE users
+     SET role = ?
+     WHERE id = ?`,
+    [role, userId]
+  );
+};
+
 export { findSellerByUserId, insertSellerProfile, updateSellerProfileInDB };
