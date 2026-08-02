@@ -1,4 +1,3 @@
-import Joi from 'joi';
 import {
   createSchema,
   requiredStringValidator,
@@ -8,6 +7,8 @@ import {
   otpValidator,
   nameValidator,
 } from './common.validation.js';
+
+const refreshTokenValidator = requiredStringValidator('Refresh Token');
 
 export const registerSchema = createSchema({
   name: nameValidator(),
@@ -38,4 +39,12 @@ export const resetPasswordSchema = createSchema({
 export const changePasswordSchema = createSchema({
   oldPassword: requiredStringValidator('Old Password'),
   newPassword: passwordValidator,
+});
+
+export const refreshTokenSchema = createSchema({
+  refreshToken: refreshTokenValidator,
+});
+
+export const logoutSchema = createSchema({
+  refreshToken: refreshTokenValidator,
 });

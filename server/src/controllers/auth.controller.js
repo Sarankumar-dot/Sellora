@@ -2,6 +2,10 @@ import asyncHandler from '../utils/asyncHandler.js';
 import {
   registerUser,
   loginUser,
+  refreshTokenService,
+  logoutService,
+  listActiveSessionsService,
+  logoutAllSessionsService,
   forgotPasswordService,
   resetPasswordService,
   changePasswordService,
@@ -15,9 +19,36 @@ const register = asyncHandler(async (req, res) => {
 });
 
 const login = asyncHandler(async (req, res) => {
-  const result = await loginUser(req.body);
+  const result = await loginUser(req.body, {
+    userAgent: req.headers['user-agent'],
+    ipAddress: req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.ip || null,
+  });
 
   return res.status(200).json(new ApiResponse(200, result, 'Login successful'));
+});
+
+const refreshToken = asyncHandler(async (req, res) => {
+  const result = await refreshTokenService(req.body.refreshToken);
+
+  return res.status(200).json(new ApiResponse(200, result, 'Token refreshed successfully'));
+});
+
+const logout = asyncHandler(async (req, res) => {
+  await logoutService(req.body.refreshToken);
+
+  return res.status(200).json(new ApiResponse(200, null, 'Logout successful'));
+});
+
+const listSessions = asyncHandler(async (req, res) => {
+  const sessions = await listActiveSessionsService(req.user.id);
+
+  return res.status(200).json(new ApiResponse(200, sessions, 'Active sessions fetched successfully'));
+});
+
+const logoutAll = asyncHandler(async (req, res) => {
+  await logoutAllSessionsService(req.user.id);
+
+  return res.status(200).json(new ApiResponse(200, null, 'Logged out from all devices successfully'));
 });
 
 const getMe = asyncHandler(async (req, res) => {
@@ -46,4 +77,4 @@ export const changePassword = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, null, 'Password changed successfully'));
 });
 
-export { register, login, getMe };
+export { register, login, refreshToken, logout, listSessions, logoutAll, getMe };

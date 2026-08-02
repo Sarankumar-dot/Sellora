@@ -2,6 +2,10 @@ import express from 'express';
 import {
   register,
   login,
+  refreshToken,
+  logout,
+  listSessions,
+  logoutAll,
   getMe,
   forgotPassword,
   resetPassword,
@@ -12,6 +16,8 @@ import { verifyToken } from '../middleware/auth.middleware.js';
 import {
   registerSchema,
   loginSchema,
+  refreshTokenSchema,
+  logoutSchema,
   forgotPasswordSchema,
   resetPasswordSchema,
   changePasswordSchema,
@@ -21,6 +27,10 @@ const router = express.Router();
 
 router.post('/register', validate({ body: registerSchema }), register);
 router.post('/login', validate({ body: loginSchema }), login);
+router.post('/refresh-token', validate({ body: refreshTokenSchema }), refreshToken);
+router.post('/logout', validate({ body: logoutSchema }), logout);
+router.get('/sessions', verifyToken, listSessions);
+router.post('/logout-all', verifyToken, logoutAll);
 router.get('/me', verifyToken, getMe);
 router.post('/forgot-password', validate({ body: forgotPasswordSchema }), forgotPassword);
 router.post('/reset-password', validate({ body: resetPasswordSchema }), resetPassword);

@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
 import ApiError from '../errors/ApiError.js';
+import pool from '../config/db.config.js';
 import {
   findUserByEmail,
   createUser,
@@ -8,14 +8,68 @@ import {
   findUserById,
 } from '../models/user.model.js';
 import {
+  saveRefreshToken,
+  findRefreshToken,
+  deleteRefreshToken,
+  deleteAllRefreshTokensForUser,
+  deleteExpiredRefreshTokens,
+  findActiveRefreshTokensForUser,
+} from '../models/refreshToken.model.js';
+import {
   createOTP,
   deleteOTPByPurpose,
   findValidOTP,
-  deleteOTP,
   markOTPVerified,
 } from '../models/otp.model.js';
 import { sendEmail } from '../utils/email.service.js';
 import { generateOTP } from '../utils/otp.js';
+import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from '../utils/jwt.js';
+
+const parseDurationToMs = (duration, fallbackMs) => {
+  const match = /^([0-9]+)([smhd])$/i.exec(duration || '');
+
+  if (!match) {
+    return fallbackMs;
+  }
+
+  const value = Number(match[1]);
+
+  switch (match[2].toLowerCase()) {
+    case 's':
+      return value * 1000;
+    case 'm':
+      return value * 60 * 1000;
+    case 'h':
+      return value * 60 * 60 * 1000;
+    case 'd':
+      return value * 24 * 60 * 60 * 1000;
+    default:
+      return fallbackMs;
+  }
+};
+
+const getRefreshTokenExpiryDate = () => {
+  const expiresIn = process.env.JWT_REFRESH_EXPIRES || '7d';
+  const fallbackMs = 7 * 24 * 60 * 60 * 1000;
+
+  return new Date(Date.now() + parseDurationToMs(expiresIn, fallbackMs));
+};
+
+const normalizeDeviceInfo = (value) => {
+  if (!value) {
+    return null;
+  }
+
+  return String(value).slice(0, 255);
+};
+
+const normalizeClientIp = (value) => {
+  if (!value) {
+    return null;
+  }
+
+  return String(value).slice(0, 45);
+};
 
 const registerUser = async (userData) => {
   const { name, email, password, mobile_number } = userData;
@@ -38,8 +92,10 @@ const registerUser = async (userData) => {
   };
 };
 
-const loginUser = async (userData) => {
+const loginUser = async (userData, sessionMeta = {}) => {
   const { email, password } = userData;
+  const deviceInfo = normalizeDeviceInfo(sessionMeta.userAgent);
+  const ipAddress = normalizeClientIp(sessionMeta.ipAddress);
 
   const existingUser = await findUserByEmail(email);
 
@@ -47,30 +103,27 @@ const loginUser = async (userData) => {
     throw new ApiError(401, 'Invalid email or password');
   }
 
-  console.log('Received userData:', userData);
-  console.log('Password:', password);
-  console.log('Password type:', typeof password);
-  console.log('Hash type:', typeof existingUser.password);
   const isPasswordValid = await bcrypt.compare(password, existingUser.password);
 
   if (!isPasswordValid) {
     throw new ApiError(401, 'Invalid email or password');
   }
 
-  const token = jwt.sign(
-    {
-      id: existingUser.id,
-      email: existingUser.email,
-      role: existingUser.role,
-    },
-    process.env.JWT_SECRET,
-    {
-      expiresIn: process.env.JWT_EXPIRES_IN,
-    }
+  const token = generateAccessToken(existingUser);
+  const refreshToken = generateRefreshToken(existingUser);
+
+  await saveRefreshToken(
+    existingUser.id,
+    refreshToken,
+    getRefreshTokenExpiryDate(),
+    deviceInfo,
+    ipAddress,
+    new Date()
   );
 
   return {
     token,
+    refreshToken,
     user: {
       id: existingUser.id,
       name: existingUser.name,
@@ -78,6 +131,108 @@ const loginUser = async (userData) => {
       role: existingUser.role,
     },
   };
+};
+
+export const refreshTokenService = async (refreshToken) => {
+  let decoded;
+
+  try {
+    decoded = verifyRefreshToken(refreshToken);
+  } catch (error) {
+    if (error.name === 'TokenExpiredError') {
+      await deleteExpiredRefreshTokens();
+      throw new ApiError(401, 'Expired refresh token');
+    }
+
+    throw new ApiError(401, 'Unauthorized');
+  }
+
+  const storedToken = await findRefreshToken(refreshToken);
+
+  if (!storedToken) {
+    throw new ApiError(401, 'Unauthorized');
+  }
+
+  if (new Date(storedToken.expires_at).getTime() <= Date.now()) {
+    await deleteExpiredRefreshTokens();
+    throw new ApiError(401, 'Expired refresh token');
+  }
+
+  const refreshTokenUserId = Number(decoded.id);
+
+  if (storedToken.user_id !== refreshTokenUserId) {
+    throw new ApiError(401, 'Unauthorized');
+  }
+
+  const user = await findUserById(refreshTokenUserId);
+
+  if (!user) {
+    throw new ApiError(401, 'Unauthorized');
+  }
+
+  const token = generateAccessToken(user);
+  const newRefreshToken = generateRefreshToken(user);
+  const connection = await pool.getConnection();
+
+  try {
+    await connection.beginTransaction();
+
+    const deleteResult = await deleteRefreshToken(refreshToken, connection);
+
+    if (!deleteResult.affectedRows) {
+      await connection.rollback();
+      throw new ApiError(401, 'Unauthorized');
+    }
+
+    await saveRefreshToken(
+      user.id,
+      newRefreshToken,
+      getRefreshTokenExpiryDate(),
+      storedToken.device_info,
+      storedToken.ip_address,
+      new Date(),
+      connection
+    );
+
+    await connection.commit();
+
+    return {
+      token,
+      refreshToken: newRefreshToken,
+    };
+  } catch (error) {
+    await connection.rollback();
+    throw error;
+  } finally {
+    connection.release();
+  }
+};
+
+export const logoutService = async (refreshToken) => {
+  const deleteResult = await deleteRefreshToken(refreshToken);
+
+  if (!deleteResult.affectedRows) {
+    throw new ApiError(401, 'Unauthorized');
+  }
+};
+
+export const logoutSessionService = logoutService;
+
+export const listActiveSessionsService = async (userId) => {
+  const sessions = await findActiveRefreshTokensForUser(userId);
+
+  return sessions.map((session) => ({
+    id: session.id,
+    deviceInfo: session.device_info,
+    ipAddress: session.ip_address,
+    createdAt: session.created_at,
+    lastUsedAt: session.last_used_at,
+    expiresAt: session.expires_at,
+  }));
+};
+
+export const logoutAllSessionsService = async (userId) => {
+  await deleteAllRefreshTokensForUser(userId);
 };
 
 export const forgotPasswordService = async (email) => {
@@ -224,6 +379,8 @@ export const resetPasswordService = async (email, otp, newPassword) => {
 
   // Update the password
   await updateUserPassword(user.id, hashedPassword);
+
+  await deleteAllRefreshTokensForUser(user.id);
 };
 
 export const changePasswordService = async (userId, oldPassword, newPassword) => {
@@ -249,6 +406,8 @@ export const changePasswordService = async (userId, oldPassword, newPassword) =>
   const hashedPassword = await bcrypt.hash(newPassword, 10);
 
   await updateUserPassword(userId, hashedPassword);
+
+  await deleteAllRefreshTokensForUser(userId);
 };
 
 export { registerUser, loginUser };
