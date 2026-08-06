@@ -9,8 +9,21 @@ import {
   forgotPasswordService,
   resetPasswordService,
   changePasswordService,
+  getRefreshTokenMaxAge,
 } from '../services/auth.service.js';
 import ApiResponse from '../utils/ApiResponse.js';
+
+const refreshTokenCookieOptions = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: 'strict',
+  path: '/api/auth',
+};
+
+const getRefreshTokenCookieOptions = () => ({
+  ...refreshTokenCookieOptions,
+  maxAge: getRefreshTokenMaxAge(),
+});
 
 const register = asyncHandler(async (req, res) => {
   const result = await registerUser(req.body);
@@ -23,18 +36,26 @@ const login = asyncHandler(async (req, res) => {
     userAgent: req.headers['user-agent'],
     ipAddress: req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.ip || null,
   });
+  const { refreshToken, ...responseData } = result;
 
-  return res.status(200).json(new ApiResponse(200, result, 'Login successful'));
+  res.cookie('refreshToken', refreshToken, getRefreshTokenCookieOptions());
+
+  return res.status(200).json(new ApiResponse(200, responseData, 'Login successful'));
 });
 
 const refreshToken = asyncHandler(async (req, res) => {
-  const result = await refreshTokenService(req.body.refreshToken);
+  const result = await refreshTokenService(req.cookies.refreshToken);
+  const { refreshToken: newRefreshToken, token } = result;
 
-  return res.status(200).json(new ApiResponse(200, result, 'Token refreshed successfully'));
+  res.cookie('refreshToken', newRefreshToken, getRefreshTokenCookieOptions());
+
+  return res.status(200).json(new ApiResponse(200, { token }, 'Token refreshed successfully'));
 });
 
 const logout = asyncHandler(async (req, res) => {
-  await logoutService(req.body.refreshToken);
+  await logoutService(req.cookies.refreshToken);
+
+  res.clearCookie('refreshToken', refreshTokenCookieOptions);
 
   return res.status(200).json(new ApiResponse(200, null, 'Logout successful'));
 });
@@ -47,6 +68,8 @@ const listSessions = asyncHandler(async (req, res) => {
 
 const logoutAll = asyncHandler(async (req, res) => {
   await logoutAllSessionsService(req.user.id);
+
+  res.clearCookie('refreshToken', refreshTokenCookieOptions);
 
   return res.status(200).json(new ApiResponse(200, null, 'Logged out from all devices successfully'));
 });

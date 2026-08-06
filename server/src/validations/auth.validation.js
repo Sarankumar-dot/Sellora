@@ -8,8 +8,6 @@ import {
   nameValidator,
 } from './common.validation.js';
 
-const refreshTokenValidator = requiredStringValidator('Refresh Token');
-
 export const registerSchema = createSchema({
   name: nameValidator(),
   email: emailValidator,
@@ -39,12 +37,4 @@ export const resetPasswordSchema = createSchema({
 export const changePasswordSchema = createSchema({
   oldPassword: requiredStringValidator('Old Password'),
   newPassword: passwordValidator,
-});
-
-export const refreshTokenSchema = createSchema({
-  refreshToken: refreshTokenValidator,
-});
-
-export const logoutSchema = createSchema({
-  refreshToken: refreshTokenValidator,
 });

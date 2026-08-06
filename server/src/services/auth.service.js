@@ -55,6 +55,13 @@ const getRefreshTokenExpiryDate = () => {
   return new Date(Date.now() + parseDurationToMs(expiresIn, fallbackMs));
 };
 
+export const getRefreshTokenMaxAge = () => {
+  const expiresIn = process.env.JWT_REFRESH_EXPIRES || '7d';
+  const fallbackMs = 7 * 24 * 60 * 60 * 1000;
+
+  return parseDurationToMs(expiresIn, fallbackMs);
+};
+
 const normalizeDeviceInfo = (value) => {
   if (!value) {
     return null;
