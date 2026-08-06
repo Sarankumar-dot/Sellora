@@ -12,10 +12,11 @@ import {
   getRefreshTokenMaxAge,
 } from '../services/auth.service.js';
 import ApiResponse from '../utils/ApiResponse.js';
+import env from '../config/env.config.js';
 
 const refreshTokenCookieOptions = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === 'production',
+  secure: env.NODE_ENV === 'production',
   sameSite: 'strict',
   path: '/api/auth',
 };

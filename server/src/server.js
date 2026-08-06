@@ -1,10 +1,9 @@
-import dotenv from 'dotenv';
-import { testConnection } from './config/db.config.js';
-dotenv.config();
+import env from './config/env.config.js';
 
-import app from './app.js';
+const { testConnection } = await import('./config/db.config.js');
+const { default: app } = await import('./app.js');
 
-const PORT = process.env.PORT || 5000;
+const PORT = env.PORT;
 
 const startServer = async () => {
   await testConnection();

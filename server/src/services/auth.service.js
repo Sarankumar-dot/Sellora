@@ -24,6 +24,7 @@ import {
 import { sendEmail } from '../utils/email.service.js';
 import { generateOTP } from '../utils/otp.js';
 import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from '../utils/jwt.js';
+import env from '../config/env.config.js';
 
 const parseDurationToMs = (duration, fallbackMs) => {
   const match = /^([0-9]+)([smhd])$/i.exec(duration || '');
@@ -49,14 +50,14 @@ const parseDurationToMs = (duration, fallbackMs) => {
 };
 
 const getRefreshTokenExpiryDate = () => {
-  const expiresIn = process.env.JWT_REFRESH_EXPIRES || '7d';
+  const expiresIn = env.JWT_REFRESH_EXPIRES || '7d';
   const fallbackMs = 7 * 24 * 60 * 60 * 1000;
 
   return new Date(Date.now() + parseDurationToMs(expiresIn, fallbackMs));
 };
 
 export const getRefreshTokenMaxAge = () => {
-  const expiresIn = process.env.JWT_REFRESH_EXPIRES || '7d';
+  const expiresIn = env.JWT_REFRESH_EXPIRES || '7d';
   const fallbackMs = 7 * 24 * 60 * 60 * 1000;
 
   return parseDurationToMs(expiresIn, fallbackMs);

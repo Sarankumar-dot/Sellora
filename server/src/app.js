@@ -12,6 +12,7 @@ import categoryRouter from './routes/category.route.js';
 import cartRouter from './routes/cart.route.js';
 import orderRouter from './routes/order.route.js';
 import adminRouter from './routes/admin.route.js';
+import env from './config/env.config.js';
 
 const app = express();
 
@@ -21,7 +22,7 @@ app.use(helmet());
 // Enable CORS
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: env.CLIENT_URL,
     credentials: true,
   })
 );

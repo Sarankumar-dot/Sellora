@@ -1,11 +1,12 @@
 import jwt from 'jsonwebtoken';
+import env from '../config/env.config.js';
 
-const getAccessSecret = () => process.env.JWT_ACCESS_SECRET || process.env.JWT_SECRET;
-const getRefreshSecret = () => process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET;
+const getAccessSecret = () => env.JWT_ACCESS_SECRET || env.JWT_SECRET;
+const getRefreshSecret = () => env.JWT_REFRESH_SECRET || env.JWT_SECRET;
 
 const getAccessExpiresIn = () =>
-  process.env.JWT_ACCESS_EXPIRES || process.env.JWT_EXPIRES_IN || '15m';
-const getRefreshExpiresIn = () => process.env.JWT_REFRESH_EXPIRES || '7d';
+  env.JWT_ACCESS_EXPIRES || env.JWT_EXPIRES_IN || '15m';
+const getRefreshExpiresIn = () => env.JWT_REFRESH_EXPIRES || '7d';
 
 const buildPayload = (user) => ({
   id: user.id,
