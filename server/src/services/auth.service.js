@@ -50,14 +50,14 @@ const parseDurationToMs = (duration, fallbackMs) => {
 };
 
 const getRefreshTokenExpiryDate = () => {
-  const expiresIn = env.JWT_REFRESH_EXPIRES || '7d';
+  const expiresIn = env.JWT_REFRESH_EXPIRES_IN;
   const fallbackMs = 7 * 24 * 60 * 60 * 1000;
 
   return new Date(Date.now() + parseDurationToMs(expiresIn, fallbackMs));
 };
 
 export const getRefreshTokenMaxAge = () => {
-  const expiresIn = env.JWT_REFRESH_EXPIRES || '7d';
+  const expiresIn = env.JWT_REFRESH_EXPIRES_IN;
   const fallbackMs = 7 * 24 * 60 * 60 * 1000;
 
   return parseDurationToMs(expiresIn, fallbackMs);

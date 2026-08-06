@@ -11,31 +11,21 @@ const jwtDurationSchema = Joi.string()
   });
 
 const environmentSchema = Joi.object({
-  NODE_ENV: Joi.string().valid('development', 'production', 'test').optional(),
-  PORT: Joi.number().integer().min(1).max(65535).default(5000),
+  NODE_ENV: Joi.string().valid('development', 'production', 'test').required(),
+  PORT: Joi.number().integer().min(1).max(65535).required(),
   DB_HOST: Joi.string().trim().min(1).required(),
   DB_PORT: Joi.number().integer().min(1).max(65535).required(),
   DB_USER: Joi.string().trim().min(1).required(),
   DB_PASSWORD: Joi.string().min(1).required(),
   DB_NAME: Joi.string().trim().min(1).required(),
-  JWT_SECRET: Joi.string().min(1).optional(),
-  JWT_ACCESS_SECRET: Joi.string().min(1).optional(),
-  JWT_REFRESH_SECRET: Joi.string().min(1).optional(),
-  JWT_ACCESS_EXPIRES: jwtDurationSchema.optional(),
-  JWT_REFRESH_EXPIRES: jwtDurationSchema.optional(),
-  JWT_EXPIRES_IN: jwtDurationSchema.optional(),
-  EMAIL_HOST: Joi.string().hostname().optional(),
-  EMAIL_PORT: Joi.number().integer().min(1).max(65535).optional(),
+  JWT_SECRET: Joi.string().min(1).required(),
+  JWT_REFRESH_SECRET: Joi.string().min(1).required(),
+  JWT_EXPIRES_IN: jwtDurationSchema.required(),
+  JWT_REFRESH_EXPIRES_IN: jwtDurationSchema.required(),
   EMAIL_USER: Joi.string().trim().min(1).required(),
   EMAIL_PASS: Joi.string().min(1).required(),
-  CLIENT_URL: Joi.string().uri({ scheme: ['http', 'https'] }).default('http://localhost:5173'),
-  CLOUDINARY_CLOUD_NAME: Joi.string().trim().min(1).optional(),
-  CLOUDINARY_API_KEY: Joi.string().trim().min(1).optional(),
-  CLOUDINARY_API_SECRET: Joi.string().min(1).optional(),
-})
-  .or('JWT_SECRET', 'JWT_ACCESS_SECRET')
-  .or('JWT_SECRET', 'JWT_REFRESH_SECRET')
-  .unknown(true);
+  CLIENT_URL: Joi.string().uri({ scheme: ['http', 'https'] }).required(),
+}).unknown(true);
 
 const formatValidationError = (error) => {
   const invalidVariables = error.details.map((detail) => {

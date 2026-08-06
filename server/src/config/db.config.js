@@ -3,10 +3,15 @@ import env from './env.config.js';
 
 const pool = mysql.createPool({
   host: env.DB_HOST,
-  port: env.DB_PORT,
+  port: Number(env.DB_PORT),
   user: env.DB_USER,
   password: env.DB_PASSWORD,
   database: env.DB_NAME,
+
+  ssl: {
+    rejectUnauthorized: false,
+  },
+
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
@@ -41,11 +46,17 @@ export const testConnection = async () => {
       const shouldRetry =
         retryableDatabaseErrorCodes.has(error.code) && attempt < MAX_CONNECTION_ATTEMPTS;
 
-      if (!shouldRetry) {
-        console.log(error.message);
-        console.log('Database Connection failed');
-        process.exit(1);
-      }
+      console.error('Database connection error:', {
+        code: error.code,
+        errno: error.errno,
+        sqlState: error.sqlState,
+        message: error.message,
+        stack: error.stack,
+      });
+
+      process.exit(1);
+
+      console.error(error);
 
       const delay = getRetryDelay(attempt);
 
