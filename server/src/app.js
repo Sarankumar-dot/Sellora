@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import swaggerUi from 'swagger-ui-express';
 import router from './routes/health.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import sellerRouter from './routes/seller.routes.js';
@@ -13,6 +14,7 @@ import cartRouter from './routes/cart.route.js';
 import orderRouter from './routes/order.route.js';
 import adminRouter from './routes/admin.route.js';
 import env from './config/env.config.js';
+import swaggerSpec from './config/swagger.config.js';
 
 const app = express();
 
@@ -39,6 +41,7 @@ app.use(cookieParser());
 // Logger
 app.use(morgan('dev'));
 
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api', router);
 app.use('/api/auth', authRoutes);
 app.use('/api/seller', sellerRouter);
