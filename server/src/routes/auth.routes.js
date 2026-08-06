@@ -14,6 +14,11 @@ import {
 import validate from '../middleware/validation.middleware.js';
 import { verifyToken } from '../middleware/auth.middleware.js';
 import {
+  loginLimiter,
+  forgotPasswordLimiter,
+  resetPasswordLimiter,
+} from '../middleware/rateLimit.middleware.js';
+import {
   registerSchema,
   loginSchema,
   forgotPasswordSchema,
@@ -24,14 +29,24 @@ import {
 const router = express.Router();
 
 router.post('/register', validate({ body: registerSchema }), register);
-router.post('/login', validate({ body: loginSchema }), login);
+router.post('/login', loginLimiter, validate({ body: loginSchema }), login);
 router.post('/refresh-token', refreshToken);
 router.post('/logout', logout);
 router.get('/sessions', verifyToken, listSessions);
 router.post('/logout-all', verifyToken, logoutAll);
 router.get('/me', verifyToken, getMe);
-router.post('/forgot-password', validate({ body: forgotPasswordSchema }), forgotPassword);
-router.post('/reset-password', validate({ body: resetPasswordSchema }), resetPassword);
+router.post(
+  '/forgot-password',
+  forgotPasswordLimiter,
+  validate({ body: forgotPasswordSchema }),
+  forgotPassword
+);
+router.post(
+  '/reset-password',
+  resetPasswordLimiter,
+  validate({ body: resetPasswordSchema }),
+  resetPassword
+);
 router.put(
   '/change-password',
   verifyToken,
