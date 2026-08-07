@@ -13,10 +13,12 @@ import { useAuth } from '@/hooks/useAuth.js'
 const trimValue = (value) => (typeof value === 'string' ? value.trim() : value)
 
 const getSafeErrorMessage = (error) => {
-  const backendMessage = error.response?.data?.message
+  if (error.response) {
+    return error.response.data?.message || 'The request could not be completed. Please try again.'
+  }
 
-  if (backendMessage) return backendMessage
-  if (!error.response || error.code === 'ECONNABORTED') {
+  const noResponseCodes = ['ERR_NETWORK', 'ECONNABORTED', 'ETIMEDOUT']
+  if (noResponseCodes.includes(error.code) || !window.navigator.onLine) {
     return 'Unable to reach Sellora. Check your connection and try again.'
   }
 

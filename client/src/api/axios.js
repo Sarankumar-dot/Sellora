@@ -23,6 +23,20 @@ apiClient.interceptors.request.use((config) => {
   return config
 })
 
+const PUBLIC_AUTH_ENDPOINTS = [
+  '/auth/login',
+  '/auth/register',
+  '/auth/forgot-password',
+  '/auth/reset-password',
+  '/auth/verify-reset-otp',
+  '/auth/resend-reset-otp',
+]
+
+const isPublicAuthEndpoint = (url) => {
+  if (!url) return false
+  return PUBLIC_AUTH_ENDPOINTS.some((endpoint) => url.includes(endpoint))
+}
+
 apiClient.interceptors.response.use(
   (response) => response,
   async (error) => {
@@ -32,7 +46,8 @@ apiClient.interceptors.response.use(
       error.response?.status !== 401 ||
       !originalRequest ||
       originalRequest.skipAuthRefresh ||
-      originalRequest._retry
+      originalRequest._retry ||
+      isPublicAuthEndpoint(originalRequest.url)
     ) {
       return Promise.reject(error)
     }
