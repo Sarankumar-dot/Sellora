@@ -45,3 +45,14 @@ docker compose ps
 
 The only Docker-managed volume is `backend_node_modules`, which keeps host dependencies out of the
 container.
+
+## Brevo SMTP Configuration
+
+The backend uses Brevo SMTP to send password reset OTP emails. You must configure the following environment variables in your `.env` file:
+
+- `SMTP_HOST`: The Brevo SMTP hostname (usually `smtp-relay.brevo.com`)
+- `SMTP_PORT`: The SMTP port (usually `587` for TLS)
+- `SMTP_USER`: Your SMTP account login/username from Brevo
+- `SMTP_PASS`: Your SMTP password or API key from Brevo
+- `EMAIL_FROM`: The verified sender email address registered in Brevo
+

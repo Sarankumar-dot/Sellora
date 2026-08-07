@@ -29,7 +29,7 @@ Controllers are deliberately thin; services carry business rules; models carry S
 | `cors` | Allows exactly `CLIENT_URL` and credentials. |
 | Helmet | Sets HTTP security headers. |
 | `express-rate-limit` | Brute-force throttles selected auth endpoints. |
-| Nodemailer/Gmail | Sends password-reset OTP email. |
+| Nodemailer/Brevo | Sends password-reset OTP email. |
 | Swagger JSDoc/UI | OpenAPI document and `/api/docs` UI. |
 | Morgan | Development request logging. |
 | Docker | Node 22 Alpine deployment image and development compose setup. |
@@ -136,7 +136,7 @@ Access tokens use `JWT_SECRET` and `JWT_EXPIRES_IN` (template: 15m) and must be 
 
 ```text
 Forgot password: email -> find user -> delete prior PASSWORD_RESET OTP
- -> generate six digits -> store plaintext, expires in 10m -> send Gmail email
+ -> generate six digits -> store plaintext, expires in 10m -> send Brevo SMTP email
 
 Reset password: email + OTP + new password -> find unverified unexpired OTP
  -> mark verified -> bcrypt hash -> update user password -> revoke all refresh tokens
@@ -250,7 +250,7 @@ Swagger is served but should not be treated as the sole contract: it describes p
 
 ## 10. Configuration, database, documentation, and deployment
 
-Required environment values: `NODE_ENV` (`development|production|test`), `PORT`, `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, access/refresh secrets and compact durations (`15m`, `7d`), Gmail `EMAIL_USER`/`EMAIL_PASS`, and absolute `CLIENT_URL`. Unknown environment variables are allowed. `SERVER_URL` is optional and Swagger-only. No environment variable configures TLS on/off, pool size, cookie domain, proxy trust, mail provider, or log level.
+Required environment values: `NODE_ENV` (`development|production|test`), `PORT`, `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, access/refresh secrets and compact durations (`15m`, `7d`), Brevo `SMTP_HOST`/`SMTP_PORT`/`SMTP_USER`/`SMTP_PASS`/`EMAIL_FROM`, and absolute `CLIENT_URL`. Unknown environment variables are allowed. `SERVER_URL` is optional and Swagger-only. No environment variable configures TLS on/off, pool size, cookie domain, proxy trust, mail provider, or log level.
 
 The MySQL pool has SSL with `rejectUnauthorized:false`, waits for connections, has `connectionLimit:10`, unlimited queue, and uses prepared parameter values for most data. Startup nominally has up to 12 exponential retries, but the catch block calls `process.exit(1)` before retry code, so it actually exits on its first failed connection.
 

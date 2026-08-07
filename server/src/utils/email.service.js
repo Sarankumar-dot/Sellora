@@ -1,41 +1,39 @@
-import nodemailer from 'nodemailer';
-import env from '../config/env.config.js';
-
-const SMTP_HOST = 'smtp.gmail.com';
-const SMTP_PORT = 465;
+import nodemailer from "nodemailer";
+import env from "../config/env.config.js";
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false, // MUST be false for 587
+  host: env.SMTP_HOST,
+  port: Number(env.SMTP_PORT),
+  secure: false,
   auth: {
-    user: env.EMAIL_USER,
-    pass: env.EMAIL_PASS,
+    user: env.SMTP_USER,
+    pass: env.SMTP_PASS,
   },
-  requireTLS: true,
   connectionTimeout: 30000,
   greetingTimeout: 30000,
   socketTimeout: 60000,
 });
-export const sendEmail = async (to, subject, html) => {
-  console.info('[email] sendEmail started', {
-    emailUser: env.EMAIL_USER,
-    smtpHost: SMTP_HOST,
-    smtpPort: SMTP_PORT,
-  });
 
+export const sendEmail = async (to, subject, html) => {
   try {
-    console.log('sendMail start');
     const result = await transporter.sendMail({
-      from: `"Sellora" <${env.EMAIL_USER}>`,
+      from: `"Sellora" <${env.EMAIL_FROM}>`,
       to,
       subject,
       html,
     });
-    console.log('sendMail done', { messageId: result.messageId });
-    console.info('[email] sendEmail completed');
+
+    console.info("[email] Email sent", {
+      messageId: result.messageId,
+    });
+
+    return result;
   } catch (error) {
-    console.error('[email] transporter.sendMail failed', error);
+    console.error("[email] sendEmail failed", {
+      code: error.code,
+      message: error.message,
+    });
+
     throw error;
   }
 };
