@@ -18,6 +18,9 @@ import swaggerSpec from './config/swagger.config.js';
 
 const app = express();
 
+// Render forwards public traffic through one trusted reverse-proxy hop.
+app.set('trust proxy', 1);
+
 // Security Headers
 app.use(helmet());
 
