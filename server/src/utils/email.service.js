@@ -6,18 +6,17 @@ const SMTP_PORT = 465;
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  family: 4, // Force IPv4 instead of IPv6
+  port: 587,
+  secure: false, // MUST be false for 587
   auth: {
     user: env.EMAIL_USER,
     pass: env.EMAIL_PASS,
   },
+  requireTLS: true,
   connectionTimeout: 30000,
   greetingTimeout: 30000,
   socketTimeout: 60000,
 });
-
 export const sendEmail = async (to, subject, html) => {
   console.info('[email] sendEmail started', {
     emailUser: env.EMAIL_USER,
