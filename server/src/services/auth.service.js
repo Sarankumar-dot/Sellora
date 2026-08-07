@@ -244,7 +244,9 @@ export const logoutAllSessionsService = async (userId) => {
 };
 
 export const forgotPasswordService = async (email) => {
+  console.log('1: findUserByEmail');
   const user = await findUserByEmail(email);
+  console.log('1 done');
 
   if (!user) {
     throw new ApiError(404, 'User not found');
@@ -254,9 +256,15 @@ export const forgotPasswordService = async (email) => {
 
   const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
 
+  console.log('2: deleteOTPByPurpose');
   await deleteOTPByPurpose(user.id, 'PASSWORD_RESET');
-  await createOTP(user.id, otp, 'PASSWORD_RESET', expiresAt);
+  console.log('2 done');
 
+  console.log('3: createOTP');
+  await createOTP(user.id, otp, 'PASSWORD_RESET', expiresAt);
+  console.log('3 done');
+
+  console.log('4: sendEmail');
   await sendEmail(
     user.email,
     'Sellora Password Reset OTP',
@@ -362,6 +370,7 @@ export const forgotPasswordService = async (email) => {
   </div>
   `
   );
+  console.log('4 done');
 
   return;
 };
