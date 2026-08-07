@@ -5,16 +5,17 @@ const SMTP_HOST = 'smtp.gmail.com';
 const SMTP_PORT = 465;
 
 const transporter = nodemailer.createTransport({
-  host: SMTP_HOST,
-  port: SMTP_PORT,
+  host: 'smtp.gmail.com',
+  port: 465,
   secure: true,
+  family: 4, // Force IPv4 instead of IPv6
   auth: {
     user: env.EMAIL_USER,
     pass: env.EMAIL_PASS,
   },
-  connectionTimeout: 30_000,
-  greetingTimeout: 30_000,
-  socketTimeout: 60_000,
+  connectionTimeout: 30000,
+  greetingTimeout: 30000,
+  socketTimeout: 60000,
 });
 
 export const sendEmail = async (to, subject, html) => {
