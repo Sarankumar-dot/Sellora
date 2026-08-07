@@ -1,41 +1,40 @@
-import nodemailer from 'nodemailer';
+import axios from 'axios';
 import env from '../config/env.config.js';
-
-const transporter = nodemailer.createTransport({
-  host: env.SMTP_HOST,
-  port: Number(env.SMTP_PORT),
-  secure: false,
-  requireTLS: true,
-  auth: {
-    user: env.SMTP_USER,
-    pass: env.SMTP_PASS,
-  },
-  connectionTimeout: 30000,
-  greetingTimeout: 30000,
-  socketTimeout: 60000,
-  family: 4,
-});
 
 export const sendEmail = async (to, subject, html) => {
   try {
-    console.log('A: before sendMail');
-    const result = await transporter.sendMail({
-      from: `"Sellora" <${env.EMAIL_FROM}>`,
-      to,
-      subject,
-      html,
-    });
+    const response = await axios.post(
+      'https://api.brevo.com/v3/smtp/email',
+      {
+        sender: {
+          name: env.EMAIL_FROM_NAME,
+          email: env.EMAIL_FROM,
+        },
+        to: [
+          {
+            email: to,
+          },
+        ],
+        subject,
+        htmlContent: html,
+      },
+      {
+        headers: {
+          accept: 'application/json',
+          'content-type': 'application/json',
+          'api-key': env.BREVO_API_KEY,
+        },
+        timeout: 30000,
+      }
+    );
 
-    console.log('B: after sendMail');
+    console.log('[email] Email sent', response.data);
 
-    console.info('[email] Email sent', {
-      messageId: result.messageId,
-    });
-
-    return result;
+    return response.data;
   } catch (error) {
-    console.error('[email] sendEmail failed', {
-      code: error.code,
+    console.error('[email] Brevo API Error', {
+      status: error.response?.status,
+      data: error.response?.data,
       message: error.message,
     });
 

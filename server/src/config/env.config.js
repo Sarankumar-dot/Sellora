@@ -27,7 +27,14 @@ const environmentSchema = Joi.object({
   SMTP_USER: Joi.string().trim().min(1).required(),
   SMTP_PASS: Joi.string().min(1).required(),
   EMAIL_FROM: Joi.string().trim().email().required(),
-  CLIENT_URL: Joi.string().uri({ scheme: ['http', 'https'] }).required(),
+  CLIENT_URL: Joi.string()
+    .uri({ scheme: ['http', 'https'] })
+    .required(),
+  BREVO_API_KEY: Joi.string().required(),
+
+  EMAIL_FROM: Joi.string().email().required(),
+
+  EMAIL_FROM_NAME: Joi.string().required(),
 }).unknown(true);
 
 const formatValidationError = (error) => {
