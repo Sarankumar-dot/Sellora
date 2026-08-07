@@ -3,7 +3,7 @@ import env from './config/env.config.js';
 const { testConnection } = await import('./config/db.config.js');
 const { default: app } = await import('./app.js');
 
-const PORT = env.PORT;
+const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
   await testConnection();
