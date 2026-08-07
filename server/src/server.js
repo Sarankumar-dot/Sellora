@@ -1,7 +1,8 @@
-import env from './config/env.config.js';
 import dns from 'node:dns';
 
 dns.setDefaultResultOrder('ipv4first');
+
+import env from './config/env.config.js';
 
 const { testConnection } = await import('./config/db.config.js');
 const { default: app } = await import('./app.js');
