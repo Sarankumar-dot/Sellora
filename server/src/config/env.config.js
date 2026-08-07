@@ -22,11 +22,6 @@ const environmentSchema = Joi.object({
   JWT_REFRESH_SECRET: Joi.string().min(1).required(),
   JWT_EXPIRES_IN: jwtDurationSchema.required(),
   JWT_REFRESH_EXPIRES_IN: jwtDurationSchema.required(),
-  SMTP_HOST: Joi.string().trim().min(1).required(),
-  SMTP_PORT: Joi.number().integer().min(1).max(65535).required(),
-  SMTP_USER: Joi.string().trim().min(1).required(),
-  SMTP_PASS: Joi.string().min(1).required(),
-  EMAIL_FROM: Joi.string().trim().email().required(),
   CLIENT_URL: Joi.string()
     .uri({ scheme: ['http', 'https'] })
     .required(),
