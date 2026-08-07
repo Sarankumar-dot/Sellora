@@ -18,12 +18,15 @@ const transporter = nodemailer.createTransport({
 
 export const sendEmail = async (to, subject, html) => {
   try {
+    console.log('A: before sendMail');
     const result = await transporter.sendMail({
       from: `"Sellora" <${env.EMAIL_FROM}>`,
       to,
       subject,
       html,
     });
+
+    console.log('B: after sendMail');
 
     console.info('[email] Email sent', {
       messageId: result.messageId,
