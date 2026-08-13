@@ -7,7 +7,7 @@ import asyncHandler from '../utils/asyncHandler.js';
 import ApiResponse from '../utils/ApiResponse.js';
 
 export const checkout = asyncHandler(async (req, res) => {
-  const order = await checkoutService(req.user.id);
+  const order = await checkoutService(req.user.id, req.body.shippingAddress);
 
   return res.status(201).json(new ApiResponse(201, order, 'Order placed successfully'));
 });

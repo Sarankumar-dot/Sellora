@@ -18,8 +18,23 @@ const productSortValidator = Joi.string()
     'any.only': 'Sort must be one of: price, -price, name, -name, createdAt, -createdAt',
   });
 
-const imageUrlValidator = Joi.string().uri().allow('', null).optional().messages({
-  'string.uri': 'Image URL must be a valid URL',
+const productImageSchema = Joi.object({
+  url: Joi.string().uri().required().messages({
+    'string.uri': 'Image URL must be a valid URL',
+    'string.empty': 'Image URL is required',
+    'any.required': 'Image URL is required',
+  }),
+  displayOrder: Joi.number().integer().min(0).optional().messages({
+    'number.base': 'Display order must be an integer',
+    'number.integer': 'Display order must be an integer',
+    'number.min': 'Display order must be 0 or greater',
+  }),
+});
+
+const imagesValidator = Joi.array().items(productImageSchema).min(1).max(10).required().messages({
+  'array.min': 'A product must have at least 1 image',
+  'array.max': 'A product can have at most 10 images',
+  'any.required': 'Product images are required',
 });
 
 export const createProductSchema = createSchema({
@@ -32,7 +47,7 @@ export const createProductSchema = createSchema({
   price: positiveNumberValidator,
   stock: nonNegativeIntegerValidator,
   categoryId: idValidator,
-  imageUrl: imageUrlValidator,
+  images: imagesValidator,
 });
 
 export const updateProductSchema = createProductSchema;
@@ -44,3 +59,4 @@ export const productQuerySchema = createSchema({
   categoryId: idValidator.optional(),
   sort: productSortValidator,
 });
+

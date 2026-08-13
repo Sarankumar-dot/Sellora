@@ -62,11 +62,12 @@ const swaggerDefinition = {
       name: 'Authentication',
       description: 'Registration, login, sessions, and password management',
     },
-    { name: 'Seller', description: 'Seller profile management' },
-    { name: 'Categories', description: 'Admin category management' },
+    { name: 'Seller', description: 'Seller profile and order management' },
+    { name: 'Categories', description: 'Category browsing and admin management' },
     { name: 'Products', description: 'Product catalog management' },
     { name: 'Cart', description: 'Authenticated shopping cart operations' },
     { name: 'Orders', description: 'Authenticated checkout and order history' },
+    { name: 'Payments', description: 'Razorpay payment verification' },
     { name: 'Admin', description: 'Admin order management' },
   ],
   components: {
@@ -226,6 +227,13 @@ const swaggerDefinition = {
           description: { type: 'string', maxLength: 500, nullable: true },
         },
       },
+      ProductImage: {
+        type: 'object',
+        properties: {
+          url: { type: 'string', format: 'uri', example: 'https://example.com/image.jpg' },
+          displayOrder: { type: 'integer', minimum: 0, example: 0 },
+        },
+      },
       ProductRequest: {
         type: 'object',
         required: ['name', 'description', 'price', 'stock', 'categoryId'],
@@ -235,7 +243,11 @@ const swaggerDefinition = {
           price: { type: 'number', format: 'float', minimum: 0.01, example: 799.99 },
           stock: { type: 'integer', minimum: 0, example: 25 },
           categoryId: { type: 'integer', minimum: 1, example: 1 },
-          imageUrl: { type: 'string', format: 'uri', nullable: true },
+          images: {
+            type: 'array',
+            items: { $ref: '#/components/schemas/ProductImage' },
+            maxItems: 10,
+          },
         },
       },
       Product: {
@@ -248,7 +260,18 @@ const swaggerDefinition = {
           price: { type: 'number' },
           stock: { type: 'integer' },
           category_id: { type: 'integer' },
-          image_url: { type: 'string', nullable: true },
+          image_url: { type: 'string', nullable: true, description: 'Legacy field — use images array' },
+          images: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                id: { type: 'integer' },
+                image_url: { type: 'string' },
+                display_order: { type: 'integer' },
+              },
+            },
+          },
           is_active: { type: 'boolean' },
           created_at: { type: 'string', format: 'date-time' },
         },
@@ -279,6 +302,25 @@ const swaggerDefinition = {
           subtotal: { type: 'number' },
         },
       },
+      ShippingAddress: {
+        type: 'object',
+        required: ['name', 'address', 'city', 'state', 'pincode', 'phone'],
+        properties: {
+          name: { type: 'string', example: 'Jane Doe' },
+          address: { type: 'string', example: '123 Market Street, Chennai' },
+          city: { type: 'string', example: 'Chennai' },
+          state: { type: 'string', example: 'Tamil Nadu' },
+          pincode: { type: 'string', pattern: '^\\d{6}$', example: '600001' },
+          phone: { type: 'string', pattern: '^\\d{10}$', example: '9876543210' },
+        },
+      },
+      CheckoutRequest: {
+        type: 'object',
+        required: ['shippingAddress'],
+        properties: {
+          shippingAddress: { $ref: '#/components/schemas/ShippingAddress' },
+        },
+      },
       Order: {
         type: 'object',
         properties: {
@@ -286,8 +328,10 @@ const swaggerDefinition = {
           totalAmount: { type: 'number' },
           status: {
             type: 'string',
-            enum: ['PLACED', 'PROCESSING', 'SHIPPED', 'DELIVERED', 'CANCELLED'],
+            enum: ['PENDING', 'PLACED', 'PROCESSING', 'SHIPPED', 'DELIVERED', 'CANCELLED'],
           },
+          paymentStatus: { type: 'string', enum: ['PENDING', 'PAID', 'FAILED'] },
+          shippingAddress: { $ref: '#/components/schemas/ShippingAddress' },
           createdAt: { type: 'string', format: 'date-time' },
           items: {
             type: 'array',
@@ -309,7 +353,39 @@ const swaggerDefinition = {
         properties: {
           status: {
             type: 'string',
-            enum: ['PLACED', 'PROCESSING', 'SHIPPED', 'DELIVERED', 'CANCELLED'],
+            enum: ['PENDING', 'PLACED', 'PROCESSING', 'SHIPPED', 'DELIVERED', 'CANCELLED'],
+          },
+        },
+      },
+      VerifyPaymentRequest: {
+        type: 'object',
+        required: ['razorpayOrderId', 'razorpayPaymentId', 'razorpaySignature'],
+        properties: {
+          razorpayOrderId: { type: 'string' },
+          razorpayPaymentId: { type: 'string' },
+          razorpaySignature: { type: 'string' },
+        },
+      },
+      SellerOrder: {
+        type: 'object',
+        properties: {
+          orderId: { type: 'integer' },
+          totalAmount: { type: 'number' },
+          orderStatus: { type: 'string' },
+          paymentStatus: { type: 'string' },
+          customerName: { type: 'string' },
+          createdAt: { type: 'string', format: 'date-time' },
+          items: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                productId: { type: 'integer' },
+                productName: { type: 'string' },
+                quantity: { type: 'integer' },
+                price: { type: 'number' },
+              },
+            },
           },
         },
       },
@@ -562,15 +638,13 @@ const swaggerDefinition = {
       get: {
         tags: ['Categories'],
         summary: 'List categories',
-        description: 'Returns every category. Requires admin role.',
-        security: bearerSecurity,
+        description: 'Returns every category. Public endpoint for storefront browsing.',
+        security: [],
         responses: {
           200: successResponse('Categories fetched', {
             type: 'array',
             items: { $ref: '#/components/schemas/Category' },
           }),
-          401: unauthorizedResponse,
-          403: forbiddenResponse,
           404: notFoundResponse,
         },
       },
@@ -579,14 +653,12 @@ const swaggerDefinition = {
       get: {
         tags: ['Categories'],
         summary: 'Get category by ID',
-        description: 'Returns one category. Requires admin role.',
-        security: bearerSecurity,
+        description: 'Returns one category. Public endpoint.',
+        security: [],
         parameters: [idParameter],
         responses: {
           200: successResponse('Category fetched', { $ref: '#/components/schemas/Category' }),
           400: validationErrorResponse,
-          401: unauthorizedResponse,
-          403: forbiddenResponse,
           404: notFoundResponse,
         },
       },
@@ -781,18 +853,28 @@ const swaggerDefinition = {
       post: {
         tags: ['Orders'],
         summary: 'Checkout cart',
-        description: 'Creates an order from the authenticated user cart in a database transaction.',
+        description:
+          'Creates an order from the authenticated user cart with a shipping address. Creates a Razorpay order and returns details for frontend payment.',
         security: bearerSecurity,
+        requestBody: {
+          required: true,
+          content: jsonContent({ $ref: '#/components/schemas/CheckoutRequest' }),
+        },
         responses: {
           201: successResponse('Order placed', {
             type: 'object',
             properties: {
               orderId: { type: 'integer' },
               totalAmount: { type: 'number' },
-              status: { type: 'string', example: 'PLACED' },
+              status: { type: 'string', example: 'PENDING' },
+              paymentStatus: { type: 'string', example: 'PENDING' },
+              razorpayOrderId: { type: 'string' },
+              razorpayKeyId: { type: 'string' },
+              amount: { type: 'integer', description: 'Amount in paise' },
+              currency: { type: 'string', example: 'INR' },
             },
           }),
-          400: errorResponse('Cart is empty or stock is unavailable'),
+          400: errorResponse('Cart is empty, stock unavailable, or validation error'),
           401: unauthorizedResponse,
         },
       },
@@ -866,6 +948,50 @@ const swaggerDefinition = {
           400: validationErrorResponse,
           401: unauthorizedResponse,
           403: forbiddenResponse,
+          404: notFoundResponse,
+        },
+      },
+    },
+    '/seller/orders': {
+      get: {
+        tags: ['Seller'],
+        summary: 'Get seller orders',
+        description:
+          'Returns all orders containing products owned by the authenticated seller. Requires seller role.',
+        security: bearerSecurity,
+        responses: {
+          200: successResponse('Seller orders fetched', {
+            type: 'array',
+            items: { $ref: '#/components/schemas/SellerOrder' },
+          }),
+          401: unauthorizedResponse,
+          403: forbiddenResponse,
+          404: errorResponse('No orders found or seller profile not found'),
+        },
+      },
+    },
+    '/payments/verify': {
+      post: {
+        tags: ['Payments'],
+        summary: 'Verify Razorpay payment',
+        description:
+          'Verifies the Razorpay payment signature after checkout. On success, marks payment_status as PAID and order status as PLACED.',
+        security: bearerSecurity,
+        requestBody: {
+          required: true,
+          content: jsonContent({ $ref: '#/components/schemas/VerifyPaymentRequest' }),
+        },
+        responses: {
+          200: successResponse('Payment verified', {
+            type: 'object',
+            properties: {
+              orderId: { type: 'integer' },
+              paymentStatus: { type: 'string', example: 'PAID' },
+              orderStatus: { type: 'string', example: 'PLACED' },
+            },
+          }),
+          400: errorResponse('Invalid payment signature or already verified'),
+          401: unauthorizedResponse,
           404: notFoundResponse,
         },
       },

@@ -13,6 +13,7 @@ import categoryRouter from './routes/category.route.js';
 import cartRouter from './routes/cart.route.js';
 import orderRouter from './routes/order.route.js';
 import adminRouter from './routes/admin.route.js';
+import paymentRouter from './routes/payment.route.js';
 import env from './config/env.config.js';
 import swaggerSpec from './config/swagger.config.js';
 
@@ -53,8 +54,10 @@ app.use('/api/categories', categoryRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/orders', orderRouter);
 app.use('/api/admin', adminRouter);
+app.use('/api/payments', paymentRouter);
 
 //Error Middleware
 app.use(errorHandler);
 
 export default app;
+

@@ -4,6 +4,7 @@ import {
   findSellerByUserId,
   updateSellerProfileInDB,
   updateUserRole,
+  findOrdersBySellerId,
 } from '../models/seller.model.js';
 
 const createSellerProfileService = async (data) => {
@@ -69,4 +70,49 @@ const updateSellerProfileService = async (data) => {
   };
 };
 
-export { createSellerProfileService, getSellerProfileService, updateSellerProfileService };
+const getSellerOrdersService = async (userId) => {
+  const seller = await findSellerByUserId(userId);
+
+  if (!seller) {
+    throw new ApiError(404, 'Seller profile not found');
+  }
+
+  const rows = await findOrdersBySellerId(seller.id);
+
+  if (rows.length === 0) {
+    throw new ApiError(404, 'No orders found for your products');
+  }
+
+  // Group flat rows by order_id
+  const ordersMap = new Map();
+
+  for (const row of rows) {
+    if (!ordersMap.has(row.order_id)) {
+      ordersMap.set(row.order_id, {
+        orderId: row.order_id,
+        totalAmount: row.total_amount,
+        orderStatus: row.order_status,
+        paymentStatus: row.payment_status,
+        customerName: row.customer_name,
+        createdAt: row.order_created_at,
+        items: [],
+      });
+    }
+
+    ordersMap.get(row.order_id).items.push({
+      productId: row.product_id,
+      productName: row.product_name,
+      quantity: row.quantity,
+      price: row.price,
+    });
+  }
+
+  return Array.from(ordersMap.values());
+};
+
+export {
+  createSellerProfileService,
+  getSellerProfileService,
+  updateSellerProfileService,
+  getSellerOrdersService,
+};

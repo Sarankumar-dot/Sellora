@@ -64,7 +64,9 @@ const logout = asyncHandler(async (req, res) => {
 const listSessions = asyncHandler(async (req, res) => {
   const sessions = await listActiveSessionsService(req.user.id);
 
-  return res.status(200).json(new ApiResponse(200, sessions, 'Active sessions fetched successfully'));
+  return res
+    .status(200)
+    .json(new ApiResponse(200, sessions, 'Active sessions fetched successfully'));
 });
 
 const logoutAll = asyncHandler(async (req, res) => {
@@ -72,7 +74,9 @@ const logoutAll = asyncHandler(async (req, res) => {
 
   res.clearCookie('refreshToken', refreshTokenCookieOptions);
 
-  return res.status(200).json(new ApiResponse(200, null, 'Logged out from all devices successfully'));
+  return res
+    .status(200)
+    .json(new ApiResponse(200, null, 'Logged out from all devices successfully'));
 });
 
 const getMe = asyncHandler(async (req, res) => {

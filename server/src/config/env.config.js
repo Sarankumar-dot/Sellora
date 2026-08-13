@@ -30,6 +30,9 @@ const environmentSchema = Joi.object({
   EMAIL_FROM: Joi.string().email().required(),
 
   EMAIL_FROM_NAME: Joi.string().required(),
+
+  RAZORPAY_KEY_ID: Joi.string().trim().min(1).required(),
+  RAZORPAY_KEY_SECRET: Joi.string().trim().min(1).required(),
 }).unknown(true);
 
 const formatValidationError = (error) => {

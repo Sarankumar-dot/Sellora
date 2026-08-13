@@ -32,16 +32,15 @@ export const addToCartInDB = async (userId, productId, quantity) => {
     `
       INSERT INTO cart (user_id, product_id, quantity)
       VALUES (?, ?, ?)
+      ON DUPLICATE KEY UPDATE quantity = quantity + VALUES(quantity)
     `,
     [userId, productId, quantity]
   );
 
-  return {
-    id: result.insertId,
-    user_id: userId,
-    product_id: productId,
-    quantity,
-  };
+  // insertId is the new row id on INSERT, or 0 on UPDATE
+  const cartItem = await findCartItem(userId, productId);
+
+  return cartItem;
 };
 
 export const updateCartQuantity = async (cartId, quantity) => {

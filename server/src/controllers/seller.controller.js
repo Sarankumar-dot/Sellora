@@ -4,6 +4,7 @@ import {
   createSellerProfileService,
   getSellerProfileService,
   updateSellerProfileService,
+  getSellerOrdersService,
 } from '../services/seller.service.js';
 
 const createSellerProfile = asyncHandler(async (req, res) => {
@@ -34,4 +35,10 @@ const updateSellerProfile = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, seller, 'Seller profile updated successfully'));
 });
 
-export { createSellerProfile, getSellerProfile, updateSellerProfile };
+const getSellerOrders = asyncHandler(async (req, res) => {
+  const orders = await getSellerOrdersService(req.user.id);
+
+  return res.status(200).json(new ApiResponse(200, orders, 'Seller orders fetched successfully'));
+});
+
+export { createSellerProfile, getSellerProfile, updateSellerProfile, getSellerOrders };

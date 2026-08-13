@@ -55,4 +55,34 @@ export const updateUserRole = async (userId, role) => {
   );
 };
 
+export const findOrdersBySellerId = async (sellerId) => {
+  const [rows] = await pool.execute(
+    `
+    SELECT
+      o.id            AS order_id,
+      o.total_amount,
+      o.status        AS order_status,
+      o.payment_status,
+      o.created_at    AS order_created_at,
+      oi.product_id,
+      p.name          AS product_name,
+      oi.quantity,
+      oi.price,
+      u.name          AS customer_name
+    FROM order_items oi
+    INNER JOIN products p
+      ON oi.product_id = p.id
+    INNER JOIN orders o
+      ON oi.order_id = o.id
+    INNER JOIN users u
+      ON o.user_id = u.id
+    WHERE p.seller_id = ?
+    ORDER BY o.created_at DESC
+    `,
+    [sellerId]
+  );
+
+  return rows;
+};
+
 export { findSellerByUserId, insertSellerProfile, updateSellerProfileInDB };

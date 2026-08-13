@@ -21,14 +21,11 @@ categoryRouter.post(
   validate({ body: createCategorySchema }),
   createCategory
 );
-categoryRouter.get('/', verifyToken, authorize('admin'), getCategory);
-categoryRouter.get(
-  '/:id',
-  verifyToken,
-  authorize('admin'),
-  validate({ params: idParamSchema }),
-  getCategoryById
-);
+
+// Public — buyers need to browse / filter by category on the storefront
+categoryRouter.get('/', getCategory);
+categoryRouter.get('/:id', validate({ params: idParamSchema }), getCategoryById);
+
 categoryRouter.put(
   '/:id',
   verifyToken,

@@ -24,27 +24,15 @@ export const addToCartService = async (userId, productId, quantity) => {
     throw new ApiError(400, 'Product is inactive');
   }
 
-  const cartItem = await findCartItem(userId, productId);
+  // Check stock against total quantity (existing + incoming)
+  const existingItem = await findCartItem(userId, productId);
+  const totalQuantity = (existingItem?.quantity || 0) + quantity;
 
-  if (cartItem) {
-    const newQuantity = cartItem.quantity + quantity;
-
-    if (newQuantity > product.stock) {
-      throw new ApiError(400, 'Insufficient stock');
-    }
-
-    await updateCartQuantity(cartItem.id, newQuantity);
-
-    return {
-      ...cartItem,
-      quantity: newQuantity,
-    };
-  }
-
-  if (quantity > product.stock) {
+  if (totalQuantity > product.stock) {
     throw new ApiError(400, 'Insufficient stock');
   }
 
+  // Upsert: INSERT or increment quantity via ON DUPLICATE KEY UPDATE
   return await addToCartInDB(userId, productId, quantity);
 };
 

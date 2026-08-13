@@ -1,4 +1,6 @@
+import Razorpay from 'razorpay';
 import pool from '../config/db.config.js';
+import env from '../config/env.config.js';
 import ApiError from '../errors/ApiError.js';
 import {
   getCartItemsForCheckout,
@@ -10,13 +12,17 @@ import {
   findOrderById,
 } from '../models/order.model.js';
 
-export const checkoutService = async (userId) => {
+const razorpay = new Razorpay({
+  key_id: env.RAZORPAY_KEY_ID,
+  key_secret: env.RAZORPAY_KEY_SECRET,
+});
+
+export const checkoutService = async (userId, shippingAddress) => {
   const connection = await pool.getConnection();
 
   try {
     await connection.beginTransaction();
 
-    // Remaining code goes here
     const cartItems = await getCartItemsForCheckout(userId, connection);
 
     if (cartItems.length === 0) {
@@ -37,7 +43,19 @@ export const checkoutService = async (userId) => {
       totalAmount += item.price * item.quantity;
     }
 
-    const orderId = await createOrder(userId, totalAmount, connection);
+    const orderId = await createOrder(userId, totalAmount, shippingAddress, connection, {
+      status: 'PENDING',
+    });
+
+    // Create Razorpay order (amount in paise) using the actual order ID as the receipt
+    const razorpayOrder = await razorpay.orders.create({
+      amount: Math.round(totalAmount * 100),
+      currency: 'INR',
+      receipt: `sellora_${orderId}`,
+    });
+
+    // Update the DB order with the Razorpay order ID
+    await connection.execute(`UPDATE orders SET razorpay_order_id = ? WHERE id = ?`, [razorpayOrder.id, orderId]);
 
     for (const item of cartItems) {
       await createOrderItem(orderId, item.product_id, item.quantity, item.price, connection);
@@ -52,7 +70,12 @@ export const checkoutService = async (userId) => {
     return {
       orderId,
       totalAmount,
-      status: 'PLACED',
+      status: 'PENDING',
+      paymentStatus: 'PENDING',
+      razorpayOrderId: razorpayOrder.id,
+      razorpayKeyId: env.RAZORPAY_KEY_ID,
+      amount: Math.round(totalAmount * 100),
+      currency: 'INR',
     };
   } catch (error) {
     await connection.rollback();
@@ -84,6 +107,15 @@ export const getOrderByIdService = async (orderId, userId) => {
     orderId: order[0].order_id,
     totalAmount: order[0].total_amount,
     status: order[0].status,
+    paymentStatus: order[0].payment_status,
+    shippingAddress: {
+      name: order[0].shipping_name,
+      address: order[0].shipping_address,
+      city: order[0].shipping_city,
+      state: order[0].shipping_state,
+      pincode: order[0].shipping_pincode,
+      phone: order[0].shipping_phone,
+    },
     createdAt: order[0].created_at,
     items: order.map((item) => ({
       productId: item.product_id,
@@ -93,3 +125,4 @@ export const getOrderByIdService = async (orderId, userId) => {
     })),
   };
 };
+

@@ -5,6 +5,7 @@ import {
   createSellerProfile,
   getSellerProfile,
   updateSellerProfile,
+  getSellerOrders,
 } from '../controllers/seller.controller.js';
 import { createSellerSchema, updateSellerSchema } from '../validations/seller.validation.js';
 
@@ -24,5 +25,6 @@ sellerRouter.put(
   validate({ body: updateSellerSchema }),
   updateSellerProfile
 );
+sellerRouter.get('/orders', verifyToken, authorize('seller'), getSellerOrders);
 
 export default sellerRouter;

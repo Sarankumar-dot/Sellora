@@ -1,3 +1,4 @@
+import pool from '../config/db.config.js';
 import ApiError from '../errors/ApiError.js';
 import {
   findSellerProfileByUserId,
@@ -8,6 +9,12 @@ import {
   updateProductInDB,
   deleteProductInDB,
 } from '../models/product.model.js';
+import {
+  insertProductImages,
+  findImagesByProductId,
+  findImagesByProductIds,
+  deleteImagesByProductId,
+} from '../models/productImage.model.js';
 
 export const createProductService = async (userId, productData) => {
   const seller = await findSellerProfileByUserId(userId);
@@ -16,22 +23,41 @@ export const createProductService = async (userId, productData) => {
     throw new ApiError(404, 'Seller profile not found');
   }
 
-  const dbProduct = {
-    seller_id: seller.id,
-    name: productData.name,
-    description: productData.description,
-    price: productData.price,
-    stock: productData.stock,
-    category_id: productData.categoryId,
-    image_url: productData.imageUrl ?? null,
-  };
+  const connection = await pool.getConnection();
 
-  const productId = await createProductInDB(dbProduct);
+  try {
+    await connection.beginTransaction();
 
-  return {
-    id: productId,
-    ...dbProduct,
-  };
+    const dbProduct = {
+      seller_id: seller.id,
+      name: productData.name,
+      description: productData.description,
+      price: productData.price,
+      stock: productData.stock,
+      category_id: productData.categoryId,
+    };
+
+    const productId = await createProductInDB(dbProduct);
+
+    if (productData.images && productData.images.length > 0) {
+      await insertProductImages(productId, productData.images, connection);
+    }
+
+    await connection.commit();
+
+    const images = await findImagesByProductId(productId);
+
+    return {
+      id: productId,
+      ...dbProduct,
+      images,
+    };
+  } catch (error) {
+    await connection.rollback();
+    throw error;
+  } finally {
+    connection.release();
+  }
 };
 
 export const getProductsService = async (query) => {
@@ -53,8 +79,32 @@ export const getProductsService = async (query) => {
 
   const totalPages = Math.ceil(totalProducts / limit);
 
+  // Batch-fetch images for all products in one query
+  const productIds = products.map((p) => p.id);
+  const allImages = await findImagesByProductIds(productIds);
+
+  // Group images by product_id
+  const imageMap = new Map();
+
+  for (const img of allImages) {
+    if (!imageMap.has(img.product_id)) {
+      imageMap.set(img.product_id, []);
+    }
+
+    imageMap.get(img.product_id).push({
+      id: img.id,
+      image_url: img.image_url,
+      display_order: img.display_order,
+    });
+  }
+
+  const productsWithImages = products.map((product) => ({
+    ...product,
+    images: imageMap.get(product.id) || [],
+  }));
+
   return {
-    products,
+    products: productsWithImages,
     pagination: {
       page,
       limit,
@@ -73,7 +123,12 @@ export const getProductByIdService = async (productId) => {
     throw new ApiError(404, 'Product not found');
   }
 
-  return product;
+  const images = await findImagesByProductId(productId);
+
+  return {
+    ...product,
+    images,
+  };
 };
 
 export const updateProductService = async (userId, productId, productData) => {
@@ -93,18 +148,45 @@ export const updateProductService = async (userId, productId, productData) => {
     throw new ApiError(403, 'You are not allowed to update this product');
   }
 
-  const dbProduct = {
-    name: productData.name,
-    description: productData.description,
-    price: productData.price,
-    stock: productData.stock,
-    category_id: productData.categoryId,
-    image_url: productData.imageUrl ?? null,
-  };
+  const connection = await pool.getConnection();
 
-  await updateProductInDB(productId, dbProduct);
+  try {
+    await connection.beginTransaction();
 
-  return await findProductById(productId);
+    const dbProduct = {
+      name: productData.name,
+      description: productData.description,
+      price: productData.price,
+      stock: productData.stock,
+      category_id: productData.categoryId,
+    };
+
+    await updateProductInDB(productId, dbProduct);
+
+    // Replace images: delete old, insert new
+    if (productData.images !== undefined) {
+      await deleteImagesByProductId(productId, connection);
+
+      if (productData.images.length > 0) {
+        await insertProductImages(productId, productData.images, connection);
+      }
+    }
+
+    await connection.commit();
+
+    const updatedProduct = await findProductById(productId);
+    const images = await findImagesByProductId(productId);
+
+    return {
+      ...updatedProduct,
+      images,
+    };
+  } catch (error) {
+    await connection.rollback();
+    throw error;
+  } finally {
+    connection.release();
+  }
 };
 
 export const deleteProductService = async (userId, productId) => {
@@ -126,3 +208,4 @@ export const deleteProductService = async (userId, productId) => {
 
   await deleteProductInDB(productId);
 };
+

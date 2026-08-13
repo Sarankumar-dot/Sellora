@@ -19,13 +19,14 @@ export const findProductById = async (productId) => {
   return rows[0];
 };
 
-export const createProductInDB = async (productData) => {
+export const createProductInDB = async (productData, connection) => {
+  const db = connection || pool;
   const { seller_id, name, description, price, stock, category_id } = productData;
 
-  const [result] = await pool.execute(
+  const [result] = await db.execute(
     `INSERT INTO products
-    (seller_id,name,description,price,stock,category_id)
-    VALUES (?,?,?,?,?,?)`,
+    (seller_id, name, description, price, stock, category_id)
+    VALUES (?, ?, ?, ?, ?, ?)`,
     [seller_id, name, description, price, stock, category_id]
   );
 
@@ -96,10 +97,11 @@ export const getProductsCountFromDB = async (search, category) => {
   return rows[0].total;
 };
 
-export const updateProductInDB = async (productId, productData) => {
-  const { name, description, price, stock, category_id, image_url } = productData;
+export const updateProductInDB = async (productId, productData, connection) => {
+  const db = connection || pool;
+  const { name, description, price, stock, category_id } = productData;
 
-  const [result] = await pool.execute(
+  const [result] = await db.execute(
     `
     UPDATE products
     SET
@@ -107,11 +109,10 @@ export const updateProductInDB = async (productId, productData) => {
       description = ?,
       price = ?,
       stock = ?,
-      category_id = ?,
-      image_url = ?
+      category_id = ?
     WHERE id = ?
     `,
-    [name, description, price, stock, category_id, image_url, productId]
+    [name, description, price, stock, category_id, productId]
   );
 
   return result;

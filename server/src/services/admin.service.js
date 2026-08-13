@@ -13,6 +13,7 @@ export const updateOrderStatusService = async (orderId, status) => {
   }
 
   const validTransitions = {
+    PENDING: ['PLACED', 'CANCELLED'],
     PLACED: ['SHIPPED', 'CANCELLED'],
     SHIPPED: ['DELIVERED'],
     DELIVERED: [],
