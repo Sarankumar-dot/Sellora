@@ -16,5 +16,23 @@ export default defineConfig({
   server: {
     port: 5173,
     strictPort: true,
+    proxy: {
+      '/api': {
+        target: 'https://sellora-backend-u514.onrender.com',
+        changeOrigin: true,
+        configure: (proxy, options) => {
+          proxy.on('proxyRes', (proxyRes, req, res) => {
+            if (proxyRes.headers['set-cookie']) {
+              proxyRes.headers['set-cookie'] = proxyRes.headers['set-cookie'].map(cookie => 
+                cookie
+                  .replace(/;\s*Secure/gi, '')
+                  .replace(/;\s*SameSite=(None|Lax|Strict)/gi, '; SameSite=Lax')
+                  .replace(/;\s*Path=[^;]+/gi, '; Path=/')
+              );
+            }
+          });
+        }
+      }
+    }
   },
 })

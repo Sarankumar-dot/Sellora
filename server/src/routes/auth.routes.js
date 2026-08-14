@@ -6,6 +6,7 @@ import {
   logout,
   listSessions,
   logoutAll,
+  logoutOtherSessions,
   getMe,
   forgotPassword,
   resetPassword,
@@ -34,6 +35,7 @@ router.post('/refresh-token', refreshToken);
 router.post('/logout', logout);
 router.get('/sessions', verifyToken, listSessions);
 router.post('/logout-all', verifyToken, logoutAll);
+router.post('/logout-other', verifyToken, logoutOtherSessions);
 router.get('/me', verifyToken, getMe);
 router.post(
   '/forgot-password',

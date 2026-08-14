@@ -65,11 +65,29 @@ export default function ProfilePage() {
   // Logout All Mutation
   const logoutAllMutation = useMutation({
     mutationFn: async () => {
-      await apiClient.post('/auth/logout-all');
+      const response = await apiClient.post('/auth/logout-all');
+      return response.data;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['sessions'] });
-      // Keep current session active, or if backend revokes all including current, handle it
+      logout(); // Also logout the current user since ALL sessions are revoked
+    },
+    onError: (error) => {
+      console.error('Failed to revoke all sessions:', error);
+    }
+  });
+
+  const logoutOtherMutation = useMutation({
+    mutationFn: async () => {
+      const response = await apiClient.post('/auth/logout-other');
+      return response.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['sessions'] });
+      // Do NOT call logout() here, because the current session remains active
+    },
+    onError: (error) => {
+      console.error('Failed to revoke other sessions:', error);
     }
   });
 
@@ -250,13 +268,22 @@ export default function ProfilePage() {
             <div className="bg-surface-container-lowest p-8 rounded-xl border border-surface-container-highest shadow-[0_4px_20px_rgba(26,26,26,0.02)]">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="font-headline-md text-headline-md">Active Sessions</h3>
-                <button 
-                  onClick={() => logoutAllMutation.mutate()}
-                  disabled={logoutAllMutation.isPending || sessions.length <= 1}
-                  className="font-label-sm text-label-sm text-secondary hover:underline disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {logoutAllMutation.isPending ? 'Revoking...' : 'Revoke All'}
-                </button>
+                <div className="flex gap-4">
+                  <button 
+                    onClick={() => logoutOtherMutation.mutate()}
+                    disabled={logoutOtherMutation.isPending || sessions.length <= 1}
+                    className="font-label-sm text-label-sm text-primary hover:underline disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {logoutOtherMutation.isPending ? 'Revoking...' : 'Revoke Others'}
+                  </button>
+                  <button 
+                    onClick={() => logoutAllMutation.mutate()}
+                    disabled={logoutAllMutation.isPending || sessions.length <= 1}
+                    className="font-label-sm text-label-sm text-error hover:underline disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {logoutAllMutation.isPending ? 'Revoking...' : 'Revoke All'}
+                  </button>
+                </div>
               </div>
               
               <p className="font-body-md text-body-md text-on-surface-variant mb-6">Manage devices currently logged into your account.</p>

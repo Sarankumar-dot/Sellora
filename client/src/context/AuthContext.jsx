@@ -13,6 +13,7 @@ export const AuthContext = createContext({
   checkAuth: async () => {},
   clearSessionExpired: () => {},
 });
+let authRefreshPromise = null;
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -38,7 +39,12 @@ export const AuthProvider = ({ children }) => {
       // 1. Try refreshing token via httpOnly cookie first
       let currentToken = getAccessToken();
       if (!currentToken) {
-        const refreshResponse = await apiClient.post('/auth/refresh-token');
+        if (!authRefreshPromise) {
+          authRefreshPromise = apiClient.post('/auth/refresh-token').finally(() => {
+            authRefreshPromise = null;
+          });
+        }
+        const refreshResponse = await authRefreshPromise;
         const payload = refreshResponse.data?.data || refreshResponse.data;
         currentToken = payload?.token || payload?.accessToken;
         if (currentToken) {

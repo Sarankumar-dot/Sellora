@@ -14,6 +14,7 @@ import {
   deleteAllRefreshTokensForUser,
   deleteExpiredRefreshTokens,
   findActiveRefreshTokensForUser,
+  deleteAllRefreshTokensForUserExcept,
 } from '../models/refreshToken.model.js';
 import {
   createOTP,
@@ -241,6 +242,10 @@ export const listActiveSessionsService = async (userId) => {
 
 export const logoutAllSessionsService = async (userId) => {
   await deleteAllRefreshTokensForUser(userId);
+};
+
+export const logoutOtherSessionsService = async (userId, currentToken) => {
+  await deleteAllRefreshTokensForUserExcept(userId, currentToken);
 };
 
 export const forgotPasswordService = async (email) => {

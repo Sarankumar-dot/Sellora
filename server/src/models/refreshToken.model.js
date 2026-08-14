@@ -81,6 +81,21 @@ export const deleteAllRefreshTokensForUser = async (userId, connection) => {
   return result;
 };
 
+export const deleteAllRefreshTokensForUserExcept = async (userId, currentToken, connection) => {
+  const db = getDatabase(connection);
+  const tokenHash = crypto.createHash('sha256').update(currentToken).digest('hex');
+
+  const [result] = await db.execute(
+    `
+    DELETE FROM refresh_tokens
+    WHERE user_id = ? AND token != ?
+    `,
+    [userId, tokenHash]
+  );
+
+  return result;
+};
+
 export const deleteExpiredRefreshTokens = async (connection) => {
   const db = getDatabase(connection);
 

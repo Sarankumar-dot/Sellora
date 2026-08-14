@@ -6,6 +6,7 @@ import {
   logoutService,
   listActiveSessionsService,
   logoutAllSessionsService,
+  logoutOtherSessionsService,
   forgotPasswordService,
   resetPasswordService,
   changePasswordService,
@@ -79,6 +80,19 @@ const logoutAll = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, null, 'Logged out from all devices successfully'));
 });
 
+const logoutOtherSessions = asyncHandler(async (req, res) => {
+  const currentToken = req.cookies.refreshToken;
+  if (!currentToken) {
+    throw new ApiError(401, 'Unauthorized');
+  }
+
+  await logoutOtherSessionsService(req.user.id, currentToken);
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, null, 'Logged out from all other devices successfully'));
+});
+
 const getMe = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, req.user, 'Profile fetched successfully'));
 });
@@ -105,4 +119,4 @@ export const changePassword = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, null, 'Password changed successfully'));
 });
 
-export { register, login, refreshToken, logout, listSessions, logoutAll, getMe };
+export { register, login, refreshToken, logout, listSessions, logoutAll, logoutOtherSessions, getMe };
