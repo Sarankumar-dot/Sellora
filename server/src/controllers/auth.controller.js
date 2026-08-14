@@ -16,8 +16,8 @@ import env from '../config/env.config.js';
 
 const refreshTokenCookieOptions = {
   httpOnly: true,
-  secure: env.NODE_ENV === 'production',
-  sameSite: 'strict',
+  secure: true,
+  sameSite: 'none',
   path: '/api/auth',
 };
 
