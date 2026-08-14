@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora - Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#dbdad9",
+                        "secondary-container": "#fea685",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#783920",
+                        "surface-container": "#efeded",
+                        "on-surface": "#1b1c1c",
+                        "surface": "#fbf9f9",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#000000",
+                        "primary": "#000000",
+                        "on-secondary-fixed": "#380d00",
+                        "secondary-fixed-dim": "#ffb59a",
+                        "on-primary-fixed-variant": "#474746",
+                        "surface-container-low": "#f5f3f3",
+                        "surface-container-high": "#e9e8e7",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-container-highest": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "background": "#fbf9f9",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "outline": "#747878",
+                        "tertiary-container": "#1a1c1b",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#e5e2e1",
+                        "inverse-surface": "#303031",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#838482",
+                        "on-primary-container": "#858383",
+                        "surface-variant": "#e3e2e2",
+                        "inverse-primary": "#c8c6c5",
+                        "secondary-fixed": "#ffdbce",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#5f5e5e",
+                        "primary-container": "#1c1b1b",
+                        "outline-variant": "#c4c7c7",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "on-secondary-fixed-variant": "#72351c",
+                        "tertiary-fixed": "#e3e2e0",
+                        "surface-bright": "#fbf9f9",
+                        "on-surface-variant": "#444748",
+                        "on-error": "#ffffff",
+                        "secondary": "#904c31",
+                        "on-background": "#1b1c1c",
+                        "on-primary-fixed": "#1c1b1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-mobile": "16px",
+                        "unit": "8px",
+                        "gutter-desktop": "32px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .ambient-shadow { box-shadow: 0 10px 30px rgba(26, 26, 26, 0.05); }
+        .input-field {
+            background-color: theme('colors.surface-bright');
+            border: 1px solid theme('colors.outline-variant');
+            transition: border-color 0.2s ease;
+        }
+        .input-field:focus {
+            border-color: theme('colors.primary');
+            outline: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- Top Navigation (Transactional Layout - Simplified) -->
+<header class="w-full top-0 bg-surface dark:bg-surface-container py-6 px-margin-mobile md:px-margin-desktop border-b border-surface-variant">
+<div class="max-w-container-max mx-auto flex justify-between items-center h-12">
+<a class="font-display-lg text-headline-lg tracking-tight text-primary dark:text-on-surface" href="/">Sellora</a>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">lock</span>
+<span>Secure Checkout</span>
+</div>
+</div>
+</header>
+<!-- Main Checkout Canvas -->
+<main class="flex-grow max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop py-12 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop">
+<!-- Left Column: Forms & Flow -->
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-12">
+<!-- Step Indicator -->
+<nav aria-label="Progress">
+<ol class="flex items-center" role="list">
+<li class="relative pr-8 sm:pr-20">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="h-0.5 w-full bg-primary"></div>
+</div>
+<a class="relative flex h-8 w-8 items-center justify-center rounded-full bg-primary hover:bg-primary/90" href="#">
+<span class="material-symbols-outlined text-on-primary text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+<span class="sr-only">Cart</span>
+</a>
+</li>
+<li class="relative pr-8 sm:pr-20">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="h-0.5 w-full bg-surface-variant"></div>
+</div>
+<a aria-current="step" class="relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-primary bg-surface" href="#">
+<span class="font-label-md text-label-md text-primary">2</span>
+<span class="sr-only">Address</span>
+</a>
+</li>
+<li class="relative pr-8 sm:pr-20">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="h-0.5 w-full bg-surface-variant"></div>
+</div>
+<a class="relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface-variant bg-surface group-hover:border-outline-variant" href="#">
+<span class="font-label-md text-label-md text-on-surface-variant">3</span>
+<span class="sr-only">Payment</span>
+</a>
+</li>
+<li class="relative">
+<a class="relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface-variant bg-surface group-hover:border-outline-variant" href="#">
+<span class="font-label-md text-label-md text-on-surface-variant">4</span>
+<span class="sr-only">Confirm</span>
+</a>
+</li>
+</ol>
+</nav>
+<!-- Address Form -->
+<section>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-8">Shipping Address</h1>
+<form class="space-y-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-2 uppercase tracking-wider" for="first-name">First name</label>
+<input class="input-field block w-full rounded-md p-3 font-body-md text-body-md text-on-surface" id="first-name" name="first-name" placeholder="Jane" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-2 uppercase tracking-wider" for="last-name">Last name</label>
+<input class="input-field block w-full rounded-md p-3 font-body-md text-body-md text-on-surface" id="last-name" name="last-name" placeholder="Doe" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-2 uppercase tracking-wider" for="address">Address</label>
+<input class="input-field block w-full rounded-md p-3 font-body-md text-body-md text-on-surface" id="address" name="address" placeholder="123 Luxury Lane" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-2 uppercase tracking-wider" for="apartment">Apartment, suite, etc. (optional)</label>
+<input class="input-field block w-full rounded-md p-3 font-body-md text-body-md text-on-surface" id="apartment" name="apartment" placeholder="Suite 100" type="text"/>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<div class="sm:col-span-1">
+<label class="block font-label-sm text-label-sm text-on-surface mb-2 uppercase tracking-wider" for="city">City</label>
+<input class="input-field block w-full rounded-md p-3 font-body-md text-body-md text-on-surface" id="city" name="city" placeholder="New York" type="text"/>
+</div>
+<div class="sm:col-span-1">
+<label class="block font-label-sm text-label-sm text-on-surface mb-2 uppercase tracking-wider" for="state">State</label>
+<select class="input-field block w-full rounded-md p-3 font-body-md text-body-md text-on-surface appearance-none" id="state" name="state">
+<option>New York</option>
+<option>California</option>
+<option>Texas</option>
+</select>
+</div>
+<div class="sm:col-span-1">
+<label class="block font-label-sm text-label-sm text-on-surface mb-2 uppercase tracking-wider" for="postal-code">ZIP code</label>
+<input class="input-field block w-full rounded-md p-3 font-body-md text-body-md text-on-surface" id="postal-code" name="postal-code" placeholder="10001" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-2 uppercase tracking-wider" for="phone">Phone</label>
+<input class="input-field block w-full rounded-md p-3 font-body-md text-body-md text-on-surface" id="phone" name="phone" placeholder="(555) 123-4567" type="tel"/>
+</div>
+<div class="pt-8">
+<button class="w-full sm:w-auto bg-secondary hover:bg-secondary/90 text-on-secondary font-label-md text-label-md px-10 py-4 rounded-lg transition-colors inline-flex items-center justify-center gap-2" type="button">
+                            Continue to Payment
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</div>
+</form>
+</section>
+</div>
+<!-- Right Column: Order Summary (Material Depth) -->
+<div class="lg:col-span-5 xl:col-span-4 mt-12 lg:mt-0">
+<div class="bg-surface-container-lowest rounded-xl p-8 ambient-shadow border border-surface-variant sticky top-12">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Order Summary</h2>
+<!-- Items -->
+<div class="space-y-6 mb-8 border-b border-surface-variant pb-8">
+<!-- Item 1 -->
+<div class="flex gap-4">
+<div class="h-24 w-20 flex-shrink-0 rounded-md overflow-hidden bg-surface-container relative">
+<img class="object-cover w-full h-full" data-alt="A premium minimalist flat lay product shot of a sleek matte black ceramic coffee dripper sitting on a clean, off-white textured surface. The lighting is soft and diffused, highlighting the elegant curves of the object. A few scattered roasted coffee beans act as minimal props. The overall aesthetic is highly curated, quiet luxury, editorial, and sophisticated, reflecting a high-end Direct-to-Consumer brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp4osE47CG1l-WPmo8z9cguTAIa4lERj_E0Zaa9O1h5A5mKQSxcOgK77dL6d2s5L8aCWRBzM6ddUSKVUGmziQKS2LtQfqPWNRWqFHJjRCuo3Pzaln1UBBVzak6Ch-ftkrexlXPtRJCWHKWcNL576CpReydV7dL61N8F5eTtwYOc9TmEipysM2q9Pm6tYMmJOHv6JzFa5L02GCXooZFoCxj6tZAVWc05Xl11T-BEPSK_xe6QQ6Hn02DeA"/>
+<span class="absolute -top-2 -right-2 bg-outline text-on-primary text-[10px] w-5 h-5 flex items-center justify-center rounded-full">1</span>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<h3 class="font-label-md text-label-md text-primary">Ceramic Pour-Over</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Matte Black</p>
+</div>
+<p class="font-label-md text-label-md text-primary">$45.00</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4">
+<div class="h-24 w-20 flex-shrink-0 rounded-md overflow-hidden bg-surface-container relative">
+<img class="object-cover w-full h-full" data-alt="A curated, high-end editorial product shot of a thick, textured linen kitchen towel folded neatly on a smooth stone surface. The towel is a soft, earthy terracotta color. The lighting casts subtle, soft shadows, emphasizing the tactile quality of the fabric against the stark minimalism of the background. The mood is calm, natural, and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuzRenV6N6H6PdHWLDvv5ta5FDBKpz0Mk7iS1NwWOYrreLXYiE1dnsWv2Dj1F-ml_ttOAqDKRLqbg2qysUWu8f-OZRCP9WI_AXREAbl5n65SUNGhEnlJZZELLFI2eFfRdwLddxSvMGIQLzh5G7GCvgTJCH5RGWmopQipvQ2I5IrsXtchqv57RM1YJ07FUbbfUxIa-VTB0_tbmQesRm5lZkNSJ4DBQWsr643cOuP9cAePUhHGlr07sdNw"/>
+<span class="absolute -top-2 -right-2 bg-outline text-on-primary text-[10px] w-5 h-5 flex items-center justify-center rounded-full">2</span>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<h3 class="font-label-md text-label-md text-primary">Linen Towel Set</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Terracotta</p>
+</div>
+<p class="font-label-md text-label-md text-primary">$32.00</p>
+</div>
+</div>
+</div>
+<!-- Totals -->
+<div class="space-y-4 font-body-md text-body-md text-on-surface">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Subtotal</span>
+<span>$109.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Shipping</span>
+<span>Calculated next step</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Taxes</span>
+<span>$9.54</span>
+</div>
+<div class="flex justify-between pt-4 border-t border-surface-variant font-label-md text-label-md text-primary text-lg">
+<span>Total</span>
+<span>$118.54</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

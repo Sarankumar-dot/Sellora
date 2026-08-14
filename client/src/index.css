@@ -1,111 +1,137 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@import "tailwindcss";
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Playfair Display", serif;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --color-surface-dim: #dbdad9;
+  --color-secondary-container: #fea685;
+  --color-on-error-container: #93000a;
+  --color-on-secondary-container: #783920;
+  --color-surface-container: #efeded;
+  --color-on-surface: #1b1c1c;
+  --color-surface: #fbf9f9;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary: #000000;
+  --color-primary: #000000;
+  --color-on-secondary-fixed: #380d00;
+  --color-secondary-fixed-dim: #ffb59a;
+  --color-on-primary-fixed-variant: #474746;
+  --color-surface-container-low: #f5f3f3;
+  --color-surface-container-high: #e9e8e7;
+  --color-on-secondary: #ffffff;
+  --color-inverse-on-surface: #f2f0f0;
+  --color-surface-container-highest: #e3e2e2;
+  --color-on-tertiary-fixed-variant: #464746;
+  --color-primary-fixed-dim: #c8c6c5;
+  --color-background: #fbf9f9;
+  --color-tertiary-fixed-dim: #c7c6c5;
+  --color-outline: #747878;
+  --color-tertiary-container: #1a1c1b;
+  --color-on-primary: #ffffff;
+  --color-primary-fixed: #e5e2e1;
+  --color-inverse-surface: #303031;
+  --color-error: #ba1a1a;
+  --color-on-tertiary-container: #838482;
+  --color-on-primary-container: #858383;
+  --color-surface-variant: #e3e2e2;
+  --color-inverse-primary: #c8c6c5;
+  --color-secondary-fixed: #ffdbce;
+  --color-error-container: #ffdad6;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-tint: #5f5e5e;
+  --color-primary-container: #1c1b1b;
+  --color-outline-variant: #c4c7c7;
+  --color-on-tertiary-fixed: #1a1c1b;
+  --color-on-secondary-fixed-variant: #72351c;
+  --color-tertiary-fixed: #e3e2e0;
+  --color-surface-bright: #fbf9f9;
+  --color-on-surface-variant: #444748;
+  --color-on-error: #ffffff;
+  --color-secondary: #904c31;
+  --color-on-background: #1b1c1c;
+  --color-on-primary-fixed: #1c1b1b;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  --spacing-gutter-mobile: 16px;
+  --spacing-unit: 8px;
+  --spacing-gutter-desktop: 32px;
+  --spacing-margin-mobile: 20px;
+  --spacing-container-max: 1280px;
+  --spacing-margin-desktop: 64px;
+
+  --font-label-sm: "Inter", sans-serif;
+  --font-body-lg: "Inter", sans-serif;
+  --font-display-lg: "Playfair Display", serif;
+  --font-body-md: "Inter", sans-serif;
+  --font-headline-lg: "Playfair Display", serif;
+  --font-display-lg-mobile: "Playfair Display", serif;
+  --font-headline-md: "Playfair Display", serif;
+  --font-label-md: "Inter", sans-serif;
+
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 1;
+  --text-label-sm--font-weight: 500;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.6;
+  --text-body-lg--font-weight: 400;
+
+  --text-display-lg: 64px;
+  --text-display-lg--line-height: 1.1;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 600;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.6;
+  --text-body-md--font-weight: 400;
+
+  --text-headline-lg: 32px;
+  --text-headline-lg--line-height: 1.3;
+  --text-headline-lg--font-weight: 500;
+
+  --text-display-lg-mobile: 40px;
+  --text-display-lg-mobile--line-height: 1.2;
+  --text-display-lg-mobile--font-weight: 600;
+
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 1.4;
+  --text-headline-md--font-weight: 500;
+
+  --text-label-md: 14px;
+  --text-label-md--line-height: 1;
+  --text-label-md--letter-spacing: 0.05em;
+  --text-label-md--font-weight: 600;
+}
+
+@utility shadow-ambient {
+  box-shadow: 0 10px 30px rgba(26, 26, 26, 0.05);
+}
+
+@utility custom-input {
+  border: 1px solid var(--color-outline-variant);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-DEFAULT);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    @apply antialiased;
   }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
 }

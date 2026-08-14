@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register - Sellora</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#1b1c1c",
+                      "outline-variant": "#c4c7c7",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#c7c6c5",
+                      "on-tertiary-fixed": "#1a1c1b",
+                      "secondary": "#904c31",
+                      "on-primary-fixed": "#1c1b1b",
+                      "on-surface-variant": "#444748",
+                      "on-error": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "error": "#ba1a1a",
+                      "on-surface": "#1b1c1c",
+                      "inverse-on-surface": "#f2f0f0",
+                      "inverse-primary": "#c8c6c5",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#464746",
+                      "outline": "#747878",
+                      "secondary-fixed": "#ffdbce",
+                      "surface-tint": "#5f5e5e",
+                      "surface-container-highest": "#e3e2e2",
+                      "tertiary-fixed": "#e3e2e0",
+                      "surface-container-low": "#f5f3f3",
+                      "tertiary-container": "#1a1c1b",
+                      "on-secondary": "#ffffff",
+                      "tertiary": "#000000",
+                      "surface-dim": "#dbdad9",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#474746",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#72351c",
+                      "on-secondary-fixed": "#380d00",
+                      "surface-container": "#efeded",
+                      "background": "#fbf9f9",
+                      "surface-bright": "#fbf9f9",
+                      "inverse-surface": "#303031",
+                      "surface": "#fbf9f9",
+                      "secondary-container": "#fea685",
+                      "on-secondary-container": "#783920",
+                      "primary": "#000000",
+                      "surface-container-high": "#e9e8e7",
+                      "primary-container": "#1c1b1b",
+                      "on-tertiary-container": "#838482",
+                      "surface-variant": "#e3e2e2",
+                      "primary-fixed": "#e5e2e1",
+                      "on-primary-container": "#858383",
+                      "secondary-fixed-dim": "#ffb59a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-desktop": "32px",
+                      "gutter-mobile": "16px",
+                      "margin-mobile": "20px",
+                      "unit": "8px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #fbf9f9;
+        }
+      </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col md:flex-row">
+<!-- Left Side: Brand Image (Hidden on mobile) -->
+<div class="hidden md:flex w-1/2 bg-surface-container-high h-screen sticky top-0 relative overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="bg-cover bg-center w-full h-full object-cover" data-alt="A luxurious, minimalist interior space with soft, natural lighting filtering through sheer curtains. The scene features a curated arrangement of elegant, handcrafted ceramic vases on a raw stone pedestal. The color palette is warm and neutral, featuring off-whites, soft beiges, and subtle terracotta accents, perfectly embodying a high-end, gallery-like aesthetic suitable for a premium brand." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB_w13AfvR01RAdmjHPiRtDdKT5v-4edTWNk9Hamg7wiFZLlpEfZdSKTtnRcPpUromxNkCS2u3PW7W4QbuxDQX0ZJmAPmOA8ujSAq-x3B-FoIVu0HyslySxpJWS8go9n9VhMUSBU8_-d8TrG4PLhUW37m3sacnztV6LPbvmC1noDugEXQ_f2vU_asGePMe5RUOhNQhJDjCe-8Sb06ewkcb1bqdpnObiviSxM2jRzu0dSi07_5oSnfiM_A')"></div>
+</div>
+<div class="relative z-10 p-12 flex flex-col justify-between w-full h-full bg-gradient-to-t from-black/40 to-transparent">
+<div>
+<span class="font-headline-md text-headline-md text-on-primary">Sellora</span>
+</div>
+<div class="mb-12">
+<h2 class="font-display-lg text-display-lg text-on-primary mb-4 leading-tight">Curated <br/>Excellence.</h2>
+<p class="font-body-lg text-body-lg text-on-primary/90 max-w-md">Join a marketplace dedicated to exceptional design and uncompromising quality.</p>
+</div>
+</div>
+</div>
+<!-- Right Side: Register Card -->
+<div class="w-full md:w-1/2 flex items-center justify-center p-8 md:p-16 lg:p-24 bg-background min-h-screen">
+<div class="w-full max-w-md space-y-8">
+<!-- Mobile Logo -->
+<div class="md:hidden flex justify-center mb-12">
+<span class="font-headline-md text-headline-md text-primary font-bold">Sellora</span>
+</div>
+<!-- Header -->
+<div class="text-center space-y-2">
+<h1 class="font-headline-lg text-headline-lg text-primary">Create Account</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Join Sellora to discover or offer premium goods.</p>
+</div>
+<!-- Form -->
+<form class="space-y-6 mt-8">
+<!-- Role Selector -->
+<div class="flex gap-4 mb-6">
+<label class="flex-1 relative">
+<input checked="" class="peer sr-only" name="role" type="radio" value="buy"/>
+<div class="p-4 border border-outline-variant rounded-lg cursor-pointer text-center peer-checked:border-primary peer-checked:bg-surface-container transition-all">
+<span class="material-symbols-outlined mb-2 text-primary" data-icon="shopping_bag">shopping_bag</span>
+<div class="font-label-md text-label-md text-primary">I want to Buy</div>
+</div>
+</label>
+<label class="flex-1 relative">
+<input class="peer sr-only" name="role" type="radio" value="sell"/>
+<div class="p-4 border border-outline-variant rounded-lg cursor-pointer text-center peer-checked:border-primary peer-checked:bg-surface-container transition-all">
+<span class="material-symbols-outlined mb-2 text-primary" data-icon="storefront">storefront</span>
+<div class="font-label-md text-label-md text-primary">I want to Sell</div>
+</div>
+</label>
+</div>
+<!-- Input Fields -->
+<div class="space-y-4">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="name">Full Name</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="name" name="name" placeholder="Jane Doe" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="email">Email Address</label>
+<input autocomplete="email" class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="email" name="email" placeholder="jane@example.com" required="" type="email"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="mobile">Mobile Number</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="mobile" name="mobile" placeholder="+1 (555) 000-0000" required="" type="tel"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="password">Password</label>
+<input autocomplete="new-password" class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-lg hover:bg-inverse-surface transition-colors" type="submit">
+                    Create Account
+                </button>
+</form>
+<!-- Footer Links -->
+<div class="text-center mt-6">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Already have an account? 
+                    <a class="text-primary font-label-md text-label-md hover:underline underline-offset-4 decoration-primary" href="#">Log in here</a>
+</p>
+</div>
+</div>
+</div>
+</body></html>

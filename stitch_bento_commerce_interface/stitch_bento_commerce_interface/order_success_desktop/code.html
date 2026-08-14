@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora - Order Success</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#1b1c1c",
+                      "outline-variant": "#c4c7c7",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#c7c6c5",
+                      "on-tertiary-fixed": "#1a1c1b",
+                      "secondary": "#904c31",
+                      "on-primary-fixed": "#1c1b1b",
+                      "on-surface-variant": "#444748",
+                      "on-error": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "error": "#ba1a1a",
+                      "on-surface": "#1b1c1c",
+                      "inverse-on-surface": "#f2f0f0",
+                      "inverse-primary": "#c8c6c5",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#464746",
+                      "outline": "#747878",
+                      "secondary-fixed": "#ffdbce",
+                      "surface-tint": "#5f5e5e",
+                      "surface-container-highest": "#e3e2e2",
+                      "tertiary-fixed": "#e3e2e0",
+                      "surface-container-low": "#f5f3f3",
+                      "tertiary-container": "#1a1c1b",
+                      "on-secondary": "#ffffff",
+                      "tertiary": "#000000",
+                      "surface-dim": "#dbdad9",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#474746",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#72351c",
+                      "on-secondary-fixed": "#380d00",
+                      "surface-container": "#efeded",
+                      "background": "#fbf9f9",
+                      "surface-bright": "#fbf9f9",
+                      "inverse-surface": "#303031",
+                      "surface": "#fbf9f9",
+                      "secondary-container": "#fea685",
+                      "on-secondary-container": "#783920",
+                      "primary": "#000000",
+                      "surface-container-high": "#e9e8e7",
+                      "primary-container": "#1c1b1b",
+                      "on-tertiary-container": "#838482",
+                      "surface-variant": "#e3e2e2",
+                      "primary-fixed": "#e5e2e1",
+                      "on-primary-container": "#858383",
+                      "secondary-fixed-dim": "#ffb59a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-desktop": "32px",
+                      "gutter-mobile": "16px",
+                      "margin-mobile": "20px",
+                      "unit": "8px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar (Suppressed due to transactional nature, keeping only Brand as a minimal header) -->
+<header class="w-full bg-surface top-0 h-20 flex items-center justify-center border-b border-outline-variant/20 shadow-sm">
+<a class="font-headline-md text-headline-md font-bold text-primary tracking-tight" href="#">Sellora</a>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center px-gutter-mobile md:px-gutter-desktop py-margin-desktop">
+<div class="max-w-2xl w-full mx-auto bg-surface-container-lowest p-8 md:p-12 rounded-xl shadow-[0_10px_40px_rgba(26,26,26,0.03)] border border-outline-variant/10 text-center">
+<!-- Success Icon -->
+<div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-secondary-fixed/30 text-secondary mb-8 ring-8 ring-surface">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Header -->
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">Thank you for your order!</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mb-10">We've received your order and will contact you as soon as your package is shipped.</p>
+<!-- Order Details Box -->
+<div class="bg-surface-container-low rounded-lg p-6 md:p-8 text-left mb-10 border border-outline-variant/20">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-6 border-b border-outline-variant/20 gap-4">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-1">Order Number</p>
+<p class="font-label-md text-label-md text-on-surface font-semibold">#ORD-2024-8923</p>
+</div>
+<div class="md:text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-1">Estimated Delivery</p>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Oct 24 - Oct 26</p>
+</div>
+</div>
+<!-- Order Items -->
+<div class="space-y-4 mb-6">
+<!-- Item 1 -->
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-md bg-surface-container-highest overflow-hidden flex-shrink-0">
+<img alt="Product Image" class="w-full h-full object-cover" data-alt="A minimalist product shot of a sleek, matte black ceramic vase against a clean, off-white background. The lighting is soft and diffused, highlighting the smooth texture and elegant curves of the object. The composition is highly curated and editorial, reflecting a premium direct-to-consumer aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiIGRYyBJ-uNHEgb5d329uxzw21QyoZLVwpoT3dsJib7Qb4zCVufo0Asg3T_XZF4hrzAnU-SpIPJ0-gc2YP_wCqExSWyJ-kuetfYQtbrZ1cAGSOkEnTjj4mdx7E6APi8-fVY3W0F9jeh3D843emkeQzabGzUoiyYFiS2kS24nbgQcQkCA827fBPrb5guU6VuTS5tqLeOaVqAoCHUWBstqWCfV4RIwDTyncQdwNbz6nmt6aE2liXxBnmg"/>
+</div>
+<div class="flex-grow">
+<p class="font-label-md text-label-md text-on-surface">Minimalist Ceramic Vase</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Qty: 1</p>
+</div>
+<div class="font-label-md text-label-md text-on-surface">
+                            $45.00
+                        </div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-md bg-surface-container-highest overflow-hidden flex-shrink-0">
+<img alt="Product Image" class="w-full h-full object-cover" data-alt="A detailed close-up of a woven linen throw blanket in a natural, unbleached beige tone. The fabric texture is clearly visible, illuminated by soft natural light. The styling is simple and elegant, resting on a flat, light surface, evoking a sense of calm and tactile luxury typical of high-end homeware brands." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzDJDEXwDi5bqqmLtlmbVWermEVVbB8nKZ4KviHfRTV6sfz5NOuueQ5bb5dLhiI2wB643nimIRg6jH9ESGi9GbTEIoKlzebIm9n5mqoYsk0XAaS6jkSNDDljFYmvCW0J_wQ4r4afyEq1h755LqVibR0nDzIPhiU6WSliFziKTQQoj-jXwLs7ANsg5oAr6MqiIPetG-JyCZvcOgbnGzFpJNSgqW3CCp2fUZu2AAOumHJX0QvyUKOX6ZKQ"/>
+</div>
+<div class="flex-grow">
+<p class="font-label-md text-label-md text-on-surface">Organic Linen Throw</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Qty: 2</p>
+</div>
+<div class="font-label-md text-label-md text-on-surface">
+                            $120.00
+                        </div>
+</div>
+</div>
+<!-- Total -->
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant/20">
+<p class="font-body-lg text-body-lg text-on-surface font-medium">Total</p>
+<p class="font-headline-md text-headline-md text-primary font-semibold">$165.00</p>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="w-full sm:w-auto bg-primary text-on-primary font-label-md text-label-md px-8 py-4 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors duration-200">
+                    Continue Shopping
+                </button>
+<button class="w-full sm:w-auto bg-transparent text-primary font-label-md text-label-md px-8 py-4 rounded-lg border border-primary/20 hover:bg-surface-container-high transition-colors duration-200">
+                    View Receipt
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer (Minimal Footer for Success Page) -->
+<footer class="w-full bg-surface-container-highest py-8 px-gutter-desktop">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 Sellora. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

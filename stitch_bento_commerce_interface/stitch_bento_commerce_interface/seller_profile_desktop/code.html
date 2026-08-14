@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora Seller - Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#1b1c1c",
+                      "outline-variant": "#c4c7c7",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#c7c6c5",
+                      "on-tertiary-fixed": "#1a1c1b",
+                      "secondary": "#904c31",
+                      "on-primary-fixed": "#1c1b1b",
+                      "on-surface-variant": "#444748",
+                      "on-error": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "error": "#ba1a1a",
+                      "on-surface": "#1b1c1c",
+                      "inverse-on-surface": "#f2f0f0",
+                      "inverse-primary": "#c8c6c5",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#464746",
+                      "outline": "#747878",
+                      "secondary-fixed": "#ffdbce",
+                      "surface-tint": "#5f5e5e",
+                      "surface-container-highest": "#e3e2e2",
+                      "tertiary-fixed": "#e3e2e0",
+                      "surface-container-low": "#f5f3f3",
+                      "tertiary-container": "#1a1c1b",
+                      "on-secondary": "#ffffff",
+                      "tertiary": "#000000",
+                      "surface-dim": "#dbdad9",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#474746",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#72351c",
+                      "on-secondary-fixed": "#380d00",
+                      "surface-container": "#efeded",
+                      "background": "#fbf9f9",
+                      "surface-bright": "#fbf9f9",
+                      "inverse-surface": "#303031",
+                      "surface": "#fbf9f9",
+                      "secondary-container": "#fea685",
+                      "on-secondary-container": "#783920",
+                      "primary": "#000000",
+                      "surface-container-high": "#e9e8e7",
+                      "primary-container": "#1c1b1b",
+                      "on-tertiary-container": "#838482",
+                      "surface-variant": "#e3e2e2",
+                      "primary-fixed": "#e5e2e1",
+                      "on-primary-container": "#858383",
+                      "secondary-fixed-dim": "#ffb59a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-desktop": "32px",
+                      "gutter-mobile": "16px",
+                      "margin-mobile": "20px",
+                      "unit": "8px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased flex min-h-screen">
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden md:flex flex-col border-r border-outline-variant bg-surface-container-low dark:bg-surface-container-lowest h-screen w-64 left-0 top-0 sticky">
+<div class="p-6 border-b border-outline-variant flex flex-col items-start gap-1">
+<h2 class="font-headline-md text-headline-md text-primary">Sellora Seller</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Premium Partner</p>
+</div>
+<nav class="flex-1 py-4 flex flex-col gap-1 px-2">
+<a class="rounded-lg mx-2 my-1 px-4 py-3 cursor-pointer flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="rounded-lg mx-2 my-1 px-4 py-3 cursor-pointer flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="rounded-lg mx-2 my-1 px-4 py-3 cursor-pointer flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<a class="rounded-lg mx-2 my-1 px-4 py-3 cursor-pointer flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg mx-2 my-1 px-4 py-3 cursor-pointer flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings" data-weight="fill">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="p-6 border-t border-outline-variant">
+<button class="w-full py-2 px-4 border border-primary text-primary rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2">
+<span>View Store</span>
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-container-max mx-auto px-gutter-desktop py-margin-desktop flex flex-col gap-12 overflow-y-auto">
+<!-- Header -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-outline-variant pb-6">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">Store Profile</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your brand identity and public details.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 border border-outline text-primary rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-colors">Cancel</button>
+<button class="px-6 py-3 bg-primary text-on-primary rounded-lg font-label-md text-label-md shadow-sm hover:bg-inverse-surface transition-colors">Save Changes</button>
+</div>
+</header>
+<!-- Bento Grid Form Layout -->
+<form class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Branding -->
+<div class="lg:col-span-4 flex flex-col gap-8">
+<!-- Logo Upload Box -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_4px_20px_rgba(26,26,26,0.02)] border border-surface-container-high flex flex-col items-center justify-center gap-4 text-center min-h-[300px]">
+<div class="w-32 h-32 rounded-full bg-surface-container flex items-center justify-center overflow-hidden border border-outline-variant relative group cursor-pointer">
+<img alt="Store Logo" class="w-full h-full object-cover" data-alt="A stylized, modern geometric logo for a premium lifestyle brand, set against a pristine white background. The logo utilizes deep charcoal and subtle terracotta accents, embodying an elevated minimalist D2C aesthetic. Soft natural lighting enhances the clean lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHHybGfMT4q6XB4ADmw6pMrJs5QNRcj688lh52-Se21OkRjGbf2y6o687udeSzyx2C9wnvRz114TtHOUeqTV-fouL_m5MJ9d5OPJFCgQ3upWoSL4xdLlMCE9OdXPu02idoPPvfRlTJeM2SBzmLGcM-Ewkrvspq9vtUOq0xIeRnGJkuazy99jMzIDbWyMl_QP3QRCF7Ajy98a_GQDxeh0Ti5yWaT3Y3mWzBgKHM4NFV1IuoeluO2GpyPg"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white" data-icon="photo_camera">photo_camera</span>
+</div>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-1">Store Logo</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4">Recommended: 512x512px, JPG or PNG.</p>
+<button class="px-4 py-2 border border-outline text-primary rounded-lg font-label-sm text-label-sm hover:bg-surface-container-high transition-colors" type="button">Upload New</button>
+</div>
+</div>
+<!-- Status Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_4px_20px_rgba(26,26,26,0.02)] border border-surface-container-high">
+<h3 class="font-label-md text-label-md text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+                        Account Status
+                    </h3>
+<div class="flex items-center justify-between py-2 border-b border-surface-container-highest">
+<span class="font-body-md text-body-md text-on-surface-variant">Status</span>
+<span class="px-2 py-1 bg-secondary-container/20 text-secondary-container-on font-label-sm text-label-sm rounded-full border border-secondary-container/30">Active</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-surface-container-highest">
+<span class="font-body-md text-body-md text-on-surface-variant">Tier</span>
+<span class="font-body-md text-body-md font-medium text-primary">Premium</span>
+</div>
+<div class="flex items-center justify-between py-2">
+<span class="font-body-md text-body-md text-on-surface-variant">Since</span>
+<span class="font-body-md text-body-md font-medium text-primary">Oct 2023</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Details -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- General Info Box -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_20px_rgba(26,26,26,0.02)] border border-surface-container-high flex flex-col gap-6">
+<h2 class="font-headline-md text-headline-md text-primary border-b border-surface-container-highest pb-4">General Information</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="storeName">Store Name</label>
+<input class="w-full bg-background border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-primary focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none" id="storeName" type="text" value="Lumina Ceramics"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="storeUrl">Custom URL Slug</label>
+<div class="flex">
+<span class="inline-flex items-center px-3 border border-r-0 border-outline-variant bg-surface-container rounded-l-lg text-on-surface-variant font-body-md text-body-md">sellora.com/</span>
+<input class="flex-1 bg-background border border-outline-variant rounded-r-lg px-4 py-3 font-body-md text-body-md text-primary focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none" id="storeUrl" type="text" value="lumina-ceramics"/>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="brandStory">Brand Story</label>
+<textarea class="w-full bg-background border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-primary focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none resize-y" id="brandStory" rows="4">Handcrafted ceramic goods designed for the modern home. We focus on sustainable materials and timeless, minimalist aesthetics inspired by natural forms.</textarea>
+<span class="text-right font-label-sm text-label-sm text-outline">142 / 500</span>
+</div>
+</div>
+<!-- Legal & Address Box -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_20px_rgba(26,26,26,0.02)] border border-surface-container-high flex flex-col gap-6">
+<h2 class="font-headline-md text-headline-md text-primary border-b border-surface-container-highest pb-4">Business &amp; Tax Details</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="gstin">GSTIN (Required for Tax Invoice)</label>
+<input class="w-full bg-background border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-primary focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none uppercase font-mono" id="gstin" type="text" value="22AAAAA0000A1Z5"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="pan">PAN Number</label>
+<input class="w-full bg-background border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-primary focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none uppercase font-mono" id="pan" type="text" value="ABCDE1234F"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="address">Registered Business Address</label>
+<textarea class="w-full bg-background border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-primary focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none resize-none" id="address" rows="3">124 Artisan Alley, Studio 4B
+Design District, Metropolis
+MT 10012</textarea>
+</div>
+</div>
+</div>
+</form>
+</main>
+</body></html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Detail - Sellora</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1b1c1c",
+                        "outline-variant": "#c4c7c7",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "secondary": "#904c31",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-surface-variant": "#444748",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1b1c1c",
+                        "inverse-on-surface": "#f2f0f0",
+                        "inverse-primary": "#c8c6c5",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "outline": "#747878",
+                        "secondary-fixed": "#ffdbce",
+                        "surface-tint": "#5f5e5e",
+                        "surface-container-highest": "#e3e2e2",
+                        "tertiary-fixed": "#e3e2e0",
+                        "surface-container-low": "#f5f3f3",
+                        "tertiary-container": "#1a1c1b",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#000000",
+                        "surface-dim": "#dbdad9",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#474746",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#72351c",
+                        "on-secondary-fixed": "#380d00",
+                        "surface-container": "#efeded",
+                        "background": "#fbf9f9",
+                        "surface-bright": "#fbf9f9",
+                        "inverse-surface": "#303031",
+                        "surface": "#fbf9f9",
+                        "secondary-container": "#fea685",
+                        "on-secondary-container": "#783920",
+                        "primary": "#000000",
+                        "surface-container-high": "#e9e8e7",
+                        "primary-container": "#1c1b1b",
+                        "on-tertiary-container": "#838482",
+                        "surface-variant": "#e3e2e2",
+                        "primary-fixed": "#e5e2e1",
+                        "on-primary-container": "#858383",
+                        "secondary-fixed-dim": "#ffb59a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "32px",
+                        "gutter-mobile": "16px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #fbf9f9; } /* background fallback */
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface w-full top-0 shadow-sm z-50">
+<div class="hidden md:flex justify-between items-center max-w-container-max mx-auto px-gutter-desktop h-20">
+<div class="flex items-center gap-8">
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed" href="#">Sellora</a>
+<div class="flex gap-6">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md cursor-pointer transition-all duration-200" href="#">Shop</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md cursor-pointer transition-all duration-200" href="#">Collections</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md cursor-pointer transition-all duration-200" href="#">About</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md cursor-pointer transition-all duration-200" href="#">Journal</a>
+</div>
+</div>
+<div class="flex gap-4 items-center">
+<a class="text-primary dark:text-primary-fixed cursor-pointer transition-all duration-200 hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">search</span>
+</a>
+<a class="text-primary dark:text-primary-fixed cursor-pointer transition-all duration-200 hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+</a>
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 cursor-pointer transition-all duration-200 hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow max-w-container-max mx-auto px-gutter-desktop py-margin-desktop w-full grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Header / Title Area -->
+<div class="col-span-1 lg:col-span-12 mb-4 flex justify-between items-end border-b border-surface-variant pb-6">
+<div>
+<a class="text-on-surface-variant text-label-md font-label-md uppercase tracking-widest flex items-center gap-2 mb-4 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span> Back to Orders
+                </a>
+<h1 class="font-headline-lg text-headline-lg text-primary">Order #SL-892401</h1>
+<p class="text-on-surface-variant mt-2">Placed on October 24, 2024</p>
+</div>
+<div class="hidden md:flex gap-4">
+<button class="px-6 py-3 border border-outline rounded text-primary hover:bg-surface-container-low transition-colors font-label-md text-label-md">Download Invoice</button>
+<button class="px-6 py-3 bg-primary text-on-primary rounded hover:bg-primary-container transition-colors font-label-md text-label-md">Track Package</button>
+</div>
+</div>
+<!-- Left Column: Order Summary & Timeline -->
+<div class="col-span-1 lg:col-span-8 flex flex-col gap-8">
+<!-- Order Timeline (Bento Style Card) -->
+<section class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_20px_rgba(26,26,26,0.03)] border border-surface-variant">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Delivery Status</h2>
+<div class="relative flex items-center justify-between w-full mt-8 mb-4">
+<!-- Connecting Line -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-surface-variant rounded-full z-0"></div>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-2/3 h-1 bg-primary rounded-full z-0"></div>
+<!-- Step 1: Ordered -->
+<div class="relative z-10 flex flex-col items-center gap-2 w-1/3">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-sm">receipt_long</span>
+</div>
+<span class="font-label-md text-label-md text-primary mt-2">Ordered</span>
+<span class="text-label-sm text-on-surface-variant">Oct 24</span>
+</div>
+<!-- Step 2: Shipped -->
+<div class="relative z-10 flex flex-col items-center gap-2 w-1/3">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+</div>
+<span class="font-label-md text-label-md text-primary mt-2">Shipped</span>
+<span class="text-label-sm text-on-surface-variant">Oct 25</span>
+</div>
+<!-- Step 3: Delivered -->
+<div class="relative z-10 flex flex-col items-center gap-2 w-1/3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-surface-variant text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant mt-2">Delivered</span>
+<span class="text-label-sm text-on-surface-variant">Est. Oct 28</span>
+</div>
+</div>
+</section>
+<!-- Item List -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(26,26,26,0.03)] border border-surface-variant overflow-hidden">
+<div class="p-6 border-b border-surface-variant">
+<h2 class="font-headline-md text-headline-md text-primary">Items Ordered</h2>
+</div>
+<div class="flex flex-col">
+<!-- Item 1 -->
+<div class="flex items-center gap-6 p-6 border-b border-surface-variant hover:bg-surface-container-low transition-colors">
+<div class="w-24 h-32 bg-surface-container-high rounded overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A minimalist flat-lay photograph of a luxurious, textured ceramic vase in a soft warm gray tone. The vase sits on a clean, off-white surface with elegant, diffused studio lighting casting a subtle, soft shadow to the right. The aesthetic is modern, D2C luxury, and highly editorial." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpdDedGfxRlXhW5k5uXGsQQ4g39V_BnvTlPh2z9QhG3DdRZkE3Z0V4pdihy9FdurATr3ZyyMmlU8vDjAkKG0i9GlACDbDdvxLgt_97gCI53PaNdZvVvyM5kT6PHBQlFUmGcV7CArBJQw-cbpzLM81-_xh4vRzkL7MTroR1MoWWGX8dW_m7ddl5Ccp75PEs6uZ9G4ULZ1bQ-E5BzYglQs7JylbYpv77smtkNtCRy15hy-yFlDVdNK1Nzw"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-body-lg text-body-lg text-primary mb-1">Textured Ceramic Vase</h3>
+<p class="text-on-surface-variant text-sm mb-2">Color: Warm Gray</p>
+<p class="text-on-surface-variant text-sm">Qty: 1</p>
+</div>
+<div class="text-right">
+<p class="font-body-lg text-body-lg text-primary">$125.00</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-6 p-6 hover:bg-surface-container-low transition-colors">
+<div class="w-24 h-32 bg-surface-container-high rounded overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A close-up, high-end editorial shot of a heavy linen throw blanket in a deep charcoal color, neatly folded. The fabric texture is pronounced, lit with soft, directional light against a crisp white background. The composition is minimal and sophisticated, embodying quiet luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDxfmExrvpneyGlbvZCgogLgesmuCG-5MyJSkfnvg30gvLSQdxVkKIXfIrwq0OoiPxvV_VfblBLZ2QQjsYxlg5mpYfNo62XNZw7G2y4wGtDrkKz0RcfIGTR-ozaZ8jMQw8K2z_JLwvT2DHZZW1aKPCyKx1nQf2Vr6exOb0o9zcGOL6pCxLiW5lUfXju5wrVYWIBMxwICvriaos2h8ZMWJh_RWAm1qFdM4jfUiUAAhUbvLJZsMdxTqTWQ"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-body-lg text-body-lg text-primary mb-1">Heavyweight Linen Throw</h3>
+<p class="text-on-surface-variant text-sm mb-2">Color: Charcoal</p>
+<p class="text-on-surface-variant text-sm">Qty: 2</p>
+</div>
+<div class="text-right">
+<p class="font-body-lg text-body-lg text-primary">$180.00</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Summary, Shipping, Payment -->
+<div class="col-span-1 lg:col-span-4 flex flex-col gap-6">
+<!-- Order Summary totals -->
+<section class="bg-surface-container-low rounded-xl p-6 border border-surface-variant">
+<h3 class="font-headline-md text-headline-md text-primary mb-6">Summary</h3>
+<div class="space-y-4 font-body-md text-body-md text-on-surface">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Subtotal</span>
+<span>$485.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Shipping</span>
+<span>$15.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Tax</span>
+<span>$42.50</span>
+</div>
+<div class="pt-4 border-t border-outline-variant flex justify-between font-bold text-lg">
+<span>Total</span>
+<span>$542.50</span>
+</div>
+</div>
+</section>
+<!-- Shipping Information -->
+<section class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_2px_10px_rgba(26,26,26,0.02)] border border-surface-variant">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-on-surface-variant">location_on</span>
+<h3 class="font-body-lg text-body-lg font-medium text-primary">Shipping Address</h3>
+</div>
+<div class="text-on-surface-variant leading-relaxed pl-9">
+<p class="text-primary font-medium">Eleanor Vance</p>
+<p>1042 Hillside Manor Drive</p>
+<p>Apt 4B</p>
+<p>Seattle, WA 98101</p>
+<p>United States</p>
+</div>
+</section>
+<!-- Payment Information -->
+<section class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_2px_10px_rgba(26,26,26,0.02)] border border-surface-variant">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-on-surface-variant">credit_card</span>
+<h3 class="font-body-lg text-body-lg font-medium text-primary">Payment Method</h3>
+</div>
+<div class="flex items-center gap-4 pl-9">
+<div class="w-12 h-8 bg-surface-variant rounded flex items-center justify-center">
+<span class="text-xs font-bold text-on-surface-variant">VISA</span>
+</div>
+<div>
+<p class="text-primary">Visa ending in 4242</p>
+<p class="text-sm text-on-surface-variant">Exp 12/25</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 px-gutter-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between gap-8 bg-surface-container-highest dark:bg-tertiary-container mt-auto">
+<div>
+<div class="font-headline-md text-headline-md text-on-surface mb-4">Sellora</div>
+<p class="text-on-surface-variant dark:text-on-tertiary-container font-body-md text-body-md">© 2024 Sellora. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary dark:hover:text-secondary-fixed transition-colors cursor-pointer font-body-md text-body-md" href="#">Sustainability</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary dark:hover:text-secondary-fixed transition-colors cursor-pointer font-body-md text-body-md" href="#">Shipping</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary dark:hover:text-secondary-fixed transition-colors cursor-pointer font-body-md text-body-md" href="#">Returns</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary dark:hover:text-secondary-fixed transition-colors cursor-pointer font-body-md text-body-md" href="#">Contact</a>
+</div>
+</footer>
+</body></html>

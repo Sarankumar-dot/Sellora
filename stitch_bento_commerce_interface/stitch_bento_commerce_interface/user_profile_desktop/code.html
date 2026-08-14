@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora - Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#dbdad9",
+                      "secondary-container": "#fea685",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#783920",
+                      "surface-container": "#efeded",
+                      "on-surface": "#1b1c1c",
+                      "surface": "#fbf9f9",
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#000000",
+                      "primary": "#000000",
+                      "on-secondary-fixed": "#380d00",
+                      "secondary-fixed-dim": "#ffb59a",
+                      "on-primary-fixed-variant": "#474746",
+                      "surface-container-low": "#f5f3f3",
+                      "surface-container-high": "#e9e8e7",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#f2f0f0",
+                      "surface-container-highest": "#e3e2e2",
+                      "on-tertiary-fixed-variant": "#464746",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "background": "#fbf9f9",
+                      "tertiary-fixed-dim": "#c7c6c5",
+                      "outline": "#747878",
+                      "tertiary-container": "#1a1c1b",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#e5e2e1",
+                      "inverse-surface": "#303031",
+                      "error": "#ba1a1a",
+                      "on-tertiary-container": "#838482",
+                      "on-primary-container": "#858383",
+                      "surface-variant": "#e3e2e2",
+                      "inverse-primary": "#c8c6c5",
+                      "secondary-fixed": "#ffdbce",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#5f5e5e",
+                      "primary-container": "#1c1b1b",
+                      "outline-variant": "#c4c7c7",
+                      "on-tertiary-fixed": "#1a1c1b",
+                      "on-secondary-fixed-variant": "#72351c",
+                      "tertiary-fixed": "#e3e2e0",
+                      "surface-bright": "#fbf9f9",
+                      "on-surface-variant": "#444748",
+                      "on-error": "#ffffff",
+                      "secondary": "#904c31",
+                      "on-background": "#1b1c1c",
+                      "on-primary-fixed": "#1c1b1b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-mobile": "16px",
+                      "unit": "8px",
+                      "gutter-desktop": "32px",
+                      "margin-mobile": "20px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .custom-input {
+            border: 1px solid theme('colors.outline-variant');
+            background-color: theme('colors.surface');
+            border-radius: theme('borderRadius.DEFAULT');
+        }
+        .custom-input:focus {
+            outline: none;
+            border-color: theme('colors.primary');
+            box-shadow: 0 0 0 1px theme('colors.primary');
+        }
+      </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface-container w-full top-0 flat no shadows relative z-50">
+<div class="max-w-container-max mx-auto px-margin-desktop flex justify-between items-center h-20">
+<div class="flex items-center gap-8">
+<a class="font-display-lg text-display-lg tracking-tight text-primary dark:text-on-surface" href="#">Sellora</a>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-on-surface transition-colors hover:opacity-80" href="#">Shop</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-on-surface transition-colors hover:opacity-80" href="#">Collections</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-on-surface transition-colors hover:opacity-80" href="#">About</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-on-surface transition-colors hover:opacity-80" href="#">Journal</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="shopping_bag" class="text-primary dark:text-on-surface hover:opacity-80 transition-opacity p-2">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<button aria-label="person" class="text-primary dark:text-on-surface hover:opacity-80 transition-opacity p-2 bg-surface-container-low rounded-full">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Layout -->
+<main class="flex-1 max-w-container-max w-full mx-auto px-margin-mobile md:px-margin-desktop py-16 flex flex-col md:flex-row gap-gutter-desktop">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="hidden md:block w-64 flex-shrink-0">
+<h2 class="font-headline-md text-headline-md mb-8">Account</h2>
+<nav class="flex flex-col gap-2">
+<a class="font-label-md text-label-md text-primary bg-surface-container-low px-4 py-3 rounded-lg flex items-center justify-between" href="#">
+<span>Profile</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors px-4 py-3 rounded-lg flex items-center justify-between" href="#">
+<span>Orders</span>
+</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors px-4 py-3 rounded-lg flex items-center justify-between" href="#">
+<span>Addresses</span>
+</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors px-4 py-3 rounded-lg flex items-center justify-between" href="#">
+<span>Payment Methods</span>
+</a>
+<button class="font-label-md text-label-md text-error hover:bg-error-container hover:text-on-error-container transition-colors px-4 py-3 rounded-lg flex items-center justify-start mt-8 text-left">
+<span>Sign Out</span>
+</button>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-1 max-w-3xl">
+<h1 class="font-headline-lg text-headline-lg mb-12">Personal Information</h1>
+<div class="space-y-16">
+<!-- Basic Info Section -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-surface-container-highest shadow-[0_4px_20px_rgba(26,26,26,0.02)]">
+<h3 class="font-headline-md text-headline-md mb-6">Profile Details</h3>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="firstName">First Name</label>
+<input class="custom-input w-full px-4 py-3 font-body-md text-body-md text-primary" id="firstName" type="text" value="Elena"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="lastName">Last Name</label>
+<input class="custom-input w-full px-4 py-3 font-body-md text-body-md text-primary" id="lastName" type="text" value="Sokolov"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="email">Email Address</label>
+<input class="custom-input w-full px-4 py-3 font-body-md text-body-md text-primary" id="email" type="email" value="elena.sokolov@example.com"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="phone">Mobile Number</label>
+<input class="custom-input w-full px-4 py-3 font-body-md text-body-md text-primary" id="phone" type="tel" value="+1 (555) 019-2834"/>
+</div>
+<div class="pt-4 flex justify-end">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-lg hover:opacity-90 transition-opacity" type="button">Save Changes</button>
+</div>
+</form>
+</div>
+<!-- Password Section -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-surface-container-highest shadow-[0_4px_20px_rgba(26,26,26,0.02)]">
+<h3 class="font-headline-md text-headline-md mb-6">Security</h3>
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="currentPassword">Current Password</label>
+<input class="custom-input w-full px-4 py-3 font-body-md text-body-md text-primary" id="currentPassword" type="password"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="newPassword">New Password</label>
+<input class="custom-input w-full px-4 py-3 font-body-md text-body-md text-primary" id="newPassword" type="password"/>
+</div>
+<div class="pt-4 flex justify-end">
+<button class="bg-transparent border border-primary text-primary font-label-md text-label-md px-6 py-3 rounded-lg hover:bg-surface-container-low transition-colors" type="button">Update Password</button>
+</div>
+</form>
+</div>
+<!-- Sessions Section -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-surface-container-highest shadow-[0_4px_20px_rgba(26,26,26,0.02)]">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md">Active Sessions</h3>
+<button class="font-label-sm text-label-sm text-secondary hover:underline">Revoke All</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Manage devices currently logged into your account.</p>
+<div class="space-y-4">
+<!-- Session Item -->
+<div class="flex items-center justify-between p-4 bg-surface rounded-lg border border-surface-container-high">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="computer">computer</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">MacBook Pro - Safari</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">New York, US • Current Session</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary-container bg-secondary-fixed-dim/20 px-2 py-1 rounded">Active</span>
+</div>
+<!-- Session Item -->
+<div class="flex items-center justify-between p-4 bg-surface rounded-lg border border-surface-container-high">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="smartphone">smartphone</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">iPhone 13 - App</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">New York, US • Last active 2 hours ago</p>
+</div>
+</div>
+<button class="font-label-sm text-label-sm text-outline hover:text-error transition-colors">Revoke</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

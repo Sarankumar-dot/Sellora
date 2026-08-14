@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora - Product Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#474746",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "on-secondary-container": "#783920",
+                        "inverse-primary": "#c8c6c5",
+                        "outline-variant": "#c4c7c7",
+                        "surface-container-high": "#e9e8e7",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "primary": "#000000",
+                        "outline": "#747878",
+                        "surface-container-highest": "#e3e2e2",
+                        "on-surface-variant": "#444748",
+                        "on-secondary-fixed": "#380d00",
+                        "tertiary": "#000000",
+                        "background": "#fbf9f9",
+                        "tertiary-fixed": "#e3e2e0",
+                        "secondary": "#904c31",
+                        "surface-container": "#efeded",
+                        "secondary-container": "#fea685",
+                        "on-tertiary-container": "#838482",
+                        "secondary-fixed-dim": "#ffb59a",
+                        "inverse-on-surface": "#f2f0f0",
+                        "inverse-surface": "#303031",
+                        "surface-container-low": "#f5f3f3",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#72351c",
+                        "on-surface": "#1b1c1c",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#1c1b1b",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-dim": "#dbdad9",
+                        "error": "#ba1a1a",
+                        "surface": "#fbf9f9",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "surface-bright": "#fbf9f9",
+                        "primary-fixed": "#e5e2e1",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e3e2e2",
+                        "surface-tint": "#5f5e5e",
+                        "on-background": "#1b1c1c",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#858383",
+                        "tertiary-container": "#1a1c1b",
+                        "secondary-fixed": "#ffdbce"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-mobile": "16px",
+                        "gutter-desktop": "32px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #fbf9f9; color: #1b1c1c; }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col font-body-md text-body-md antialiased">
+<!-- TopNavBar -->
+<nav class="bg-background w-full top-0 sticky z-50">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
+<!-- Brand -->
+<a class="font-display-lg text-headline-lg font-semibold tracking-tighter text-primary" href="#">Sellora</a>
+<!-- Navigation Links (Desktop) -->
+<div class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300" href="#">New Arrivals</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300" href="#">Collections</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300" href="#">Journal</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300" href="#">About</a>
+</div>
+<!-- Trailing Icons -->
+<div class="flex gap-6 items-center text-primary">
+<button class="hover:text-secondary transition-colors duration-300 opacity-80 hover:opacity-100 hover:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="hover:text-secondary transition-colors duration-300 opacity-80 hover:opacity-100 hover:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-margin-desktop">
+<div class="flex flex-col lg:flex-row gap-16 lg:gap-24">
+<!-- Image Gallery (Left) -->
+<div class="w-full lg:w-3/5 flex flex-col gap-6">
+<!-- Main Image -->
+<div class="aspect-[4/5] w-full bg-surface-container-low rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A highly detailed close-up of a premium, handcrafted ceramic vase resting on a minimalist concrete plinth. The lighting is soft and diffused, creating a serene, museum-like atmosphere. The background is a clean, off-white gallery wall, emphasizing the smooth texture and subtle curves of the object. High-end product photography style, calm and elegant." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN4t4cB-BS9VLiZ-qAO4dMgKQNWqQT7ERT_LrkhfrYYamyK5k1CXnXgPvaYdHEIfBoh0KSol0MQ3ymegDVKubbxokK06PnPIjZMenuk7GPAVOxLvGmXgm6RceCWqQGffwglpLp6cmwYVIq7ciQG4gxtam4n1l7HvZEseZ-CmeX8Pci3GusN5QIE7FlHtgkykRVit8_fRi1jkaEEL4ytAy-G7_B64aR955hbkhKyI9qKBfuMqOWluKnHA"/>
+</div>
+<!-- Thumbnail Strip -->
+<div class="flex gap-4 overflow-x-auto pb-2 snap-x">
+<button class="w-24 h-32 flex-shrink-0 rounded-md overflow-hidden ring-2 ring-primary snap-start">
+<img class="w-full h-full object-cover" data-alt="A smaller, slightly angled shot of the handcrafted ceramic vase from above, showing the opening and inner texture. Soft, natural light spilling across the surface. Minimalist gallery aesthetic, off-white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrEnMdYelhCah9y333c25OFZuK69e_fui0El-hsk6uZBwgQpSr_PATz0POrnDcTk9dcZdKG7HFIBQ1tL_I7NqVwyUuy7OExCpbu2AyAsYt_KoWNIoGcPYmd-0z2glJQz1sZwq4i63x7lPII9HVmqcCfMgc4SF25v0CnEgpFZ_WtuWKAri3Zjz9XbVsEOZBQ1FfPONPuOdPI5v5DR65ouWDOokugfWtNUW9rbqd9pvh38_MVKHEqMS16Q"/>
+</button>
+<button class="w-24 h-32 flex-shrink-0 rounded-md overflow-hidden opacity-70 hover:opacity-100 transition-opacity snap-start">
+<img class="w-full h-full object-cover" data-alt="A detailed macro shot focusing on the textured, unglazed base of the ceramic vase, contrasting with the smooth upper body. High-key lighting, stark white background, emphasizing craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA2zZeHTwcSx8UNh_YJ9D0F8Tb6pcWNQlfeRge6zSYenPlYgso3SPFDqP-eleE_2JGm4I1nvET1dqooa7z6fuTUkcT0S-K8tUF36l18zlN1Q420e2F7PiIek_XrjliKPMtyeq3mQo2062_Vvc8aYYMseTWRuoR6ThxGoDU199rv_uTv2TI28K4T0Z7v5Y7BgysKmlH4ZVbg1ycfTyUeLfGX6fsFCgXctKMJ-l3VJ3RlnalX203yfOfNg"/>
+</button>
+<button class="w-24 h-32 flex-shrink-0 rounded-md overflow-hidden opacity-70 hover:opacity-100 transition-opacity snap-start">
+<img class="w-full h-full object-cover" data-alt="The ceramic vase shown in a lifestyle context, sitting on a low wooden table next to a stack of art books and dried flora. Soft, warm morning light filtering through a sheer curtain. Elegant, calm interior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaC1FkkYLw2RFm-XrTauI9EkxkPdVWTiwoqvGZUD-6iZ974UQ0AoT1FszEgTUriRRlW8xjGX4vXCCFMsJTONj5eJAqjc_ADzcVIoCpQE3v4maAjseegx6MXp_y6JQTGOCkFKZou1k8exVppwyU_16CuJUZfoJU3wcPE8gp9p-Yy6UOXZWjRAsQZ_BlaSmEj8YX0g7v5ikmtoLxN9UqkEm1F42mbIPteDZTG_K_ew_K4Csgtc2uISHBrg"/>
+</button>
+</div>
+</div>
+<!-- Product Details (Right) -->
+<div class="w-full lg:w-2/5 flex flex-col">
+<nav class="flex text-label-md text-on-surface-variant mb-6 gap-2">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span>/</span>
+<a class="hover:text-primary transition-colors" href="#">Collections</a>
+<span>/</span>
+<span class="text-primary">Ceramics</span>
+</nav>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-4">The Sculptural Vessel</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">$240.00</p>
+<!-- Action Area -->
+<div class="flex flex-col gap-6 mb-12">
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Quantity</span>
+<div class="flex items-center border border-outline-variant rounded bg-surface h-10 w-32">
+<button class="w-10 h-full flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="flex-grow text-center font-body-md">1</span>
+<button class="w-10 h-full flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<button class="w-full h-14 bg-primary text-on-primary font-label-md text-label-md rounded-lg flex items-center justify-center hover:bg-primary-container transition-colors duration-300">
+                        Add to Cart
+                    </button>
+</div>
+<!-- Description & Specs Accordion -->
+<div class="border-t border-outline-variant divide-y divide-outline-variant">
+<details class="group py-6" open="">
+<summary class="flex justify-between items-center cursor-pointer list-none font-headline-md text-body-lg">
+                            Description
+                            <span class="material-symbols-outlined transition duration-300 group-open:-rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="pt-4 text-on-surface-variant font-body-md leading-relaxed">
+<p>A masterclass in form and function, the Sculptural Vessel is hand-thrown by artisan ceramicists. Its distinctive asymmetric silhouette is designed to stand alone as a statement piece or hold sparse, structural botanical arrangements. Finished in a matte bone-white glaze that catches the light beautifully.</p>
+</div>
+</details>
+<details class="group py-6">
+<summary class="flex justify-between items-center cursor-pointer list-none font-headline-md text-body-lg">
+                            Specifications
+                            <span class="material-symbols-outlined transition duration-300 group-open:-rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="pt-4 text-on-surface-variant font-body-md">
+<ul class="list-disc pl-5 space-y-2">
+<li>Height: 14 inches</li>
+<li>Diameter: 8 inches at widest</li>
+<li>Material: Stoneware clay</li>
+<li>Care: Hand wash recommended</li>
+</ul>
+</div>
+</details>
+</div>
+<!-- Seller Block -->
+<div class="mt-12 p-6 bg-surface-container-low rounded-lg flex items-start gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A minimalist, monochromatic logo for an artisan ceramics studio, featuring a stylized abstract pot shape in charcoal gray on an off-white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFN0595oMUdFgSd-NY5kKWAQbxqLaTqRXibgw_p-L_PA-GX0bEFjuvZOVlyn9A3QRXBmJXs24NVqfjejiDlMq6A-GGIC9suvzgHTlJsCWe3qT4S3x0aLm6dhDXeGaX-loJmsW7kRBE-wlssGDipICwM8xucyfUExMOUPCsiVlF9xzmNhs9s9CI22iTOwsHOh5l2iDb1d9wKj0bM4JVp_QMJiBbvdzafUSir_k433IIEdXIBfjek-nPrQ"/>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg mb-1">Studio Arp</h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-3">Curated independent makers from Copenhagen.</p>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-primary underline underline-offset-4 hover:text-secondary transition-colors" href="#">View Artisan Profile</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="bg-surface-container-lowest shadow-[0_-10px_30px_rgba(26,26,26,0.05)] docked full-width bottom-0 fixed z-50 rounded-t-xl fixed bottom-0 w-full flex justify-around items-center py-3 px-4 md:hidden">
+<a class="flex flex-col items-center justify-center text-secondary font-semibold scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-lg p-2" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-label-sm mt-1">Categories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-lg p-2" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-sm mt-1">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-lg p-2" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="bg-surface-container-low w-full mt-auto">
+<div class="w-full py-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-start">
+<div class="mb-8 md:mb-0">
+<h2 class="font-display-lg text-headline-md text-primary mb-4">Sellora</h2>
+<p class="font-body-md text-on-surface-variant text-sm">© 2024 Sellora. All rights reserved.</p>
+</div>
+<div class="flex flex-col md:flex-row gap-4 md:gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors underline underline-offset-4 duration-200" href="#">Sustainability</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors underline underline-offset-4 duration-200" href="#">Shipping</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors underline underline-offset-4 duration-200" href="#">Returns</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors underline underline-offset-4 duration-200" href="#">Contact</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors underline underline-offset-4 duration-200" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+</body></html>

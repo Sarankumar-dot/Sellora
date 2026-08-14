@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora - Elevating Everyday</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#474746",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "on-secondary-container": "#783920",
+                        "inverse-primary": "#c8c6c5",
+                        "outline-variant": "#c4c7c7",
+                        "surface-container-high": "#e9e8e7",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "primary": "#000000",
+                        "outline": "#747878",
+                        "surface-container-highest": "#e3e2e2",
+                        "on-surface-variant": "#444748",
+                        "on-secondary-fixed": "#380d00",
+                        "tertiary": "#000000",
+                        "background": "#fbf9f9",
+                        "tertiary-fixed": "#e3e2e0",
+                        "secondary": "#904c31",
+                        "surface-container": "#efeded",
+                        "secondary-container": "#fea685",
+                        "on-tertiary-container": "#838482",
+                        "secondary-fixed-dim": "#ffb59a",
+                        "inverse-on-surface": "#f2f0f0",
+                        "inverse-surface": "#303031",
+                        "surface-container-low": "#f5f3f3",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#72351c",
+                        "on-surface": "#1b1c1c",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#1c1b1b",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-dim": "#dbdad9",
+                        "error": "#ba1a1a",
+                        "surface": "#fbf9f9",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "surface-bright": "#fbf9f9",
+                        "primary-fixed": "#e5e2e1",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e3e2e2",
+                        "surface-tint": "#5f5e5e",
+                        "on-background": "#1b1c1c",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#858383",
+                        "tertiary-container": "#1a1c1b",
+                        "secondary-fixed": "#ffdbce"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-mobile": "16px",
+                        "gutter-desktop": "32px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased pb-24 md:pb-0">
+<!-- TopNavBar -->
+<header class="bg-background dark:bg-background full-width top-0 sticky z-40 flat no shadows">
+<nav class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
+<!-- Brand -->
+<div class="flex items-center">
+<a class="font-display-lg text-headline-lg font-semibold tracking-tighter text-primary dark:text-primary-fixed" href="#">Sellora</a>
+</div>
+<!-- Desktop Links (Hidden on Mobile) -->
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">New Arrivals</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Collections</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Journal</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">About</a>
+</div>
+<!-- Icons -->
+<div class="flex gap-4 items-center">
+<button class="text-primary dark:text-primary-fixed hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300 opacity-80 scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="text-primary dark:text-primary-fixed hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300 opacity-80 scale-95 transition-all hidden md:block">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="w-full px-margin-mobile md:px-margin-desktop py-8 md:py-16 max-w-container-max mx-auto">
+<div class="relative w-full h-[530px] md:h-[618px] rounded-xl overflow-hidden bg-surface-container-low flex items-end p-6 md:p-12">
+<div class="absolute inset-0 bg-cover bg-center z-0" data-alt="A meticulously styled interior shot featuring minimalist, high-end ceramics and raw linen textiles bathed in soft, natural window light. The composition is editorial and spacious, emphasizing tactile textures and a calm, curated 'Quiet Luxury' aesthetic in off-whites and deep earthy tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD3afF0pPbLSko_GMBNdvhSk4vZGv13RRjulEiRe8BG4D1a5BnYL2AX7MAZSm_W-KyJj2H3hk0WimXrSPiJOFDpLcAwc6r6d-22aASSmAYMIfdwL8-rOwZRNHz1zkqxLjTVuq9fJZgJvC4JrR6m0fKhBvbwYoB3IRK1NVl4vMYBvUvBae3GKrigHZ8yGcpRtYJnh0d2EaMq7Zg-9JteD7PGBql7dsYi0UnxMdozLcOyYnVZPhBpTreExg')"></div>
+<!-- Subtle Gradient Overlay for text legibility -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<div class="relative z-20 w-full max-w-md">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-display-lg md:text-display-lg text-white mb-4">Elevating Everyday</h1>
+<p class="font-body-md text-body-md text-white/90 mb-8">Curated essentials designed with intention, crafted for permanence.</p>
+<a class="inline-flex items-center justify-center bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded hover:bg-primary-container transition-colors" href="#">
+                        Shop Collection
+                    </a>
+</div>
+</div>
+</section>
+<!-- Categories Scroll (Mobile optimized) -->
+<section class="w-full pl-margin-mobile md:px-margin-desktop py-8 max-w-container-max mx-auto overflow-hidden">
+<div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x" style="scrollbar-width: none; -ms-overflow-style: none;">
+<!-- Category 1 -->
+<a class="snap-start flex-shrink-0 w-32 md:w-48 group" href="#">
+<div class="w-full aspect-square bg-surface-container-low rounded-lg mb-3 overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A close-up, high-contrast shot of a single, beautifully crafted ceramic mug resting on a raw stone surface. Lighting is soft and directional, highlighting the matte texture. Minimalist, premium D2C style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAlghxB3zxl9Fqn__XiP-16Q77BEKoIS4QSyuaZzPcFuNih0ssJIteYl9veupOIKCu1ubPu5AyP22axMwcTZT7Mvjh5rPTrmryI6lToWSQrmo98Oqfb0aSgB3CgAk5gXYCVl8UUsqrDVFZzeyjfufDueIOhaZV_PrpC76wOOuGk9Kbz6vraULDrt7K4pwn1Nmt5kDaR8SPil-NuupRlNkV1m3nCSR-QOKRQ6ktm715GfGAsluDOk5Rslw')"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant block text-center">Ceramics</span>
+</a>
+<!-- Category 2 -->
+<a class="snap-start flex-shrink-0 w-32 md:w-48 group" href="#">
+<div class="w-full aspect-square bg-surface-container-low rounded-lg mb-3 overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A folded stack of premium, natural linen napkins in neutral tones, sitting on a clean, light wood table. Soft, diffused lighting, evoking a calm, luxurious domestic scene." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCPRNj6AKwof996TVKGSJp-2mZrVMiskfudduyC9ko2mUOMxba48DE7vinTPY8CVJENnP6V1vUYkB96guqIqtLb5kDFVTGHH7RBCuY6cFNhmg_N9qxRepKu_Q9NIf3uM8_fIWBbWi0TIIFmwyOBMUtb6CVc8sB10M_pTprArrnX98HgVRTTEIN7p5EpT-mPv5gIwtBWO83XM1rbLm2rv5sLgc8bTf94WZ-fnfWX_Fr4yHoY_bO6qTm1uw')"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant block text-center">Textiles</span>
+</a>
+<!-- Category 3 -->
+<a class="snap-start flex-shrink-0 w-32 md:w-48 group" href="#">
+<div class="w-full aspect-square bg-surface-container-low rounded-lg mb-3 overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A beautifully designed, minimalist glass carafe and matching tumbler on a pristine white background. The glass is delicate and clear, reflecting high-end editorial photography standards." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANJVsNiHlWhIGA7ou0zhQF0Zp9PKttQd0Q7Vcxcmn_ZtPpT__NGuyjXztMmh2JpBiDSTK69gmMPKRnPiZXvoZGP9SuqFWy-WXq9TiwkoHY8ITlBbbAODI5rMY26bbs1vZY0P7ZMl4hX4SYuzwXsZD-sobnLXjBJHxte4498D9PJ-5bdFAvKN9o00nFDi00XhLMPBc70y2FGg5rAPcljOIRXRpHIcK4iyX-U3-ejmQLsFxT0rAcVQOXkA')"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant block text-center">Glassware</span>
+</a>
+<!-- Category 4 -->
+<a class="snap-start flex-shrink-0 w-32 md:w-48 group" href="#">
+<div class="w-full aspect-square bg-surface-container-low rounded-lg mb-3 overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A sculptural, dark wood serving tray showcasing its smooth, organic curves against a light backdrop. Soft shadows and a focus on craftsmanship." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDshqLgqKCv8QgpZs5IRhCYencnrVYZA6y35UMgM9rkOvfZqrZooA6D5X6XLDG4ZM5ExubOM-__h9f4OmzAsl_bHGwtuAq3HTg3m-_fNglpuRc2EcutC5P7mXnJQlrgs9zmbPq3y8cNoZZID0FjYoj_iC-rfKh2Z2H7hhmj52MICNv7q1yTFhlEdY4VTPiRMeid-GroYi5O4RdUUL5djUJpF3-Uh6F_vDZEkWy3g2VVZIXeX58r_8bMbw')"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant block text-center">Objects</span>
+</a>
+</div>
+</section>
+<!-- Product Grid (Mixed Column) -->
+<section class="w-full px-margin-mobile md:px-margin-desktop py-12 md:py-24 max-w-container-max mx-auto">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary mb-8 md:mb-16 text-center">New Arrivals</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-x-gutter-mobile gap-y-12 md:gap-gutter-desktop">
+<!-- Product 1 (Takes full width on mobile if desired, but sticking to 2-col as requested) -->
+<div class="col-span-2 md:col-span-1 group cursor-pointer">
+<div class="w-full aspect-[4/5] bg-surface-container-low rounded-lg mb-4 overflow-hidden relative group-hover:shadow-[0_10px_30px_rgba(26,26,26,0.05)] transition-shadow duration-300">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A slender, matte black vase with dried botanical elements, set against an off-white background with a soft, elongated shadow. Minimalist, sophisticated still-life." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA-8KGQWCkAjw4H9ZsXhNq9S_E1qh7zT1AXW8xJS44nnEfvZshe3q6tH-CCnOn-ooHpDiNCDpnBqglc401dvMeUMQNjndr4rXPGZC0uqGTfXay1JOhXUpXsn3414_3vkmuTvDTw7OPCLFUljrGkBzDMeySCb0U3b4qJjUPW-GLMrM4LfxHbZRlzxI97YgHxge2PU7oD3bcbo4VRAzWG_erUs4kjUnjsnpisl2BoX9U73SpTpkE1NdRr_w')"></div>
+<button class="absolute bottom-4 right-4 bg-secondary text-on-secondary w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-1">Noir Vase</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Matte Ceramic</p>
+</div>
+<span class="font-label-md text-label-md text-primary">$85</span>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="col-span-1 group cursor-pointer">
+<div class="w-full aspect-[4/5] bg-surface-container-low rounded-lg mb-4 overflow-hidden relative group-hover:shadow-[0_10px_30px_rgba(26,26,26,0.05)] transition-shadow duration-300">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A stack of hand-thrown ceramic plates in a warm, speckled oatmeal glaze, sitting elegantly on a linen cloth. Bright, natural lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0vyNSkZfnHhwzD9fP8oKZ4eXHBrsYhJtCbo7CLETORhr6b7UJNS0iLHYRZx2xk3Lda-EFJc_neOI29D1GeBaXnztsbIBGCGUWhTPWSF1LAiCsnTOyZgidezwY6NsClsfvJetVJ3BOzpJIoRVAiIQaBPJSCO7aepfGG_-hicAOC9sfY2r6_5Ilz_CRzbndidA9e9bl9wiY0mwK8lp0oRQy4O4ECq-exi-AjnYXiZlxH4e4bWyfIOwinA')"></div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-1">Oatmeal Plates</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Set of 4</p>
+</div>
+<span class="font-label-md text-label-md text-primary">$120</span>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="col-span-1 group cursor-pointer">
+<div class="w-full aspect-[4/5] bg-surface-container-low rounded-lg mb-4 overflow-hidden relative group-hover:shadow-[0_10px_30px_rgba(26,26,26,0.05)] transition-shadow duration-300">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A brass candleholder of simple, geometric design holding a tall, ivory taper candle. The background is a soft, warm grey. Clean and modern." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDEPDZTtOsVt3tw94ysMl2gr6hjffWe3JsGtA1JAY94_HCGmtQLnmmTXBKraWoTFx4_q4OE48I4BCT6flmjtW0HbJkB9BrU8y19wvwqpfzl0U_P6Ng2idszEHKbHcOr54iyqSZBxUgZGcG9NtDg6QXYGBj4wDU_nyKbsynBbxg2O0iLGahcUgoqUxP6KeN0OfvjnqtPm9tVaYSeqkhl2FPLMiM6jk3jfyKA0enDWkHwQomrzbSDOiomKA')"></div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-1">Brass Holder</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Solid Brass</p>
+</div>
+<span class="font-label-md text-label-md text-primary">$45</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest docked full-width bottom-0 fixed z-50 rounded-t-xl shadow-[0_-10px_30px_rgba(26,26,26,0.05)] shadow-lg fixed bottom-0 w-full flex justify-around items-center py-3 px-4 md:hidden">
+<!-- Active: Home -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim font-semibold scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm-mobile">Home</span>
+</a>
+<!-- Inactive: Categories -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="grid_view">grid_view</span>
+<span class="font-label-sm text-label-sm-mobile">Categories</span>
+</a>
+<!-- Inactive: Cart -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-sm text-label-sm-mobile">Cart</span>
+</a>
+<!-- Inactive: Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm-mobile">Profile</span>
+</a>
+</nav>
+</body></html>

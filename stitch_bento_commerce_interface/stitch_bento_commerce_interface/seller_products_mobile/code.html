@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora Seller - Products</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#1b1c1c",
+                      "outline-variant": "#c4c7c7",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#c7c6c5",
+                      "on-tertiary-fixed": "#1a1c1b",
+                      "secondary": "#904c31",
+                      "on-primary-fixed": "#1c1b1b",
+                      "on-surface-variant": "#444748",
+                      "on-error": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "error": "#ba1a1a",
+                      "on-surface": "#1b1c1c",
+                      "inverse-on-surface": "#f2f0f0",
+                      "inverse-primary": "#c8c6c5",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#464746",
+                      "outline": "#747878",
+                      "secondary-fixed": "#ffdbce",
+                      "surface-tint": "#5f5e5e",
+                      "surface-container-highest": "#e3e2e2",
+                      "tertiary-fixed": "#e3e2e0",
+                      "surface-container-low": "#f5f3f3",
+                      "tertiary-container": "#1a1c1b",
+                      "on-secondary": "#ffffff",
+                      "tertiary": "#000000",
+                      "surface-dim": "#dbdad9",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#474746",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#72351c",
+                      "on-secondary-fixed": "#380d00",
+                      "surface-container": "#efeded",
+                      "background": "#fbf9f9",
+                      "surface-bright": "#fbf9f9",
+                      "inverse-surface": "#303031",
+                      "surface": "#fbf9f9",
+                      "secondary-container": "#fea685",
+                      "on-secondary-container": "#783920",
+                      "primary": "#000000",
+                      "surface-container-high": "#e9e8e7",
+                      "primary-container": "#1c1b1b",
+                      "on-tertiary-container": "#838482",
+                      "surface-variant": "#e3e2e2",
+                      "primary-fixed": "#e5e2e1",
+                      "on-primary-container": "#858383",
+                      "secondary-fixed-dim": "#ffb59a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-desktop": "32px",
+                      "gutter-mobile": "16px",
+                      "margin-mobile": "20px",
+                      "unit": "8px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-headline-md, .font-headline-lg, .font-display-lg, .font-display-lg-mobile { font-family: 'Playfair Display', serif; }
+        
+        /* Ambient shadows for floating elements */
+        .ambient-shadow {
+            box-shadow: 0 10px 30px rgba(26, 26, 26, 0.05);
+        }
+        
+        /* Custom toggle switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #1a1c1b; /* tertiary-container */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #1a1c1b; /* tertiary-container */
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background h-full flex flex-col antialiased">
+<!-- Sticky Header & Search -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md pb-4 pt-6 px-margin-mobile flex flex-col gap-4 ambient-shadow">
+<div class="flex items-center justify-between">
+<h1 class="font-headline-md text-headline-md text-primary m-0">Inventory</h1>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="search">search</span>
+<input class="w-full bg-surface pl-10 pr-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-0 focus:outline-none transition-colors font-body-md text-body-md text-on-background placeholder:text-on-surface-variant" placeholder="Search products..." type="text"/>
+</div>
+</header>
+<!-- Main Content Area - Product List -->
+<main class="flex-1 overflow-y-auto px-margin-mobile pb-32 pt-2">
+<!-- Summary Stats (Optional, adds context) -->
+<div class="flex gap-4 mb-6 mt-2 overflow-x-auto pb-2 scrollbar-hide">
+<div class="bg-surface-container-low p-4 rounded-lg min-w-[120px] flex-shrink-0">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Total</div>
+<div class="font-headline-md text-headline-md text-primary">124</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg min-w-[120px] flex-shrink-0">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Active</div>
+<div class="font-headline-md text-headline-md text-secondary">118</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg min-w-[120px] flex-shrink-0">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Low Stock</div>
+<div class="font-headline-md text-headline-md text-error">6</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Product Card 1 -->
+<div class="bg-surface rounded-xl p-3 flex gap-4 items-center border border-surface-container-highest transition-shadow hover:shadow-sm">
+<div class="w-20 h-20 rounded-lg bg-surface-container-high overflow-hidden flex-shrink-0 relative">
+<div class="bg-cover bg-center w-full h-full absolute inset-0" data-alt="A minimalist product photography shot of a sleek, white ceramic pour-over coffee dripper sitting on a clean, light wood surface. The lighting is soft, diffused, and high-key, creating a pristine, modern D2C aesthetic with minimal shadows. The background is a crisp off-white." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6PNxjuwCxjGp2buYX7_XPOaAMjV-XBAZL_iWiux9oqJtgFCYoAMBNZi_uAvMvdW0m95hm9PjYtLcUmpUrwb_VeJ_8cfu45PfDWDGTM3GC7cx-1JDq9iMu5Tfb8UeY24fXhvf-XZJNXZX1HCxSTc3RUOytQEpl7EL_nF64yoMnpvF9lBFCMoDbcQGUQKnUxnhZPIMDgFTz6QjjGcwH-DUoutQwqW4bS3V93WjpWhf1Ma2iQlXYnzLtBA')"></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col justify-between py-1 h-full">
+<div>
+<h3 class="font-body-md text-body-md font-medium text-primary truncate mb-0.5">Ceramic Pour-Over</h3>
+<div class="font-label-sm text-label-sm text-on-surface-variant">SKU: CF-092</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="font-body-md text-body-md font-semibold text-primary">$45.00</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-high px-2 py-1 rounded">24 in stock</div>
+</div>
+</div>
+<div class="flex flex-col items-end justify-between h-full py-1 gap-4 border-l border-surface-container-highest pl-3">
+<!-- Toggle -->
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-2 border-outline-variant appearance-none cursor-pointer z-10 transition-transform duration-200 ease-in-out" id="toggle1" name="toggle1" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-highest cursor-pointer transition-colors duration-200 ease-in-out" for="toggle1"></label>
+</div>
+<!-- Edit Action -->
+<button aria-label="Edit product" class="text-on-surface-variant hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<!-- Product Card 2 (Low Stock) -->
+<div class="bg-surface rounded-xl p-3 flex gap-4 items-center border border-error-container bg-error-container/10 transition-shadow hover:shadow-sm">
+<div class="w-20 h-20 rounded-lg bg-surface-container-high overflow-hidden flex-shrink-0 relative">
+<div class="bg-cover bg-center w-full h-full absolute inset-0" data-alt="A curated close-up shot of a minimalist, matte black manual coffee grinder. It stands upright on a pale marble countertop. The lighting is highly controlled, emphasizing the smooth texture of the black metal against the bright, clean background. The aesthetic is luxurious, modern, and perfectly aligned with high-end D2C branding." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA4vOfPFUs7xLLaMmxk8fTw6sPc5XErNFInbvUskdKhAvc1zKf2F9ZpL6J8xzVSEwdC7QO28HckiPe0ho6r4yBtWonXACRtDtDj7HyoIeDOx9zYqw3bWp7glCTnC-wCaIcfVX8oCPBvBnZuKOb6R9Wpgk6WefS8ZuPczcHG0wPJul6VwhWyAoHhYNWtWeYGiB3UJMkV0QRqWveqZfuPowYg2-FsXI88ZnnHhxx3TFtbhO04nAFMH6CdWw')"></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col justify-between py-1 h-full">
+<div>
+<h3 class="font-body-md text-body-md font-medium text-primary truncate mb-0.5">Matte Hand Grinder</h3>
+<div class="font-label-sm text-label-sm text-on-surface-variant">SKU: GR-104</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="font-body-md text-body-md font-semibold text-primary">$120.00</div>
+<div class="font-label-sm text-label-sm text-error bg-error-container px-2 py-1 rounded font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span> 2 left
+                        </div>
+</div>
+</div>
+<div class="flex flex-col items-end justify-between h-full py-1 gap-4 border-l border-surface-container-highest pl-3">
+<!-- Toggle -->
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-2 border-outline-variant appearance-none cursor-pointer z-10 transition-transform duration-200 ease-in-out" id="toggle2" name="toggle2" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-highest cursor-pointer transition-colors duration-200 ease-in-out" for="toggle2"></label>
+</div>
+<!-- Edit Action -->
+<button aria-label="Edit product" class="text-on-surface-variant hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<!-- Product Card 3 (Inactive) -->
+<div class="bg-surface-container-lowest rounded-xl p-3 flex gap-4 items-center border border-surface-container-highest opacity-75 grayscale-[20%] transition-shadow hover:shadow-sm">
+<div class="w-20 h-20 rounded-lg bg-surface-container-highest overflow-hidden flex-shrink-0 relative">
+<div class="bg-cover bg-center w-full h-full absolute inset-0" data-alt="A sophisticated overhead view of a set of four minimalist glass coffee cups nestled in custom molded pulp packaging. The lighting is soft and neutral, typical of premium unboxing experiences. The setting is clean, bright, and utilizes off-white and pale grey tones to emphasize a calm, luxury feel." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDwE5gCOPhqnH9uHoJcHRqw8kACjMkswbN3EfqG2Y4EP9FvRCSfF4tkMoU7tvBNViixWJAiWLnBnyOtppI2wpEX0X_BDRZC0GEIiqffxzrINiVPaKapu_IhUROPUpo5OWQoqH12inGap_b_BoBPFYcKvisgMmoGeHnLAZXH9Q4PNsf1-hpwygcsDVt1zX3leWnr62-nYsrQ_t9V5sly9HA748gnixsq1HPhkO69c6llZRLAol54x9mQIw')"></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col justify-between py-1 h-full">
+<div>
+<h3 class="font-body-md text-body-md font-medium text-on-surface-variant truncate mb-0.5">Glass Cup Set</h3>
+<div class="font-label-sm text-label-sm text-outline">SKU: GC-400</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="font-body-md text-body-md font-semibold text-on-surface-variant">$32.00</div>
+<div class="font-label-sm text-label-sm text-outline bg-surface-container px-2 py-1 rounded">0 in stock</div>
+</div>
+</div>
+<div class="flex flex-col items-end justify-between h-full py-1 gap-4 border-l border-surface-container-highest pl-3">
+<!-- Toggle (Inactive state) -->
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-2 border-outline-variant appearance-none cursor-pointer z-10 transition-transform duration-200 ease-in-out" id="toggle3" name="toggle3" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-highest cursor-pointer transition-colors duration-200 ease-in-out" for="toggle3"></label>
+</div>
+<!-- Edit Action -->
+<button aria-label="Edit product" class="text-on-surface-variant hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-surface rounded-xl p-3 flex gap-4 items-center border border-surface-container-highest transition-shadow hover:shadow-sm">
+<div class="w-20 h-20 rounded-lg bg-surface-container-high overflow-hidden flex-shrink-0 relative">
+<div class="bg-cover bg-center w-full h-full absolute inset-0" data-alt="A beautifully styled shot of a minimalist stainless steel gooseneck kettle resting on a subtle, textured stone plinth. The background is a seamless, warm off-white, illuminated by soft, directional light that highlights the kettle's curves. The aesthetic is extremely clean, high-end, and editorial in nature." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA3kTaxLeNpfvpNNbODeDDbhiXriNU-K3Fymh4ovQjT9adkmlr9_EF-GB79QUKZTdzzEuAAh4f8Ho-xkrfO_hhJnWAEDcP0OrLQkis8W7JBkBotV5LbjGBLBeTdRNmF1_nQ3JEyAT0_A1BhX3LFKoZ1rYU_e5Z3TwytcDrfIfXvdcz-5VgEN8GZhTO9_FeFcyK-C4HpoVd_P8kue7cdjWAVfZoN3hmm3oY23P0UqyYqbj4JEgIuuyqLJg')"></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col justify-between py-1 h-full">
+<div>
+<h3 class="font-body-md text-body-md font-medium text-primary truncate mb-0.5">Precision Kettle</h3>
+<div class="font-label-sm text-label-sm text-on-surface-variant">SKU: PK-001</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="font-body-md text-body-md font-semibold text-primary">$85.00</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-high px-2 py-1 rounded">12 in stock</div>
+</div>
+</div>
+<div class="flex flex-col items-end justify-between h-full py-1 gap-4 border-l border-surface-container-highest pl-3">
+<!-- Toggle -->
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-2 border-outline-variant appearance-none cursor-pointer z-10 transition-transform duration-200 ease-in-out" id="toggle4" name="toggle4" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-highest cursor-pointer transition-colors duration-200 ease-in-out" for="toggle4"></label>
+</div>
+<!-- Edit Action -->
+<button aria-label="Edit product" class="text-on-surface-variant hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button aria-label="Add new product" class="fixed bottom-24 right-margin-mobile w-14 h-14 bg-tertiary-container text-on-tertiary-container rounded-full flex items-center justify-center ambient-shadow hover:scale-105 active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined text-white" data-icon="add" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 28px;">add</span>
+</button>
+<!-- BottomNavBar (Shared Component implementation) -->
+<!-- Active state logic: Since this is an inventory page, "Categories" (or similar relevant tab from JSON) would be active if it mapped. However, based on the SideNav JSON, "Inventory" is a tab. Since BottomNav JSON has "Home", "Categories", "Cart", "Profile", and this is a seller context, "Categories" is the closest intent match for browsing products. Wait, looking at JSON, SideNav is for seller, BottomNav might be for buyer. But the prompt says "Seller Products List Page... Sticky BottomNavBar". I will use the BottomNavBar structure but adapt it for Seller context if strictly following JSON, but I must follow JSON content exactly. 
+    JSON BottomNavBar labels: ["Home", "Categories", "Cart", "Profile"]. 
+    Since it's an inventory page, "Categories" is the closest intent for browsing items. -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-margin-mobile py-3 bg-surface dark:bg-surface-container shadow-[0_-10px_30px_rgba(26,26,26,0.05)] rounded-t-xl z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant font-label-sm text-label-sm scale-95 active:scale-90 transition-transform active:bg-surface-container-high rounded-lg p-2" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-headline-md text-headline-md text-primary" style="font-size: 10px; font-family: 'Inter', sans-serif;">Home</span>
+</a>
+<!-- Active Tab: Categories (Closest to Inventory/Products) -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim font-bold font-label-sm text-label-sm scale-95 active:scale-90 transition-transform active:bg-surface-container-high rounded-lg p-2" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="grid_view" data-weight="fill" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-headline-md text-headline-md text-primary" style="font-size: 10px; font-family: 'Inter', sans-serif;">Categories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant font-label-sm text-label-sm scale-95 active:scale-90 transition-transform active:bg-surface-container-high rounded-lg p-2 relative" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-headline-md text-headline-md text-primary" style="font-size: 10px; font-family: 'Inter', sans-serif;">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant font-label-sm text-label-sm scale-95 active:scale-90 transition-transform active:bg-surface-container-high rounded-lg p-2" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-headline-md text-headline-md text-primary" style="font-size: 10px; font-family: 'Inter', sans-serif;">Profile</span>
+</a>
+</nav>
+</body></html>

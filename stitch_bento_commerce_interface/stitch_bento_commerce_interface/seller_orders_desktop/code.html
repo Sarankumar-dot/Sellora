@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora - Orders</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#dbdad9",
+                        "secondary-container": "#fea685",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#783920",
+                        "surface-container": "#efeded",
+                        "on-surface": "#1b1c1c",
+                        "surface": "#fbf9f9",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#000000",
+                        "primary": "#000000",
+                        "on-secondary-fixed": "#380d00",
+                        "secondary-fixed-dim": "#ffb59a",
+                        "on-primary-fixed-variant": "#474746",
+                        "surface-container-low": "#f5f3f3",
+                        "surface-container-high": "#e9e8e7",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-container-highest": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "background": "#fbf9f9",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "outline": "#747878",
+                        "tertiary-container": "#1a1c1b",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#e5e2e1",
+                        "inverse-surface": "#303031",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#838482",
+                        "on-primary-container": "#858383",
+                        "surface-variant": "#e3e2e2",
+                        "inverse-primary": "#c8c6c5",
+                        "secondary-fixed": "#ffdbce",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#5f5e5e",
+                        "primary-container": "#1c1b1b",
+                        "outline-variant": "#c4c7c7",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "on-secondary-fixed-variant": "#72351c",
+                        "tertiary-fixed": "#e3e2e0",
+                        "surface-bright": "#fbf9f9",
+                        "on-surface-variant": "#444748",
+                        "on-error": "#ffffff",
+                        "secondary": "#904c31",
+                        "on-background": "#1b1c1c",
+                        "on-primary-fixed": "#1c1b1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-mobile": "16px",
+                        "unit": "8px",
+                        "gutter-desktop": "32px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased">
+<!-- TopNavBar -->
+<nav class="bg-surface w-full top-0 hidden md:block">
+<div class="max-w-container-max mx-auto px-margin-desktop flex justify-between items-center h-20">
+<div class="font-display-lg text-display-lg tracking-tight text-primary">
+                Sellora
+            </div>
+<div class="flex items-center space-x-gutter-desktop">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Shop</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Collections</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">About</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md hover:opacity-80 transition-opacity scale-95 transition-transform duration-150" href="#">Journal</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-on-surface hover:text-primary transition-colors hover:opacity-80 transition-opacity p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</button>
+<button class="text-on-surface hover:text-primary transition-colors hover:opacity-80 transition-opacity p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow max-w-container-max w-full mx-auto px-margin-desktop py-16">
+<header class="mb-12 flex justify-between items-end">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Orders</h1>
+<p class="text-on-surface-variant font-body-md">Manage and track customer orders.</p>
+</div>
+<div class="flex gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface border border-outline-variant rounded focus:border-primary focus:ring-0 text-on-surface w-64 placeholder:text-outline-variant transition-colors" placeholder="Search orders..." type="text"/>
+</div>
+<button class="px-4 py-2 border border-outline-variant rounded text-on-surface hover:bg-surface-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                </button>
+</div>
+</header>
+<!-- Orders Table (Bento Style) -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-[0_10px_30px_rgba(26,26,26,0.02)] border border-surface-container">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-container-high bg-surface">
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant w-24">Order ID</th>
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant">Product</th>
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant">Customer</th>
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant text-right">Total</th>
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-md">
+<!-- Row 1 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="py-4 px-6 text-on-surface font-medium">#4829</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-container flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A minimalist overhead shot of a ceramic vase on a textured off-white background. The lighting is soft and natural, casting delicate shadows. The vase has a matte finish and elegant, organic curves. The overall aesthetic is highly curated, quiet luxury, resembling a premium D2C lifestyle brand product shot." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCflY7L4_RRfZWlsfJg47M27SxIYQ-f1aAhUL8oMwwNpjss4-fbyu0yXuFRP34-C_wWqGBiURjj-Wjl4qUv5Jdr_SIRf3XZ_MGS-pmD3iE_9XR8kbFcJtJScnrYZbFqFBBJmenhDFkN9luV4X1kETMJiz_jdggXkM9iuHFFRTiLp3gLGszRi3fqE-4lRPcw46VWlkU-5P6j9jz4G862mnNMwcEb0g5NCKIF0JTHBttQsI64cIFmOLIE4Q"/>
+</div>
+<div>
+<p class="text-on-surface font-medium">Ceramic Sculptural Vase</p>
+<p class="text-on-surface-variant text-sm mt-0.5">Qty: 1 • Matte White</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-on-surface">
+                                Elena Rossi<br/>
+<span class="text-on-surface-variant text-sm">elena@example.com</span>
+</td>
+<td class="py-4 px-6 text-on-surface text-right font-medium">$145.00</td>
+<td class="py-4 px-6">
+<select class="bg-surface border border-outline-variant text-on-surface text-sm rounded px-3 py-1.5 focus:ring-0 focus:border-primary cursor-pointer w-32 appearance-none">
+<option value="processing">Processing</option>
+<option selected="" value="shipped">Shipped</option>
+<option value="delivered">Delivered</option>
+</select>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="py-4 px-6 text-on-surface font-medium">#4828</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-container flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A close-up of a woven linen throw blanket neatly folded on a wooden stool. The texture of the fabric is highlighted by warm, directional lighting. The setting is a minimalist, airy room with neutral tones. The aesthetic conveys comfort and premium craftsmanship typical of a luxury home goods brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA58je5s8AG6qMiz2le6HeGG9-a_JPH_v-AqVvDmlhajLCSSI1GZf-hmHACoVA5DGrRizlzdDM6zgNLvuvok7z8-YaZ0ql-KYXp_p-Ottgjnt3mjoNtz3Cw7oKBItJhX1ER-_yq7etFg_UoViTOwA8PLAjpYI6O6fEaaeBp8gwevvlPg7zR1l-eMBRtp6-u-AdUqpqUJEhh7q4MP00iAbR8Q2NUJU9ZpmDS5jwx3n4PKmiFYMNCkSdo8Q"/>
+</div>
+<div>
+<p class="text-on-surface font-medium">Linen Throw Blanket</p>
+<p class="text-on-surface-variant text-sm mt-0.5">Qty: 2 • Charcoal</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-on-surface">
+                                Marcus Chen<br/>
+<span class="text-on-surface-variant text-sm">m.chen@example.com</span>
+</td>
+<td class="py-4 px-6 text-on-surface text-right font-medium">$190.00</td>
+<td class="py-4 px-6">
+<select class="bg-surface border border-outline-variant text-on-surface text-sm rounded px-3 py-1.5 focus:ring-0 focus:border-primary cursor-pointer w-32 appearance-none">
+<option selected="" value="processing">Processing</option>
+<option value="shipped">Shipped</option>
+<option value="delivered">Delivered</option>
+</select>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="py-4 px-6 text-on-surface font-medium">#4827</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-container flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A sleek, modern brass desk lamp resting on a marble surface against a pristine white wall. The light is turned off, emphasizing the metallic finish and clean geometric lines. The composition is highly intentional, utilizing negative space to create a gallery-like presentation of the product." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZlO1gXn238oEs8DM_jpvZMbMinBbzWF1CV5lX9KnDVp9NdDB7thq2EVzo_K4rclZ9ptCvOhW11ds-C6kIWQDr6ZwYzazzNzYkxYh5NL_m__DfT5g05G1TE9b0InsQ4xPxZxA7JikM1yEiFmdETE9AE3WMutWhsLff0Rb7oTrGYKNwfA658OIn52S9JrZXL67Pr-c9rC1MRkfg20T2PvaCoKItrYKUjwhxpBpSMfR21s3qdJJcmt7UKA"/>
+</div>
+<div>
+<p class="text-on-surface font-medium">Brass Desk Lamp</p>
+<p class="text-on-surface-variant text-sm mt-0.5">Qty: 1 • Brushed Brass</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-on-surface">
+                                Sarah Jenkins<br/>
+<span class="text-on-surface-variant text-sm">s.jenkins@example.com</span>
+</td>
+<td class="py-4 px-6 text-on-surface text-right font-medium">$225.00</td>
+<td class="py-4 px-6">
+<select class="bg-surface border border-outline-variant text-on-surface text-sm rounded px-3 py-1.5 focus:ring-0 focus:border-primary cursor-pointer w-32 appearance-none">
+<option value="processing">Processing</option>
+<option value="shipped">Shipped</option>
+<option selected="" value="delivered">Delivered</option>
+</select>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-surface-container bg-surface flex justify-between items-center text-sm text-on-surface-variant">
+<span>Showing 1-3 of 128 orders</span>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Hidden on Desktop) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface shadow-[0_-10px_30px_rgba(26,26,26,0.05)] md:hidden">
+<div class="flex justify-around items-center px-margin-mobile py-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-sm text-label-sm mt-1">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Account</span>
+</a>
+</div>
+</nav>
+</body></html>

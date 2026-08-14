@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora - Seller Onboarding</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1b1c1c",
+                        "outline-variant": "#c4c7c7",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "secondary": "#904c31",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-surface-variant": "#444748",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1b1c1c",
+                        "inverse-on-surface": "#f2f0f0",
+                        "inverse-primary": "#c8c6c5",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "outline": "#747878",
+                        "secondary-fixed": "#ffdbce",
+                        "surface-tint": "#5f5e5e",
+                        "surface-container-highest": "#e3e2e2",
+                        "tertiary-fixed": "#e3e2e0",
+                        "surface-container-low": "#f5f3f3",
+                        "tertiary-container": "#1a1c1b",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#000000",
+                        "surface-dim": "#dbdad9",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#474746",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#72351c",
+                        "on-secondary-fixed": "#380d00",
+                        "surface-container": "#efeded",
+                        "background": "#fbf9f9",
+                        "surface-bright": "#fbf9f9",
+                        "inverse-surface": "#303031",
+                        "surface": "#fbf9f9",
+                        "secondary-container": "#fea685",
+                        "on-secondary-container": "#783920",
+                        "primary": "#000000",
+                        "surface-container-high": "#e9e8e7",
+                        "primary-container": "#1c1b1b",
+                        "on-tertiary-container": "#838482",
+                        "surface-variant": "#e3e2e2",
+                        "primary-fixed": "#e5e2e1",
+                        "on-primary-container": "#858383",
+                        "secondary-fixed-dim": "#ffb59a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "32px",
+                        "gutter-mobile": "16px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #fbf9f9; }
+        .ambient-shadow { box-shadow: 0 10px 30px rgba(26, 26, 26, 0.05); }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased">
+<!-- Top Navigation (Shell logic: Suppressed for Transactional/Onboarding, but keeping brand anchor minimal) -->
+<header class="w-full bg-surface py-6 px-gutter-desktop border-b border-surface-variant flex justify-between items-center z-10 sticky top-0">
+<div class="font-headline-md text-headline-md font-bold text-primary tracking-tight">Sellora</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Seller Application</div>
+</header>
+<main class="flex-grow flex justify-center py-margin-desktop px-gutter-desktop w-full max-w-container-max mx-auto gap-16 relative">
+<!-- Sidebar Progress Tracker -->
+<aside class="hidden md:block w-64 flex-shrink-0 sticky top-32 self-start">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase mb-8 tracking-widest">Onboarding Progress</h2>
+<nav>
+<ul class="space-y-6 relative before:absolute before:inset-y-0 before:left-3 before:-ml-px before:w-0.5 before:bg-surface-variant z-0">
+<!-- Step 1: Active -->
+<li class="relative flex items-start gap-4 group z-10">
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-on-primary ring-4 ring-background shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary font-bold">1. Store Identity</span>
+<span class="font-body-md text-[13px] text-on-surface-variant mt-1">Name, description, and logo</span>
+</div>
+</li>
+<!-- Step 2: Upcoming -->
+<li class="relative flex items-start gap-4 group z-10">
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-surface-container-highest text-on-surface-variant ring-4 ring-background shrink-0">
+<span class="font-label-sm text-label-sm">2</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">2. Compliance</span>
+<span class="font-body-md text-[13px] text-outline mt-1">Business registration details</span>
+</div>
+</li>
+<!-- Step 3: Upcoming -->
+<li class="relative flex items-start gap-4 group z-10">
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-surface-container-highest text-on-surface-variant ring-4 ring-background shrink-0">
+<span class="font-label-sm text-label-sm">3</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">3. Location</span>
+<span class="font-body-md text-[13px] text-outline mt-1">Fulfillment and return addresses</span>
+</div>
+</li>
+</ul>
+</nav>
+</aside>
+<!-- Form Canvas -->
+<section class="w-full max-w-3xl flex flex-col">
+<div class="mb-12">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-3">Establish your presence</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Let's start by defining how customers will experience your brand on Sellora. These details will be public on your storefront.</p>
+</div>
+<!-- Form Container -->
+<form class="bg-surface-container-lowest rounded-xl p-10 ambient-shadow border border-surface-variant/30 flex flex-col gap-8">
+<!-- Field Group: Store Name -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-primary flex items-center justify-between" for="store_name">
+                        Store Name <span class="text-error text-xs font-normal">*</span>
+</label>
+<input class="w-full bg-background border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors placeholder:text-outline/60" id="store_name" name="store_name" placeholder="e.g. Acme Studio" type="text"/>
+<p class="font-body-md text-[13px] text-on-surface-variant mt-1">This is the name customers will see. It cannot be changed easily later.</p>
+</div>
+<!-- Field Group: Store Description -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-primary" for="store_desc">
+                        Brand Biography
+                    </label>
+<textarea class="w-full bg-background border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors resize-y placeholder:text-outline/60" id="store_desc" name="store_desc" placeholder="Tell the story behind your brand..." rows="4"></textarea>
+<div class="flex justify-between items-center mt-1">
+<p class="font-body-md text-[13px] text-on-surface-variant">A compelling bio builds trust with luxury buyers.</p>
+<span class="font-label-sm text-[11px] text-outline">0 / 500</span>
+</div>
+</div>
+<hr class="border-surface-variant my-2"/>
+<!-- Field Group: Logo Upload -->
+<div class="flex flex-col gap-4">
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-1">Brand Insignia / Logo</h3>
+<p class="font-body-md text-[13px] text-on-surface-variant">Upload a high-resolution logo. Square format (1:1) recommended. PNG or JPG, max 5MB.</p>
+</div>
+<div class="flex items-center gap-6">
+<!-- Placeholder Preview -->
+<div class="w-24 h-24 rounded-full bg-surface-container-high border border-dashed border-outline-variant flex items-center justify-center shrink-0 overflow-hidden relative group cursor-pointer transition-colors hover:border-primary">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" style="font-size: 32px;">add_photo_alternate</span>
+<!-- Hidden input overlay -->
+<input accept="image/png, image/jpeg" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" type="file"/>
+</div>
+<div class="flex flex-col gap-3">
+<button class="self-start px-6 py-2.5 rounded-lg border border-primary text-primary font-label-md text-label-md hover:bg-surface-container transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-primary outline-none" type="button">
+                                Choose File
+                            </button>
+<p class="font-body-md text-[12px] text-outline">No file chosen yet.</p>
+</div>
+</div>
+</div>
+</form>
+<!-- Actions Footer -->
+<div class="mt-8 flex justify-end items-center gap-4">
+<button class="px-6 py-3 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors focus:outline-none" type="button">Save Draft</button>
+<button class="px-8 py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center gap-2 hover:bg-tertiary-container transition-colors shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-primary outline-none" type="button">
+                    Continue to Compliance
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+</main>
+</body></html>

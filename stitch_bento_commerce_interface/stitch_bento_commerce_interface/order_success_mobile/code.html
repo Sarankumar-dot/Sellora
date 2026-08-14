@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora - Order Confirmation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#dbdad9",
+                      "on-primary-fixed-variant": "#474746",
+                      "surface-tint": "#5f5e5e",
+                      "secondary": "#904c31",
+                      "inverse-on-surface": "#f2f0f0",
+                      "outline": "#747878",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#e9e8e7",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#ffb59a",
+                      "secondary-fixed": "#ffdbce",
+                      "primary": "#000000",
+                      "on-primary-fixed": "#1c1b1b",
+                      "on-tertiary-container": "#838482",
+                      "primary-fixed": "#e5e2e1",
+                      "inverse-surface": "#303031",
+                      "surface": "#fbf9f9",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "surface-variant": "#e3e2e2",
+                      "background": "#fbf9f9",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#783920",
+                      "on-secondary-fixed": "#380d00",
+                      "on-surface": "#1b1c1c",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#fea685",
+                      "surface-container-highest": "#e3e2e2",
+                      "on-error-container": "#93000a",
+                      "outline-variant": "#c4c7c7",
+                      "surface-container-low": "#f5f3f3",
+                      "on-error": "#ffffff",
+                      "surface-container": "#efeded",
+                      "on-primary-container": "#858383",
+                      "tertiary": "#000000",
+                      "tertiary-fixed": "#e3e2e0",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed-variant": "#72351c",
+                      "on-background": "#1b1c1c",
+                      "primary-container": "#1c1b1b",
+                      "inverse-primary": "#c8c6c5",
+                      "surface-bright": "#fbf9f9",
+                      "on-surface-variant": "#444748",
+                      "tertiary-container": "#1a1c1b",
+                      "on-tertiary-fixed-variant": "#464746",
+                      "on-tertiary-fixed": "#1a1c1b",
+                      "tertiary-fixed-dim": "#c7c6c5"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "gutter-desktop": "32px",
+                      "margin-mobile": "20px",
+                      "gutter-mobile": "16px",
+                      "margin-desktop": "64px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        [data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center">
+<!-- TopAppBar (Transactional - Hidden nav items, branding only) -->
+<header class="w-full sticky top-0 z-50 bg-surface dark:bg-background shadow-[0_10px_30px_rgba(26,26,26,0.05)]">
+<div class="flex justify-center items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<span class="font-headline-lg text-headline-lg tracking-tight text-primary dark:text-on-background">Sellora</span>
+</div>
+</header>
+<main class="w-full max-w-md mx-auto px-margin-mobile py-gutter-desktop flex-1 flex flex-col items-center text-center">
+<!-- Success Header -->
+<div class="mb-gutter-desktop flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-secondary-fixed flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl text-secondary" data-weight="fill">check_circle</span>
+</div>
+<h1 class="font-headline-md text-headline-md mb-2 text-primary">Thank you for your order!</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Your order has been placed successfully. We will send you an email confirmation shortly.</p>
+</div>
+<!-- Order Summary Card -->
+<div class="w-full bg-surface-container-lowest rounded-lg shadow-[0_10px_30px_rgba(26,26,26,0.05)] p-gutter-mobile mb-gutter-desktop text-left">
+<h2 class="font-label-md text-label-md text-on-surface-variant mb-4 uppercase tracking-wider">Order Summary</h2>
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-md text-body-md text-on-surface-variant">Order Number</span>
+<span class="font-label-md text-label-md text-primary">#SEL-84920</span>
+</div>
+<div class="flex justify-between items-center pb-4 border-b border-surface-variant mb-4">
+<span class="font-body-md text-body-md text-on-surface-variant">Est. Delivery</span>
+<span class="font-label-md text-label-md text-primary">Oct 12 - Oct 15</span>
+</div>
+<!-- Line Items -->
+<div class="space-y-4 mb-4">
+<div class="flex items-center gap-4">
+<img class="w-16 h-16 object-cover rounded-DEFAULT bg-surface-variant" data-alt="A minimalist, high-end photograph of a sleek, matte black ceramic vase placed on a clean off-white pedestal. Soft, diffuse gallery lighting highlights the smooth texture and elegant curves of the vase, creating a serene and sophisticated luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDADk08X10Dgc4YW-wb1KDcWcNGAdkGKu8bjnJsqiNVy2uoi9LatnkCqWYFy4bsA6GARPSvVazOFI2ZfKtIOlzjQhaH6xQkX_qTIP6DERcB7A5Nh9fSywvAojr6u0NgECTe6xeUFMYYEn7BkBZKoXHwkjcZO6G_XMWcfWxIk87D2RZ9mXMtRQaTSsqmv-r63OXfDgsVSjG13cyPIkbJqMdkdFa6zi5TRKmZcphTF5XfXajWgt0gKKvQTA"/>
+<div class="flex-1">
+<h3 class="font-label-md text-label-md text-primary">Noir Ceramic Vase</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Qty: 1</p>
+</div>
+<span class="font-label-md text-label-md text-primary">$120.00</span>
+</div>
+<div class="flex items-center gap-4">
+<img class="w-16 h-16 object-cover rounded-DEFAULT bg-surface-variant" data-alt="A luxurious close-up shot of a woven linen throw blanket in a subtle terracotta hue, neatly folded. The soft texture of the premium fabric is emphasized by warm, natural light coming from an unseen window, setting a calm, refined, and elevated mood consistent with high-end home decor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTof9d1cGi5fUI3PkaKmXSDvUrONBYFleD0mywBgxGSVHkKAF5rUg-R-2MI43jVADVTGHIxg6fSqEbguiy2l4DnIxrGByksmcWyJLeIBLeNYmwcMSHBqMRhxhST8mhvEYtkXNqnCd6BGhEvihpH0FXxjicclJDMa8zrFKQ7I7uGbD2IqEZpduLiWpz6Nd6lUG2qNyANYa27xtlxopDqszQXNAHKOY5lk9JoaB7NXe4DPRQ--fmiQsAPA"/>
+<div class="flex-1">
+<h3 class="font-label-md text-label-md text-primary">Linen Throw - Terracotta</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Qty: 2</p>
+</div>
+<span class="font-label-md text-label-md text-primary">$170.00</span>
+</div>
+</div>
+<!-- Total -->
+<div class="pt-4 border-t border-surface-variant flex justify-between items-center">
+<span class="font-headline-md text-headline-md text-primary">Total</span>
+<span class="font-headline-md text-headline-md text-primary">$290.00</span>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full bg-secondary text-on-secondary font-label-md text-label-md py-4 rounded-lg hover:bg-on-secondary-container transition-colors duration-300">
+            Continue Shopping
+        </button>
+</main>
+<!-- Bottom Nav Suppressed due to Transactional Page Intent -->
+</body></html>

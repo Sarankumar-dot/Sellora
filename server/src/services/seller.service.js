@@ -79,10 +79,6 @@ const getSellerOrdersService = async (userId) => {
 
   const rows = await findOrdersBySellerId(seller.id);
 
-  if (rows.length === 0) {
-    throw new ApiError(404, 'No orders found for your products');
-  }
-
   // Group flat rows by order_id
   const ordersMap = new Map();
 

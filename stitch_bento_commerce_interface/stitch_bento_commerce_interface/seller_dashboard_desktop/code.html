@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#dbdad9",
+                      "secondary-container": "#fea685",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#783920",
+                      "surface-container": "#efeded",
+                      "on-surface": "#1b1c1c",
+                      "surface": "#fbf9f9",
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#000000",
+                      "primary": "#000000",
+                      "on-secondary-fixed": "#380d00",
+                      "secondary-fixed-dim": "#ffb59a",
+                      "on-primary-fixed-variant": "#474746",
+                      "surface-container-low": "#f5f3f3",
+                      "surface-container-high": "#e9e8e7",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#f2f0f0",
+                      "surface-container-highest": "#e3e2e2",
+                      "on-tertiary-fixed-variant": "#464746",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "background": "#fbf9f9",
+                      "tertiary-fixed-dim": "#c7c6c5",
+                      "outline": "#747878",
+                      "tertiary-container": "#1a1c1b",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#e5e2e1",
+                      "inverse-surface": "#303031",
+                      "error": "#ba1a1a",
+                      "on-tertiary-container": "#838482",
+                      "on-primary-container": "#858383",
+                      "surface-variant": "#e3e2e2",
+                      "inverse-primary": "#c8c6c5",
+                      "secondary-fixed": "#ffdbce",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#5f5e5e",
+                      "primary-container": "#1c1b1b",
+                      "outline-variant": "#c4c7c7",
+                      "on-tertiary-fixed": "#1a1c1b",
+                      "on-secondary-fixed-variant": "#72351c",
+                      "tertiary-fixed": "#e3e2e0",
+                      "surface-bright": "#fbf9f9",
+                      "on-surface-variant": "#444748",
+                      "on-error": "#ffffff",
+                      "secondary": "#904c31",
+                      "on-background": "#1b1c1c",
+                      "on-primary-fixed": "#1c1b1b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-mobile": "16px",
+                      "unit": "8px",
+                      "gutter-desktop": "32px",
+                      "margin-mobile": "20px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display-lg": ["Playfair Display"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Playfair Display"],
+                      "display-lg-mobile": ["Playfair Display"],
+                      "headline-md": ["Playfair Display"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "display-lg-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        body { background-color: #fbf9f9; color: #1b1c1c; }
+        .bento-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(26, 26, 26, 0.03);
+            border: 1px solid #efeded;
+            transition: all 0.3s ease;
+        }
+        .bento-card:hover {
+            box-shadow: 0 10px 30px rgba(26, 26, 26, 0.05);
+            transform: translateY(-2px);
+        }
+        .chart-placeholder {
+            background: linear-gradient(180deg, rgba(239,237,237,0) 0%, rgba(239,237,237,0.5) 100%);
+            border-bottom: 2px solid #1a1a1a;
+            position: relative;
+        }
+        .chart-bar {
+            background: #1a1a1a;
+            border-radius: 4px 4px 0 0;
+            width: 12%;
+            margin: 0 2%;
+            display: inline-block;
+            vertical-align: bottom;
+            transition: height 0.5s ease;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md bg-background min-h-screen">
+<!-- TopNavBar (Desktop Only) -->
+<nav class="w-full top-0 bg-surface hidden md:flex max-w-container-max mx-auto px-margin-desktop justify-between items-center h-20 border-b border-surface-container">
+<div class="font-display-lg text-headline-lg tracking-tight text-primary">Sellora</div>
+<div class="flex gap-8 items-center">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Overview</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Products</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Orders</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Customers</a>
+</div>
+<div class="flex gap-4 items-center">
+<button class="hover:opacity-80 transition-opacity text-primary">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="hover:opacity-80 transition-opacity text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden ml-4">
+<img class="w-full h-full object-cover" data-alt="A macro photograph of a textured linen fabric in a light cream color, representing a clean, sophisticated avatar placeholder in a bright minimalist setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHEpiQnz7TPXWCfsaDi4wbjWFjuEaylv1cy-qqa5p-hdvGec2c_59vutmnBYgPPKVegcwtsXJrEbZ3ImztERQz54VVJQAU0XwaH6nAzf1RpfdDL-mbsnWHw9k34Tq8LCDGiiqLr37Z42EmAjsgWXKs6q3Z1n3AckBHtAu1JrzWCYNIkWSTMsU94oGrrlh9dCng2_8MyOK7ODVzJbzKGqafkaYE-O-_zm08o9aYeh_Ya-0MvygDbaYwFg"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="max-w-container-max mx-auto px-margin-desktop py-margin-desktop">
+<header class="mb-12 flex justify-between items-end">
+<div>
+<h1 class="font-display-lg text-display-lg text-primary mb-2">Good Morning, Studio</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Here is your performance overview for today.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 rounded-lg border border-outline-variant text-primary font-label-md text-label-md hover:bg-surface-container-low transition-colors">Download Report</button>
+<button class="px-6 py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:opacity-90 transition-opacity">Add Product</button>
+</div>
+</header>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-unit">
+<!-- Total Revenue (Large Chart) -->
+<div class="bento-card col-span-1 md:col-span-8 row-span-2 flex flex-col justify-between min-h-[400px]">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">Total Revenue</h2>
+<div class="font-headline-lg text-headline-lg text-primary">$124,500.00</div>
+<div class="font-body-md text-body-md text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +14.2% vs last month
+                        </div>
+</div>
+<select class="bg-surface-container-low border-none rounded-md py-2 px-4 font-label-sm text-label-sm text-on-surface focus:ring-1 focus:ring-primary">
+<option>This Month</option>
+<option>Last 3 Months</option>
+<option>This Year</option>
+</select>
+</div>
+<div class="flex-1 w-full flex items-end justify-between chart-placeholder h-48 px-2 pb-0 pt-4">
+<!-- Faux Bar Chart -->
+<div class="chart-bar h-[30%]"></div>
+<div class="chart-bar h-[50%]"></div>
+<div class="chart-bar h-[40%]"></div>
+<div class="chart-bar h-[70%]"></div>
+<div class="chart-bar h-[60%]"></div>
+<div class="chart-bar h-[90%]"></div>
+<div class="chart-bar h-[85%] bg-secondary"></div>
+</div>
+</div>
+<!-- Pending Orders -->
+<div class="bento-card col-span-1 md:col-span-4 flex flex-col justify-between bg-surface-container-low border-none">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<span class="px-2 py-1 rounded text-[10px] font-bold bg-secondary-container text-on-secondary-container">Needs Action</span>
+</div>
+<div class="mt-8">
+<h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">Pending Orders</h2>
+<div class="font-headline-md text-headline-md text-primary">34</div>
+<a class="font-label-md text-label-md text-on-surface-variant mt-4 inline-flex items-center gap-1 hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-0.5" href="#">
+                        Fulfill Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Revenue Snapshot (Mini) -->
+<div class="bento-card col-span-1 md:col-span-2 flex flex-col justify-between">
+<h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">Avg. Order Value</h2>
+<div class="mt-auto">
+<div class="font-headline-md text-headline-md text-primary">$412</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-1">Target: $400</div>
+</div>
+</div>
+<div class="bento-card col-span-1 md:col-span-2 flex flex-col justify-between">
+<h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">Conversion Rate</h2>
+<div class="mt-auto">
+<div class="font-headline-md text-headline-md text-primary">3.2%</div>
+<div class="font-label-sm text-label-sm text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">arrow_downward</span> -0.4%
+                    </div>
+</div>
+</div>
+<!-- Low-Stock Alerts -->
+<div class="bento-card col-span-1 md:col-span-8 flex flex-col">
+<h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-6">Low-Stock Alerts</h2>
+<div class="flex flex-col gap-4">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A close-up studio shot of a minimalist ceramic vase in matte white, set against a soft off-white background with subtle shadows, showcasing clean lines and a premium D2C aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvPZTKy3PqajUTzCzN7LJPEBTIHXBPrgQPwtOXlDG7rUjwGnD5oNo-2guXJvo5b51T21hgQdAwDq1cE9d5fjDy1u0BqyLXo8upe701Ysj8iwQFA-7lpD5eK7QdZrw9CGEQruvyRZ87iLtY2mTBF5sy2DC1_jvh-xU2SefK2XI8wn9eO5tVf6c3fOP9bdadHkPHAec2jot-5yn227NIT-opy8nzF4rBqvZ69wXXHX2bvqRT39O6DPIMZg"/>
+</div>
+<div>
+<div class="font-label-md text-label-md text-primary">Minimalist Ceramic Vase</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">SKU: VASE-WHT-01</div>
+</div>
+</div>
+<div class="text-right flex items-center gap-6">
+<div>
+<div class="font-label-md text-label-md text-secondary">4 left</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity font-label-md text-label-md text-primary underline underline-offset-4">Restock</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A high-end editorial photograph of a woven linen throw blanket neatly folded on a sleek wooden surface. The lighting is soft and natural, emphasizing the texture of the fabric in a minimalist, serene setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTQjH5N2S27b5ogO4i8Ct81osWnLRiV16hV0OEYTUfX_P1g26ZSVJVw3Ipal-8e8VMiPRQz9WbJ-JcjtsbFlavj7D1fp-0KsUxA-Maug3YWMpLX0JQ1LuJckQVSqUwvPkb5syTdYXRR3FUbPVlC0wkQiDjA-v0is_ZhmvHlPiF6PC4SFSlKzf-YRvCdDg6VKvhTy2uSZJ3YHvEAVkd_rckPZiZPQjYGW8HN5DNQUFcSoWbedl7nD7Rvw"/>
+</div>
+<div>
+<div class="font-label-md text-label-md text-primary">Woven Linen Throw</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">SKU: LNN-THR-OAT</div>
+</div>
+</div>
+<div class="text-right flex items-center gap-6">
+<div>
+<div class="font-label-md text-label-md text-secondary">2 left</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity font-label-md text-label-md text-primary underline underline-offset-4">Restock</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Product (Image Highlight) -->
+<div class="bento-card col-span-1 md:col-span-4 p-0 overflow-hidden relative group">
+<div class="absolute inset-0 bg-black/20 z-10 group-hover:bg-black/10 transition-colors"></div>
+<img class="w-full h-full object-cover absolute inset-0" data-alt="A beautifully styled photograph of a sleek, modern lounge chair placed in a bright, spacious room with white walls and a large window casting soft, natural light. The aesthetic is ultra-minimalist and luxurious." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwOXjc54gvlQ6eDBNeF9nTdsHgSgoCJoljKD5VmFaaiUhtrlcPfuvxxmfgYtnl_mafbJ4OhXaHOyR8_0cfjsMjMnNX1_xRC9B2sTXeRzM8I4rBQAwj_VwTPZssDwtQEg3wEV_64VSEhGkdUFAZiEj0P4ldkChMMRQGBDaN7zW8jhlJQy8bICBQvmFGM3FxxtirhOKDuvfZjCosYrJ7wlz_WcpoVW1NKv09EFMaD5bar7VkQlSe6Zti-A"/>
+<div class="relative z-20 h-full flex flex-col justify-between p-6">
+<span class="self-start px-2 py-1 rounded text-[10px] font-bold bg-white text-primary">Top Seller</span>
+<div class="text-white">
+<div class="font-label-sm text-label-sm uppercase tracking-wider mb-1 opacity-90">Current Top Product</div>
+<div class="font-headline-md text-headline-md">Lounge Chair No. 4</div>
+<div class="font-body-md text-body-md mt-2 flex items-center gap-2">
+                             124 units sold <span class="w-1 h-1 rounded-full bg-white opacity-50"></span> $86,800 rev
+                         </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only - Suppressed based on layout instruction, but included for completeness if resized) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface dark:bg-surface-container-high shadow-[0_-10px_30px_rgba(26,26,26,0.05)] md:hidden flex justify-around items-center px-margin-mobile py-2">
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Account</span>
+</a>
+</nav>
+</body></html>

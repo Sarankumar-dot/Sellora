@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora - Order History</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1b1c1c",
+                        "outline-variant": "#c4c7c7",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "secondary": "#904c31",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-surface-variant": "#444748",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1b1c1c",
+                        "inverse-on-surface": "#f2f0f0",
+                        "inverse-primary": "#c8c6c5",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "outline": "#747878",
+                        "secondary-fixed": "#ffdbce",
+                        "surface-tint": "#5f5e5e",
+                        "surface-container-highest": "#e3e2e2",
+                        "tertiary-fixed": "#e3e2e0",
+                        "surface-container-low": "#f5f3f3",
+                        "tertiary-container": "#1a1c1b",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#000000",
+                        "surface-dim": "#dbdad9",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#474746",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#72351c",
+                        "on-secondary-fixed": "#380d00",
+                        "surface-container": "#efeded",
+                        "background": "#fbf9f9",
+                        "surface-bright": "#fbf9f9",
+                        "inverse-surface": "#303031",
+                        "surface": "#fbf9f9",
+                        "secondary-container": "#fea685",
+                        "on-secondary-container": "#783920",
+                        "primary": "#000000",
+                        "surface-container-high": "#e9e8e7",
+                        "primary-container": "#1c1b1b",
+                        "on-tertiary-container": "#838482",
+                        "surface-variant": "#e3e2e2",
+                        "primary-fixed": "#e5e2e1",
+                        "on-primary-container": "#858383",
+                        "secondary-fixed-dim": "#ffb59a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "32px",
+                        "gutter-mobile": "16px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen flex flex-col">
+<!-- TopNavBar (Semantic active: Profile context -> Journal as placeholder, but typically transactional implies Profile, assuming none strictly match Order History, leaving all inactive or unhighlighted, but we must follow JSON. "Journal" isn't a great match, maybe no active tab). As per rules, if it doesn't align perfectly, suppress or use fallback. This is a sub-page/transactional view, but let's assume it's part of the main account area. Wait, "Order History" isn't in TopNavBar links. I'll leave them inactive. -->
+<header class="bg-surface dark:bg-surface shadow-sm w-full top-0 z-40 relative hidden md:flex justify-between items-center max-w-container-max mx-auto px-gutter-desktop h-20">
+<!-- Brand -->
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed" href="#">Sellora</a>
+<!-- Navigation Links -->
+<nav class="flex gap-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer transition-all duration-200" href="#">Shop</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer transition-all duration-200" href="#">Collections</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer transition-all duration-200" href="#">About</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer transition-all duration-200" href="#">Journal</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex gap-6 items-center">
+<button aria-label="Search" class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button aria-label="Shopping Bag" class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<!-- Highlight Person icon since Order History is under Profile -->
+<button aria-label="Profile" class="text-primary dark:text-primary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter-mobile md:px-gutter-desktop py-margin-desktop">
+<!-- Header Section -->
+<div class="mb-12">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-4">Order History</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Review your past purchases and track current shipments.</p>
+</div>
+<!-- Table View Container -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden border border-surface-container shadow-[0_10px_30px_rgba(26,26,26,0.02)]">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low font-label-md text-label-md text-on-surface-variant uppercase border-b border-surface-container">
+<tr>
+<th class="py-4 px-6 font-semibold whitespace-nowrap">Order ID</th>
+<th class="py-4 px-6 font-semibold whitespace-nowrap">Date</th>
+<th class="py-4 px-6 font-semibold">Items</th>
+<th class="py-4 px-6 font-semibold text-right whitespace-nowrap">Total</th>
+<th class="py-4 px-6 font-semibold text-center whitespace-nowrap">Status</th>
+<th class="py-4 px-6 font-semibold text-right whitespace-nowrap">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1: Delivered -->
+<tr class="hover:bg-surface-container/50 transition-colors duration-200 group">
+<td class="py-6 px-6 align-middle font-body-md text-body-md text-primary">
+                                #ORD-2024-089
+                            </td>
+<td class="py-6 px-6 align-middle text-on-surface-variant">
+                                Oct 12, 2024
+                            </td>
+<td class="py-6 px-6 align-middle">
+<div class="flex -space-x-2">
+<div class="w-12 h-12 rounded-DEFAULT overflow-hidden border border-surface-container-lowest shadow-sm z-20">
+<img class="w-full h-full object-cover" data-alt="A macro shot of a sleek, minimalist ceramic coffee mug in a neutral matte beige finish. The lighting is soft and directional, highlighting the smooth texture of the ceramic. The setting is a clean, bright, modern D2C product photography style with a warm off-white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6-wd81AvhMKsZuy2H93FzkIQJ65oQ8VVJpisuIfW-rIG2oDSgKrv5zoprFOr4fpnhPrM5V5zAs3QvS-wfx0_QyUbBEM-wVm-gWV71J6-sSVT_WXq4e8mMW1_F-AH8E0VGQaEKnZRcgdCzxzqgJ5_3ij-uY7ARxGcAAGv95xjAr6KO1bzOPVkiJ3cNHevmn_JypZ9eDHZ3YnbBWmwrfvs75IrFNSBhf1VTiPRJVJgjhgxbIL99zDZVjg"/>
+</div>
+<div class="w-12 h-12 rounded-DEFAULT overflow-hidden border border-surface-container-lowest shadow-sm z-10">
+<img class="w-full h-full object-cover" data-alt="A highly detailed product shot of a minimalist geometric brass desk lamp with a matte finish. The lamp is positioned against a warm off-white background, bathed in soft studio lighting that emphasizes the premium, quiet luxury aesthetic of the brand. The lighting is high-key and serene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWq7gZVDwNtLQDL0CQxjIa7UsBooibySrpW2mV-odKGXaHnnje0CtMSPjxX8lHgWAdg9m9ETeUsRoIT0eh0iUfj0Vsz-x6Ya5Nf63ac3escONspLwsELQBhXiy5bvYPS8RBGLxpgNOxH5qa3F_p9OXstrCOZMO1ll3lRhYqSAm7kJafsfirGXdKyGe5gwM8JLuNhXcRwuPBcA3CO5l9p0rxIAXBAfHSyyGwG7d-MuuYk8Sv4OYR7hbyw"/>
+</div>
+</div>
+</td>
+<td class="py-6 px-6 align-middle text-right font-medium text-primary">
+                                $145.00
+                            </td>
+<td class="py-6 px-6 align-middle text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant">
+                                    Delivered
+                                </span>
+</td>
+<td class="py-6 px-6 align-middle text-right">
+<button class="font-label-md text-label-md text-on-surface-variant group-hover:text-primary transition-colors inline-flex items-center gap-1 cursor-pointer">
+                                    View Details <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Shipped -->
+<tr class="hover:bg-surface-container/50 transition-colors duration-200 group">
+<td class="py-6 px-6 align-middle font-body-md text-body-md text-primary">
+                                #ORD-2024-112
+                            </td>
+<td class="py-6 px-6 align-middle text-on-surface-variant">
+                                Oct 24, 2024
+                            </td>
+<td class="py-6 px-6 align-middle">
+<div class="flex -space-x-2">
+<div class="w-12 h-12 rounded-DEFAULT overflow-hidden border border-surface-container-lowest shadow-sm z-10">
+<img class="w-full h-full object-cover" data-alt="A top-down view of an artisanal, minimalist leather notebook resting on a clean, off-white surface. The leather is rich and textured, contrasting elegantly with the stark, gallery-like presentation. Subtle, ambient shadows suggest depth without breaking the flat, sophisticated editorial luxury look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbxQKt8wGrPHoE7bSBUfSY7ISbs10yl1j_dTPeJioVNgv-MH5GMgqt8CKwkZRRj4SJyLnUijtqEPVTmSPHZDew0bHR4251YPzL8ZBpzjl5L0veIkG5HaTZft-RIOS0xv00OFAxsZaF1QKeyF2C9AJJBCKlKUrFx2_aFcZr_kpCcFYB-M8wfZATPuomtMB2lE4Yy1bQnKceAp-zF5mNnJp46UdZbljvxORn7-EdBdBW74EL02rZsXgLtA"/>
+</div>
+</div>
+</td>
+<td class="py-6 px-6 align-middle text-right font-medium text-primary">
+                                $68.50
+                            </td>
+<td class="py-6 px-6 align-middle text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed">
+                                    Shipped
+                                </span>
+</td>
+<td class="py-6 px-6 align-middle text-right">
+<button class="font-label-md text-label-md text-on-surface-variant group-hover:text-primary transition-colors inline-flex items-center gap-1 cursor-pointer">
+                                    Track <span class="material-symbols-outlined text-[16px]" data-icon="local_shipping">local_shipping</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Pending -->
+<tr class="hover:bg-surface-container/50 transition-colors duration-200 group">
+<td class="py-6 px-6 align-middle font-body-md text-body-md text-primary">
+                                #ORD-2024-128
+                            </td>
+<td class="py-6 px-6 align-middle text-on-surface-variant">
+                                Oct 28, 2024
+                            </td>
+<td class="py-6 px-6 align-middle">
+<div class="flex -space-x-2">
+<div class="w-12 h-12 rounded-DEFAULT overflow-hidden border border-surface-container-lowest shadow-sm z-30">
+<img class="w-full h-full object-cover" data-alt="A minimalist linen throw blanket elegantly draped over a subtle plinth, photographed in a serene, modern setting with high-key lighting. The off-white background and soft ambient shadows emphasize the tactile refinement and premium D2C aesthetic of the product, conveying quiet luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMe3Ezhzx--TwT_IhW74h4XRQbwfstqS-lRn-f-wmil3L6163Ew5D5kdX37mOt7Ubh6kc6nF5QwTt4KjI5EEmylg5FyyaziZi3DdjFAppslpUn9OqSjKfRHmnI6NNSZkniRCLDdE51jffjcBIZwOsAa3OUZedMQDht7T6N98p60F9V_tFVqkA5vgWJ9WqhxGwg0U5VjzNLc6xeAlbwiMmv4WBqsZs97gsCiERjzWwzKj9cnE7b_6mR6w"/>
+</div>
+<div class="w-12 h-12 rounded-DEFAULT overflow-hidden border border-surface-container-lowest shadow-sm z-20">
+<img class="w-full h-full object-cover" data-alt="A close-up of a sleek, unbranded glass water carafe with a matte black stopper, set against a pristine, warm off-white backdrop. The lighting is diffused and editorial, creating a sophisticated, calm, and curated mood that aligns with high-end minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVsa6x3frOynW2VWR2oGH8G6tIiD5vtZ-DOErPVpv-eS2W2xz-od5zk1NxneYrmlXTBZQM90wTlgzEpZa90q6B8YBOaN6i32C1JT-bZuyXd06M8I-GQ_wBvvHmeC22tVGqesfm_FRxBBtP8IPETbJh-CUoydZKuQ3BjUs7358zN143FA3kckXGGMabsx_5APe7or9RTIlx28j_bNBzM7elbEiQtGdpDwkKZRVaJi-KT9wY-Fa377BX8w"/>
+</div>
+<div class="w-12 h-12 rounded-DEFAULT overflow-hidden border border-surface-container-lowest shadow-sm z-10 flex items-center justify-center bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">
+                                        +2
+                                    </div>
+</div>
+</td>
+<td class="py-6 px-6 align-middle text-right font-medium text-primary">
+                                $312.00
+                            </td>
+<td class="py-6 px-6 align-middle text-center">
+<span class="inline-flex items-center px-3 py-1 rounded-full font-label-sm text-label-sm bg-surface-variant text-on-surface-variant border border-outline-variant/30">
+                                    Pending
+                                </span>
+</td>
+<td class="py-6 px-6 align-middle text-right">
+<button class="font-label-md text-label-md text-on-surface-variant group-hover:text-primary transition-colors inline-flex items-center gap-1 cursor-pointer">
+                                    View Details <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="bg-surface-container-lowest border-t border-surface-container px-6 py-4 flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant text-sm">Showing 1-3 of 12 orders</span>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-DEFAULT border border-outline-variant text-outline hover:text-primary hover:border-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-DEFAULT border border-outline-variant text-on-surface hover:text-primary hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-tertiary-container text-on-surface dark:text-on-tertiary-container font-body-md text-body-md w-full">
+<div class="w-full py-16 px-gutter-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between gap-8">
+<div class="flex flex-col gap-4">
+<span class="font-headline-md text-headline-md text-on-surface">Sellora</span>
+<span class="text-on-surface-variant dark:text-on-tertiary-container">© 2024 Sellora. All rights reserved.</span>
+</div>
+<nav class="flex flex-col md:flex-row gap-6 md:gap-8">
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary dark:hover:text-secondary-fixed transition-colors cursor-pointer" href="#">Sustainability</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary dark:hover:text-secondary-fixed transition-colors cursor-pointer" href="#">Shipping</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary dark:hover:text-secondary-fixed transition-colors cursor-pointer" href="#">Returns</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary dark:hover:text-secondary-fixed transition-colors cursor-pointer" href="#">Contact</a>
+</nav>
+</div>
+</footer>
+</body></html>

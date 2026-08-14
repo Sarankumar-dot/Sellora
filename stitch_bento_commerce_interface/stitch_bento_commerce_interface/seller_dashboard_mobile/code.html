@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seller Dashboard - Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1b1c1c",
+                        "outline-variant": "#c4c7c7",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "secondary": "#904c31",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-surface-variant": "#444748",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1b1c1c",
+                        "inverse-on-surface": "#f2f0f0",
+                        "inverse-primary": "#c8c6c5",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "outline": "#747878",
+                        "secondary-fixed": "#ffdbce",
+                        "surface-tint": "#5f5e5e",
+                        "surface-container-highest": "#e3e2e2",
+                        "tertiary-fixed": "#e3e2e0",
+                        "surface-container-low": "#f5f3f3",
+                        "tertiary-container": "#1a1c1b",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#000000",
+                        "surface-dim": "#dbdad9",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#474746",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#72351c",
+                        "on-secondary-fixed": "#380d00",
+                        "surface-container": "#efeded",
+                        "background": "#fbf9f9",
+                        "surface-bright": "#fbf9f9",
+                        "inverse-surface": "#303031",
+                        "surface": "#fbf9f9",
+                        "secondary-container": "#fea685",
+                        "on-secondary-container": "#783920",
+                        "primary": "#000000",
+                        "surface-container-high": "#e9e8e7",
+                        "primary-container": "#1c1b1b",
+                        "on-tertiary-container": "#838482",
+                        "surface-variant": "#e3e2e2",
+                        "primary-fixed": "#e5e2e1",
+                        "on-primary-container": "#858383",
+                        "secondary-fixed-dim": "#ffb59a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "32px",
+                        "gutter-mobile": "16px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ambient-shadow {
+            box-shadow: 0 10px 30px rgba(26, 26, 26, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md antialiased md:flex">
+<!-- JSON SideNavBar Injection (Hidden on Mobile) -->
+<aside class="hidden md:flex flex-col border-r border-outline-variant bg-surface-container-low h-screen w-64 left-0 top-0">
+<div class="p-6">
+<h2 class="font-headline-md text-headline-md text-primary">Sellora Seller</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Premium Partner</p>
+</div>
+<nav class="flex flex-col gap-2 px-2 mt-4">
+<!-- Active Tab: Dashboard -->
+<div class="bg-secondary-container text-on-secondary-container rounded-lg mx-2 my-1 px-4 py-3 cursor-pointer flex items-center gap-3">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<!-- Inactive Tabs -->
+<div class="text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg mx-2 my-1 px-4 py-3 cursor-pointer flex items-center gap-3">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg mx-2 my-1 px-4 py-3 cursor-pointer flex items-center gap-3">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="font-label-md text-label-md">Orders</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg mx-2 my-1 px-4 py-3 cursor-pointer flex items-center gap-3">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg mx-2 my-1 px-4 py-3 cursor-pointer flex items-center gap-3">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</div>
+</nav>
+</aside>
+<!-- Mobile View Container -->
+<main class="w-full flex-1 md:hidden">
+<!-- Custom Mobile Header -->
+<header class="flex justify-between items-center px-margin-mobile py-4 bg-surface z-10 sticky top-0">
+<div class="flex items-center gap-3">
+<button class="p-2 -ml-2 text-on-surface">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Dashboard</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+</header>
+<!-- Canvas: Bento Grid -->
+<div class="px-margin-mobile py-6 grid grid-cols-2 gap-4 pb-32">
+<!-- Hero Stat: Revenue -->
+<div class="col-span-2 bg-surface-container-lowest rounded-xl p-6 ambient-shadow border border-surface-container-high">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface-variant">Total Revenue</h3>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">more_horiz</span>
+</div>
+<div class="mt-4">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">$14,250</span>
+</div>
+<div class="mt-2 flex items-center gap-1 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+8.4% from last month</span>
+</div>
+</div>
+<!-- Mini Stat: Pending Orders -->
+<div class="col-span-1 bg-surface-container-lowest rounded-xl p-5 ambient-shadow border border-surface-container-high flex flex-col justify-between aspect-square">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-on-secondary-container text-[18px]">local_shipping</span>
+</div>
+<div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-1">Pending Orders</h3>
+<span class="font-headline-lg text-headline-lg text-primary">24</span>
+</div>
+</div>
+<!-- Mini Stat: Views -->
+<div class="col-span-1 bg-surface-container-lowest rounded-xl p-5 ambient-shadow border border-surface-container-high flex flex-col justify-between aspect-square">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">visibility</span>
+</div>
+<div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-1">Store Views</h3>
+<span class="font-headline-lg text-headline-lg text-primary">1.2k</span>
+</div>
+</div>
+<!-- Trends Mini-Chart -->
+<div class="col-span-2 bg-surface-container-lowest rounded-xl p-6 ambient-shadow border border-surface-container-high h-48 flex flex-col">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-4">Sales Trends (This Week)</h3>
+<div class="flex-1 flex items-end justify-between gap-2 pt-2">
+<div class="w-full bg-surface-container-high rounded-t-sm h-[30%]"></div>
+<div class="w-full bg-surface-container-high rounded-t-sm h-[50%]"></div>
+<div class="w-full bg-surface-container-high rounded-t-sm h-[40%]"></div>
+<div class="w-full bg-primary rounded-t-sm h-[80%]"></div>
+<div class="w-full bg-surface-container-high rounded-t-sm h-[60%]"></div>
+<div class="w-full bg-surface-container-high rounded-t-sm h-[90%]"></div>
+<div class="w-full bg-surface-container-high rounded-t-sm h-[45%]"></div>
+</div>
+</div>
+<!-- Low Stock Alerts -->
+<div class="col-span-2 bg-surface-container-lowest rounded-xl p-6 ambient-shadow border border-surface-container-high">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[18px]">warning</span>
+                        Low Stock Alerts
+                    </h3>
+<button class="font-label-sm text-label-sm text-secondary">View All</button>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4 border-b border-surface-container-high pb-3 last:border-0 last:pb-0">
+<div class="w-12 h-12 bg-surface-container rounded-md flex-shrink-0" data-alt="A close-up shot of a minimalist, luxury ceramic vase sitting on a clean, light grey surface. The lighting is soft and natural, casting a gentle shadow. The mood is serene, focusing on the tactile texture of the matte ceramic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCd9BM4GVw2Krspr46V7TDZOHgEQ2TOEHnDB0u31lEzjrKOkatYCXGg-Innjm_zvcCCH52b7_ue0FhfjGRLlEGwg4pZGgtx9N06oDPEyKiCN029NQ-p9R45nguuTHuIVU6fT4euWvBI_4ON8t6lbyk6w7metP0xGTyhZZMOe9mL0sk64FDTj3uGFRvEJxEuXm8Wp_g9WxfCOLCXml-opM_qEMjtHrh7oF5Mujv6H-fSFMag4RyzX8QPIw')"></div>
+<div class="flex-1">
+<p class="font-body-md text-body-md text-on-surface leading-tight">Ceramic Minimalist Vase</p>
+<p class="font-label-sm text-label-sm text-error mt-1">2 left in stock</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-md flex-shrink-0" data-alt="A premium woven linen throw blanket folded neatly on a wooden display table. The lighting is warm and inviting, highlighting the natural weave of the fabric. The aesthetic is organic and sophisticated, typical of high-end home goods." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCS2mlN0l2lLyiM4DcNEae_g3u1yulnd6E5IkwbQcebfjv3QthMX6m_DjPaaFZqaY2LG2OVTO7qnIdf8BdfTugNQkCi78PuNmCGrxOZ3O9XOVtQX6RXhgEI3z44dJRpjX7oR9sgMyFjcH8jx6xE3bSdCwi-micUpUffhcoYRVemjZoKBd1eVFJRwObGT5pLP-Gs91aI6VRGS-UsMMFYrFjQIHqy1mgshxdoxRLzlIBOntU2dEd8mlc6IA')"></div>
+<div class="flex-1">
+<p class="font-body-md text-body-md text-on-surface leading-tight">Woven Linen Throw</p>
+<p class="font-label-sm text-label-sm text-error mt-1">5 left in stock</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="col-span-2 grid grid-cols-2 gap-3 mt-2">
+<button class="bg-primary text-on-primary font-label-md text-label-md py-4 rounded-lg flex items-center justify-center gap-2 w-full">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                    Add Product
+                </button>
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface font-label-md text-label-md py-4 rounded-lg flex items-center justify-center gap-2 w-full ambient-shadow">
+<span class="material-symbols-outlined text-[20px]">list_alt</span>
+                    View Orders
+                </button>
+</div>
+</div>
+</main>
+</body></html>

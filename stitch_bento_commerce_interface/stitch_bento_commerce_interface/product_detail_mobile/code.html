@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora - Product Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#474746",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#464746",
+                      "on-secondary-container": "#783920",
+                      "inverse-primary": "#c8c6c5",
+                      "outline-variant": "#c4c7c7",
+                      "surface-container-high": "#e9e8e7",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "primary": "#000000",
+                      "outline": "#747878",
+                      "surface-container-highest": "#e3e2e2",
+                      "on-surface-variant": "#444748",
+                      "on-secondary-fixed": "#380d00",
+                      "tertiary": "#000000",
+                      "background": "#fbf9f9",
+                      "tertiary-fixed": "#e3e2e0",
+                      "secondary": "#904c31",
+                      "surface-container": "#efeded",
+                      "secondary-container": "#fea685",
+                      "on-tertiary-container": "#838482",
+                      "secondary-fixed-dim": "#ffb59a",
+                      "inverse-on-surface": "#f2f0f0",
+                      "inverse-surface": "#303031",
+                      "surface-container-low": "#f5f3f3",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#72351c",
+                      "on-surface": "#1b1c1c",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#1c1b1b",
+                      "on-primary-fixed": "#1c1b1b",
+                      "surface-dim": "#dbdad9",
+                      "error": "#ba1a1a",
+                      "surface": "#fbf9f9",
+                      "tertiary-fixed-dim": "#c7c6c5",
+                      "surface-bright": "#fbf9f9",
+                      "primary-fixed": "#e5e2e1",
+                      "on-tertiary": "#ffffff",
+                      "surface-variant": "#e3e2e2",
+                      "surface-tint": "#5f5e5e",
+                      "on-background": "#1b1c1c",
+                      "on-tertiary-fixed": "#1a1c1b",
+                      "on-primary": "#ffffff",
+                      "on-primary-container": "#858383",
+                      "tertiary-container": "#1a1c1b",
+                      "secondary-fixed": "#ffdbce"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-mobile": "16px",
+                      "gutter-desktop": "32px",
+                      "margin-mobile": "20px",
+                      "container-max": "1280px",
+                      "unit": "8px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased pb-24">
+<!-- Header Actions (Back/Share) overlaying image on mobile, or clean top bar -->
+<header class="fixed top-0 w-full z-40 p-4 flex justify-between items-center bg-gradient-to-b from-black/20 to-transparent">
+<button aria-label="Go Back" class="w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-primary shadow-sm hover:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<button aria-label="Share" class="w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-primary shadow-sm hover:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">ios_share</span>
+</button>
+</header>
+<!-- Product Image Carousel -->
+<section class="w-full h-[530px] relative overflow-hidden bg-surface-container-low">
+<div class="flex h-full overflow-x-auto snap-x snap-mandatory no-scrollbar">
+<!-- Slide 1 -->
+<div class="w-full h-full flex-shrink-0 snap-center relative">
+<img class="w-full h-full object-cover" data-alt="A meticulously crafted ceramic vase in a minimalist studio setting. The vase has a matte off-white finish with subtle, natural textures. It is placed on a smooth light gray concrete pedestal. Lighting is soft and diffused, coming from a large window to the left, creating gentle, elegant shadows. The overall aesthetic is calm, luxurious, and editorial, perfectly aligned with a high-end minimalist design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT0rAPfsfP20_tjXk7YvHTaWf3Fo_m5MzgCQSSQktv9sK1tTsyTEKCyyzGpfgyw8CVv8PvmOaXA7DjhEqdin7vKgqI1z0G5xpm4hPTRT3le2t0tpvDtt32QBzXCsKgcZjlsLCPfNGfvHh8NG5ysHhnLbNE8D7aj526TWzkDyTEhlBT2Mq153E8DpZw8SJLF2_dPVlOsWQ-v-hjtPfe2UMs7U8Zum43XwxVXlkT8Yw4JaWKnsGXJbdvDQ"/>
+</div>
+<!-- Slide 2 -->
+<div class="w-full h-full flex-shrink-0 snap-center relative">
+<div class="bg-cover bg-center w-full h-full" data-alt="A close-up detail shot of the ceramic vase's texture. The image focuses on the interplay of light and shadow across the subtle imperfections of the handcrafted surface. The background is completely blurred out in soft, warm tones. The lighting highlights the matte finish, emphasizing the tactile quality of the piece in a serene, quiet luxury style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAZZdol72FuASSuYV3S-UJFn2QhAUV_lp8iCJV4AKWHqDY_RlxIxp4VqEzt7YhOD2P4SO3mFDUq9c43VYJn200VxN8NNVqrAfdB-8xRoBTroV5GbPSgCXAWsU9Vf2dc9h-6fBURYQCoKkWUcU1RXbU66H5PG00MoiB2FQZU7qHREkPKc4EeFST5eAF9bPhux4VEy4qBXzR45IwPlSb4AP8EU8fPDpBChosBOHeQ4-AMoQSvlhlDNi81vA')"></div>
+</div>
+<!-- Slide 3 -->
+<div class="w-full h-full flex-shrink-0 snap-center relative">
+<img class="w-full h-full object-cover" data-alt="The ceramic vase styled in a modern, airy living room context. It sits on a solid oak coffee table next to a stack of premium design magazines. The background features a plush cream sofa and a large, sunlit window. The composition is balanced and spacious, reflecting an elevated, D2C lifestyle aesthetic with a focus on negative space and clean lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeTh92csbji00n74i94_M6j04rbrZ8boGNf5vwb8tyIIxJ1KL8bOIUnpNEtkbMeRyyWU5n6cACG3omIUv7yUHUWqORmKvm6cR0xX7SBBXqnYB2uxW9xj96QSx-b_gFYm4TsTP2jFTgLZCfT0tFU3qsCJ_ymLYC7XTYQvx6BJOtaUfKLJoIxXOP9XyIr7izlQC3kPLvBSOR-j0YFhw4SZ63h7AIskaJ6AJEHz7NOgks3rkz1nvs5kxyLg"/>
+</div>
+</div>
+<!-- Carousel Indicators -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
+<div class="w-2 h-2 rounded-full bg-surface-container-lowest"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-lowest/50"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-lowest/50"></div>
+</div>
+</section>
+<!-- Product Details Section -->
+<main class="px-margin-mobile pt-8 pb-32 max-w-container-max mx-auto md:px-margin-desktop md:pt-16">
+<!-- Title & Price -->
+<div class="mb-8">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Artisan Collection</p>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary mb-4 leading-tight">The Sculptural Vase</h1>
+<p class="font-body-lg text-body-lg text-on-surface mb-6">$185.00</p>
+</div>
+<!-- Description -->
+<div class="mb-10">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Hand-thrown in small batches, this sculptural piece brings quiet elegance to any space. Its matte, textured finish and asymmetrical form play with light and shadow, making it a striking standalone object or a vessel for dry botanicals.
+            </p>
+</div>
+<!-- Options: Color -->
+<div class="mb-10">
+<h3 class="font-label-md text-label-md text-primary mb-4">Color: <span class="font-normal text-on-surface-variant ml-1" id="selected-color-text">Bone White</span></h3>
+<div class="flex space-x-4">
+<button aria-label="Select Bone White color" class="w-10 h-10 rounded-full border border-primary p-[2px]">
+<div class="w-full h-full rounded-full bg-[#E5E0D8]"></div>
+</button>
+<button aria-label="Select Charcoal color" class="w-10 h-10 rounded-full border border-transparent p-[2px] hover:border-outline-variant transition-colors">
+<div class="w-full h-full rounded-full bg-[#2A2A2A]"></div>
+</button>
+<button aria-label="Select Terracotta color" class="w-10 h-10 rounded-full border border-transparent p-[2px] hover:border-outline-variant transition-colors">
+<div class="w-full h-full rounded-full bg-[#B56A50]"></div>
+</button>
+</div>
+</div>
+<!-- Accordion Details -->
+<div class="border-t border-surface-container-highest">
+<details class="group py-6 border-b border-surface-container-highest cursor-pointer">
+<summary class="flex justify-between items-center font-label-md text-label-md text-primary list-none">
+                    Dimensions &amp; Care
+                    <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-4 font-body-md text-body-md text-on-surface-variant">
+<ul class="list-disc pl-5 space-y-2">
+<li>Height: 12" (30cm)</li>
+<li>Diameter: 6" (15cm)</li>
+<li>Wipe clean with a damp cloth. Not intended to hold water.</li>
+</ul>
+</div>
+</details>
+<details class="group py-6 border-b border-surface-container-highest cursor-pointer">
+<summary class="flex justify-between items-center font-label-md text-label-md text-primary list-none">
+                    Shipping &amp; Returns
+                    <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-4 font-body-md text-body-md text-on-surface-variant">
+<p>Free standard shipping on orders over $150. Returns accepted within 30 days of delivery in original condition.</p>
+</div>
+</details>
+</div>
+</main>
+<!-- Sticky Add to Cart (Mobile) -->
+<div class="fixed bottom-[72px] md:bottom-0 left-0 w-full bg-surface-container-lowest/95 backdrop-blur-md border-t border-surface-container-highest p-4 md:p-6 z-40">
+<div class="max-w-container-max mx-auto flex gap-4">
+<!-- Quantity Selector -->
+<div class="flex items-center justify-between border border-outline-variant rounded-lg px-4 py-3 w-1/3 bg-background">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<span class="font-label-md text-label-md text-primary">1</span>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<!-- Add to Cart Button -->
+<button class="flex-1 bg-primary text-on-primary font-label-md text-label-md rounded-lg py-3 hover:opacity-90 transition-opacity active:scale-[0.98]">
+                Add to Cart - $185.00
+            </button>
+</div>
+</div>
+<!-- Bottom Navigation Shell (Mobile Only) -->
+<!-- Applying structural logic and matching semantic intent (none match perfectly, defaulting to active logic rules for a product page - Home or none, but JSON says render if top level. A PDP is not top level, but prompt demands it. We will render it and leave Home active or generic) -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest shadow-[0_-10px_30px_rgba(26,26,26,0.05)] docked full-width bottom-0 fixed z-50 rounded-t-xl fixed bottom-0 w-full flex justify-around items-center py-3 px-4 md:hidden">
+<a aria-label="Home" class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim font-semibold scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm-mobile">Home</span>
+</a>
+<a aria-label="Categories" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">grid_view</span>
+<span class="font-label-sm text-label-sm-mobile">Categories</span>
+</a>
+<a aria-label="Cart" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">shopping_bag</span>
+<span class="font-label-sm text-label-sm-mobile">Cart</span>
+</a>
+<a aria-label="Profile" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-sm text-label-sm-mobile">Profile</span>
+</a>
+</nav>
+</body></html>

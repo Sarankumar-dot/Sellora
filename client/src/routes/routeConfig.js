@@ -1,1 +1,20 @@
-export {}
+export const ROUTES = {
+  HOME: '/',
+  LOGIN: '/auth/login',
+  REGISTER: '/auth/register',
+  STOREFRONT: {
+    HOME: '/',
+    PRODUCTS: '/products',
+    PRODUCT_DETAILS: '/products/:id',
+    CART: '/cart',
+    CHECKOUT: '/checkout',
+    PROFILE: '/profile',
+    ORDER_SUCCESS: '/order-success/:orderId',
+    ORDER_HISTORY: '/orders',
+    ORDER_DETAIL: '/orders/:id',
+  },
+  FORGOT_PASSWORD: '/auth/forgot-password',
+  RESET_PASSWORD: '/auth/reset-password',
+  SELLER_DASHBOARD: '/seller',
+  ADMIN_DASHBOARD: '/admin',
+};

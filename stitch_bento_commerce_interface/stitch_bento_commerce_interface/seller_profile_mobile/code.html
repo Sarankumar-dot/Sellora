@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora - Seller Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1b1c1c",
+                        "outline-variant": "#c4c7c7",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "secondary": "#904c31",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-surface-variant": "#444748",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1b1c1c",
+                        "inverse-on-surface": "#f2f0f0",
+                        "inverse-primary": "#c8c6c5",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "outline": "#747878",
+                        "secondary-fixed": "#ffdbce",
+                        "surface-tint": "#5f5e5e",
+                        "surface-container-highest": "#e3e2e2",
+                        "tertiary-fixed": "#e3e2e0",
+                        "surface-container-low": "#f5f3f3",
+                        "tertiary-container": "#1a1c1b",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#000000",
+                        "surface-dim": "#dbdad9",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#474746",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#72351c",
+                        "on-secondary-fixed": "#380d00",
+                        "surface-container": "#efeded",
+                        "background": "#fbf9f9",
+                        "surface-bright": "#fbf9f9",
+                        "inverse-surface": "#303031",
+                        "surface": "#fbf9f9",
+                        "secondary-container": "#fea685",
+                        "on-secondary-container": "#783920",
+                        "primary": "#000000",
+                        "surface-container-high": "#e9e8e7",
+                        "primary-container": "#1c1b1b",
+                        "on-tertiary-container": "#838482",
+                        "surface-variant": "#e3e2e2",
+                        "primary-fixed": "#e5e2e1",
+                        "on-primary-container": "#858383",
+                        "secondary-fixed-dim": "#ffb59a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "32px",
+                        "gutter-mobile": "16px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .input-base {
+            @apply w-full bg-background border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors;
+        }
+        .label-base {
+            @apply block font-label-md text-label-md text-on-surface-variant mb-2;
+        }
+        .section-container {
+            @apply bg-surface-container-lowest p-6 rounded-xl mb-6 shadow-[0_10px_30px_rgba(26,26,26,0.03)];
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container w-full min-h-screen text-on-background font-body-md relative pb-24 md:hidden">
+<!-- Sticky Header -->
+<header class="sticky top-0 z-50 bg-surface/90 backdrop-blur-md border-b border-surface-container-highest px-gutter-mobile py-4 flex items-center justify-between">
+<button class="text-on-surface p-2 -ml-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-on-surface font-semibold absolute left-1/2 transform -translate-x-1/2">Store Profile</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<main class="p-margin-mobile">
+<!-- Logo Upload -->
+<div class="flex flex-col items-center justify-center mb-10 mt-6">
+<div class="relative group cursor-pointer">
+<div class="w-32 h-32 rounded-full border-2 border-dashed border-outline-variant bg-surface-container-low flex flex-col items-center justify-center overflow-hidden transition-all group-hover:border-primary group-hover:bg-surface-container">
+<span class="material-symbols-outlined text-outline text-3xl mb-2 group-hover:text-primary transition-colors">add_photo_alternate</span>
+<span class="font-label-sm text-label-sm text-outline group-hover:text-primary transition-colors">Upload Logo</span>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary text-on-primary rounded-full p-2 shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">edit</span>
+</div>
+</div>
+</div>
+<!-- Store Identity Section -->
+<section class="section-container">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Store Identity</h2>
+<div class="space-y-5">
+<div>
+<label class="label-base" for="storeName">Store Name</label>
+<input class="input-base" id="storeName" placeholder="e.g. Minimalist Home Goods" type="text"/>
+</div>
+<div>
+<label class="label-base" for="storeDesc">Description</label>
+<textarea class="input-base resize-none" id="storeDesc" placeholder="Tell customers about your curated collection..." rows="4"></textarea>
+</div>
+</div>
+</section>
+<!-- Compliance Section -->
+<section class="section-container">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Compliance &amp; Legal</h2>
+<div class="space-y-5">
+<div>
+<label class="label-base" for="gstNumber">GST Number</label>
+<input class="input-base font-mono uppercase tracking-wider" id="gstNumber" placeholder="22AAAAA0000A1Z5" type="text"/>
+</div>
+<div>
+<label class="label-base" for="panNumber">PAN Number</label>
+<input class="input-base font-mono uppercase tracking-wider" id="panNumber" placeholder="ABCDE1234F" type="text"/>
+</div>
+</div>
+</section>
+<!-- Location Section -->
+<section class="section-container">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Business Location</h2>
+<div class="space-y-5">
+<div>
+<label class="label-base" for="addressLine1">Address Line 1</label>
+<input class="input-base" id="addressLine1" placeholder="Street address, P.O. box, company name, c/o" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="label-base" for="city">City</label>
+<input class="input-base" id="city" placeholder="City" type="text"/>
+</div>
+<div>
+<label class="label-base" for="zipCode">ZIP Code</label>
+<input class="input-base" id="zipCode" placeholder="Postal code" type="text"/>
+</div>
+</div>
+<div>
+<label class="label-base" for="country">Country</label>
+<select 0="" 2000="" 24="" 24\"="" class="input-base appearance-none bg-no-repeat bg-right" height='\"24\"' http:="" id="country" style="background-image: url('data:image/svg+xml;utf8,&lt;svg xmlns=\" svg\"="" viewbox='\"0' width='\"24\"' www.w3.org="">'); background-position: calc(100% - 12px) center;"&gt;
+                        <option value="us">United States</option>
+<option value="uk">United Kingdom</option>
+<option value="ca">Canada</option>
+<option value="au">Australia</option>
+</select>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Fixed Action -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-surface-container-highest p-4 shadow-[0_-10px_30px_rgba(26,26,26,0.05)] z-50">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-lg shadow-md active:scale-[0.98] transition-transform">
+            Save Changes
+        </button>
+</div>
+</body></html>

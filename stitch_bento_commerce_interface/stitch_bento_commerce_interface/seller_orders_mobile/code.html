@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora Seller - Orders</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#1b1c1c",
+                      "outline-variant": "#c4c7c7",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#c7c6c5",
+                      "on-tertiary-fixed": "#1a1c1b",
+                      "secondary": "#904c31",
+                      "on-primary-fixed": "#1c1b1b",
+                      "on-surface-variant": "#444748",
+                      "on-error": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "error": "#ba1a1a",
+                      "on-surface": "#1b1c1c",
+                      "inverse-on-surface": "#f2f0f0",
+                      "inverse-primary": "#c8c6c5",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#464746",
+                      "outline": "#747878",
+                      "secondary-fixed": "#ffdbce",
+                      "surface-tint": "#5f5e5e",
+                      "surface-container-highest": "#e3e2e2",
+                      "tertiary-fixed": "#e3e2e0",
+                      "surface-container-low": "#f5f3f3",
+                      "tertiary-container": "#1a1c1b",
+                      "on-secondary": "#ffffff",
+                      "tertiary": "#000000",
+                      "surface-dim": "#dbdad9",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#474746",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#72351c",
+                      "on-secondary-fixed": "#380d00",
+                      "surface-container": "#efeded",
+                      "background": "#fbf9f9",
+                      "surface-bright": "#fbf9f9",
+                      "inverse-surface": "#303031",
+                      "surface": "#fbf9f9",
+                      "secondary-container": "#fea685",
+                      "on-secondary-container": "#783920",
+                      "primary": "#000000",
+                      "surface-container-high": "#e9e8e7",
+                      "primary-container": "#1c1b1b",
+                      "on-tertiary-container": "#838482",
+                      "surface-variant": "#e3e2e2",
+                      "primary-fixed": "#e5e2e1",
+                      "on-primary-container": "#858383",
+                      "secondary-fixed-dim": "#ffb59a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-desktop": "32px",
+                      "gutter-mobile": "16px",
+                      "margin-mobile": "20px",
+                      "unit": "8px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill-1 {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom styling for standard select to look more premium */
+        select.status-dropdown {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231A1A1A%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.7rem top 50%;
+            background-size: 0.65rem auto;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24 flex flex-col md:hidden">
+<!-- Mobile Header -->
+<header class="bg-surface sticky top-0 z-40 shadow-sm px-margin-mobile py-4 flex justify-between items-center">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Orders</h1>
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</header>
+<!-- Search & Filter Bar -->
+<div class="px-margin-mobile py-4 bg-surface-container-low shadow-[0_4px_10px_rgba(26,26,26,0.02)]">
+<div class="relative mb-4">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface border border-outline-variant rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md placeholder:text-outline" placeholder="Search orders..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+<button class="whitespace-nowrap px-4 py-1.5 bg-primary text-on-primary rounded-full font-label-md text-label-md transition-colors">All Orders</button>
+<button class="whitespace-nowrap px-4 py-1.5 bg-surface border border-outline-variant text-on-surface rounded-full font-label-md text-label-md hover:border-primary transition-colors">Pending</button>
+<button class="whitespace-nowrap px-4 py-1.5 bg-surface border border-outline-variant text-on-surface rounded-full font-label-md text-label-md hover:border-primary transition-colors">Shipped</button>
+<button class="whitespace-nowrap px-4 py-1.5 bg-surface border border-outline-variant text-on-surface rounded-full font-label-md text-label-md hover:border-primary transition-colors">Delivered</button>
+</div>
+</div>
+<!-- Main Content: Orders List -->
+<main class="flex-1 px-margin-mobile py-6 space-y-4">
+<!-- Order Card 1 -->
+<article class="bg-surface rounded-lg p-4 shadow-[0_2px_10px_rgba(26,26,26,0.03)] border border-surface-container-highest">
+<div class="flex justify-between items-center mb-3">
+<span class="font-label-md text-label-md text-outline">#ORD-9021</span>
+<span class="font-label-sm text-label-sm text-outline-variant">Today, 10:42 AM</span>
+</div>
+<div class="flex gap-4 mb-4">
+<div class="w-16 h-16 rounded overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A minimalist flat lay of a ceramic coffee mug on a clean white surface with soft natural lighting, high-end D2C aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuiQxz0laWRP-HqsWUOoz5RH9NpWLqqHyG1Fhi2dVHxDNd6EcNaSN7XwXxRLIMMRuUWk2F4iAshHXRdcRcsgR1BQkzzEt3ojgmCzKf3l9DF5vqcrO-LzCf7wFyQkxAmc30KUmu9jcHbRGf8xEMORaT1YuHgS1vqI6Sp3ZV_SY9jHireW8yw2KzRWC48xBVOUHHn_3ehhLoUiqVA2gj9AUjzVDZ_46d0dcXU8K-xTXmdzeGVIpCu-uIUg"/>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<h3 class="font-body-md text-body-md font-medium text-on-surface line-clamp-1">Ceramic Artisan Mug</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Elena Rossi</p>
+</div>
+<div class="flex flex-col justify-center items-end">
+<span class="font-body-md text-body-md font-semibold text-primary">$45.00</span>
+<span class="font-label-sm text-label-sm text-outline">Qty: 1</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-surface-container-highest">
+<div class="relative">
+<select class="status-dropdown pl-3 pr-8 py-1.5 bg-surface-container-highest border-none rounded font-label-sm text-label-sm text-on-surface focus:ring-1 focus:ring-primary outline-none cursor-pointer">
+<option selected="" value="pending">Pending</option>
+<option value="processing">Processing</option>
+<option value="shipped">Shipped</option>
+<option value="delivered">Delivered</option>
+<option value="cancelled">Cancelled</option>
+</select>
+</div>
+<button class="font-label-md text-label-md text-primary underline hover:text-secondary transition-colors">Details</button>
+</div>
+</article>
+<!-- Order Card 2 -->
+<article class="bg-surface rounded-lg p-4 shadow-[0_2px_10px_rgba(26,26,26,0.03)] border border-surface-container-highest">
+<div class="flex justify-between items-center mb-3">
+<span class="font-label-md text-label-md text-outline">#ORD-9020</span>
+<span class="font-label-sm text-label-sm text-outline-variant">Yesterday, 4:15 PM</span>
+</div>
+<div class="flex gap-4 mb-4">
+<div class="w-16 h-16 rounded overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A sleek leather wallet photographed against a neutral beige background with subtle shadows, exuding quiet luxury and premium craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPLg8Z0dO77ZObCQhqzZ5VYbKZAViYbc8efOmFC0ar0S62kA9B1vthx9rF7SaoeMbqi_LE1ObAJmqOBJXu8ARHmA-ViE33n6BS3Sd8OQkK5ql8VcFW0Id0pcm62H7fzizhla17JxwWMeBycY9s2Sx5Jdo8VUec7Jt2DNKQ5eTnn8PtcpH8yaVYfGi9vvCxJLprVMpg_3GgO-ykIumrydtdhhy0Ak6CctATWthbYYbSLHQEadDt-f-fwA"/>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<h3 class="font-body-md text-body-md font-medium text-on-surface line-clamp-1">Classic Leather Wallet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Marcus Chen</p>
+</div>
+<div class="flex flex-col justify-center items-end">
+<span class="font-body-md text-body-md font-semibold text-primary">$120.00</span>
+<span class="font-label-sm text-label-sm text-outline">Qty: 2</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-surface-container-highest">
+<div class="relative">
+<select class="status-dropdown pl-3 pr-8 py-1.5 bg-surface-container border border-outline-variant rounded font-label-sm text-label-sm text-on-surface focus:ring-1 focus:ring-primary outline-none cursor-pointer">
+<option value="pending">Pending</option>
+<option selected="" value="processing">Processing</option>
+<option value="shipped">Shipped</option>
+<option value="delivered">Delivered</option>
+<option value="cancelled">Cancelled</option>
+</select>
+</div>
+<button class="font-label-md text-label-md text-primary underline hover:text-secondary transition-colors">Details</button>
+</div>
+</article>
+<!-- Order Card 3 -->
+<article class="bg-surface rounded-lg p-4 shadow-[0_2px_10px_rgba(26,26,26,0.03)] border border-surface-container-highest">
+<div class="flex justify-between items-center mb-3">
+<span class="font-label-md text-label-md text-outline">#ORD-9019</span>
+<span class="font-label-sm text-label-sm text-outline-variant">Oct 12, 9:30 AM</span>
+</div>
+<div class="flex gap-4 mb-4">
+<div class="w-16 h-16 rounded overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A minimalist linen shirt neatly folded on a slate gray surface, softly lit to highlight texture, presenting a clean and elevated aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUqIkrgrp7YRyXODGmxlp2_w0CkTTdd2Xer5hKTZacJbnxjwzZdxY1SxwCGxYNMyTbbSv0H-7gmSIGCKIYAFp1N8FVSIaEv40SbV1v-5SZofoWBz04fSbVmXPYZpTfSMgwLFZ_p4ovLq1eRxfHZon-UwOSjbxCu4GA7zadEOvtjf__hezp_1CVq-OBfEMDL80KtWYKhiYic2zmaw4top8UTLS924haVmkwBl_YN_y8HvAQKly_uKPyhQ"/>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<h3 class="font-body-md text-body-md font-medium text-on-surface line-clamp-1">Linen Resort Shirt</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Sarah Jenkins</p>
+</div>
+<div class="flex flex-col justify-center items-end">
+<span class="font-body-md text-body-md font-semibold text-primary">$85.00</span>
+<span class="font-label-sm text-label-sm text-outline">Qty: 1</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-surface-container-highest">
+<div class="relative">
+<select class="status-dropdown pl-3 pr-8 py-1.5 bg-secondary-fixed text-on-secondary-fixed border-none rounded font-label-sm text-label-sm focus:ring-1 focus:ring-primary outline-none cursor-pointer">
+<option value="pending">Pending</option>
+<option value="processing">Processing</option>
+<option selected="" value="shipped">Shipped</option>
+<option value="delivered">Delivered</option>
+<option value="cancelled">Cancelled</option>
+</select>
+</div>
+<button class="font-label-md text-label-md text-primary underline hover:text-secondary transition-colors">Details</button>
+</div>
+</article>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-margin-mobile py-3 bg-surface dark:bg-surface-container shadow-[0_-10px_30px_rgba(26,26,26,0.05)] rounded-t-xl z-50">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant scale-95 active:scale-90 transition-transform hover:bg-surface-container-high p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm mt-1">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant scale-95 active:scale-90 transition-transform hover:bg-surface-container-high p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-sm text-label-sm mt-1">Inventory</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim font-bold scale-95 active:scale-90 transition-transform active:bg-surface-container-high p-2 rounded-lg">
+<span class="material-symbols-outlined icon-fill-1" data-icon="local_shipping">local_shipping</span>
+<span class="font-label-sm text-label-sm mt-1">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant scale-95 active:scale-90 transition-transform hover:bg-surface-container-high p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm mt-1">Settings</span>
+</button>
+</nav>
+</body></html>

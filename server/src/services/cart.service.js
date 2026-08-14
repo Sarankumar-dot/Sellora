@@ -39,10 +39,6 @@ export const addToCartService = async (userId, productId, quantity) => {
 export const getCartService = async (userId) => {
   const cart = await getCartItems(userId);
 
-  if (cart.length === 0) {
-    throw new ApiError(404, 'Cart is empty');
-  }
-
   return cart;
 };
 

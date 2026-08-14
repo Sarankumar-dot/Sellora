@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora - Shopping Cart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#474746",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "on-secondary-container": "#783920",
+                        "inverse-primary": "#c8c6c5",
+                        "outline-variant": "#c4c7c7",
+                        "surface-container-high": "#e9e8e7",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "primary": "#000000",
+                        "outline": "#747878",
+                        "surface-container-highest": "#e3e2e2",
+                        "on-surface-variant": "#444748",
+                        "on-secondary-fixed": "#380d00",
+                        "tertiary": "#000000",
+                        "background": "#fbf9f9",
+                        "tertiary-fixed": "#e3e2e0",
+                        "secondary": "#904c31",
+                        "surface-container": "#efeded",
+                        "secondary-container": "#fea685",
+                        "on-tertiary-container": "#838482",
+                        "secondary-fixed-dim": "#ffb59a",
+                        "inverse-on-surface": "#f2f0f0",
+                        "inverse-surface": "#303031",
+                        "surface-container-low": "#f5f3f3",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#72351c",
+                        "on-surface": "#1b1c1c",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#1c1b1b",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-dim": "#dbdad9",
+                        "error": "#ba1a1a",
+                        "surface": "#fbf9f9",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "surface-bright": "#fbf9f9",
+                        "primary-fixed": "#e5e2e1",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e3e2e2",
+                        "surface-tint": "#5f5e5e",
+                        "on-background": "#1b1c1c",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#858383",
+                        "tertiary-container": "#1a1c1b",
+                        "secondary-fixed": "#ffdbce"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-mobile": "16px",
+                        "gutter-desktop": "32px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-lg">
+<!-- Top Navigation -->
+<header class="bg-background dark:bg-background full-width top-0 sticky z-50">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
+<a class="font-display-lg text-headline-lg font-semibold tracking-tighter text-primary dark:text-primary-fixed" href="#">Sellora</a>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="#">New Arrivals</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="#">Collections</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="#">Journal</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="#">About</a>
+</nav>
+<div class="flex gap-4 items-center">
+<button class="text-primary hover:text-secondary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="text-primary hover:text-secondary transition-colors duration-300 hidden md:block">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop py-12 md:py-margin-desktop">
+<h1 class="font-headline-lg text-headline-lg mb-12">Your Cart</h1>
+<div class="flex flex-col lg:flex-row gap-12 lg:gap-24">
+<!-- Cart Items List -->
+<div class="flex-grow flex flex-col gap-8">
+<!-- Item 1 -->
+<div class="flex gap-6 pb-8 border-b border-surface-variant">
+<div class="w-32 h-40 bg-surface-container-low shrink-0 relative overflow-hidden group">
+<img class="object-cover w-full h-full absolute inset-0 transition-transform duration-700 group-hover:scale-105" data-alt="A high-end, minimalist photograph of a ceramic vase. The vase is off-white with a subtle, textured matte finish. It is placed on a smooth, slightly reflective surface. The lighting is soft and directional, creating gentle shadows that emphasize the vase's curves. The background is a clean, neutral grey. The overall aesthetic is calm, sophisticated, and perfectly suited for a luxury home decor brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2eddO3-jklSuXzvz-D7VneYTeKEkoRn8GwDch_uhljT2TW3aeWFGjMGtqL0Dwpk1jgiG3PI6_7CjlgF_9pEkdhMuj3ZaZjiLRpzxlpcMMcPS4Q_olKKYvleuXbad867tReJHn-KAP31XaqZh9C4zwIyfS6Qss7J6IIcV4FDkl2K06kzXktddWvJObxC1J5bNsWY9f0rxNwag7_DbNFolklmP7afHP3ektwiKicyxEAqcexoBolfk69A"/>
+</div>
+<div class="flex flex-col justify-between flex-grow py-2">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-body-lg font-medium text-primary mb-1">Ceramic Arc Vase</h3>
+<p class="font-body-md text-on-surface-variant text-sm">Color: Matte Bone</p>
+</div>
+<span class="font-body-lg text-body-md font-medium text-primary">$125.00</span>
+</div>
+<div class="flex justify-between items-end mt-4">
+<!-- Stepper -->
+<div class="flex items-center border border-outline-variant rounded bg-surface">
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="w-8 text-center font-body-md text-sm text-primary">1</span>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<button class="font-label-md text-label-sm text-on-surface-variant hover:text-error transition-colors underline underline-offset-4">Remove</button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-6 pb-8 border-b border-surface-variant">
+<div class="w-32 h-40 bg-surface-container-low shrink-0 relative overflow-hidden group">
+<img class="object-cover w-full h-full absolute inset-0 transition-transform duration-700 group-hover:scale-105" data-alt="A beautifully styled flat lay photograph of a woven linen throw blanket. The blanket features a subtle herringbone pattern in natural, undyed tones of cream and warm beige. It is draped organically, revealing its soft texture and fringed edges. The lighting mimics soft, diffused daylight streaming through a window. The aesthetic is tactile, cozy, and perfectly aligns with a premium lifestyle brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuxnkT4CMSGspULtmPm9F61-F5PhjMRSCuFPyUbdWofd7S-nmRcikXfE60kbmTayb5C5qoBqxNiSD6kh25leHHHDsHL0Sfby0tq8-wFKOQ44ssAnXRKTDmjQwHzLJTu9NuQ9mLwjYltF15av88whXaUKLZTqTRGuTKfPsxHembLJUa90FohYZgY9Ykg5E3sLFy9QdME7FVLCobvCV-vEesiGV1QqlhbmDSjnGnvq9XIYCwTCNUuF1GmQ"/>
+</div>
+<div class="flex flex-col justify-between flex-grow py-2">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-body-lg font-medium text-primary mb-1">Woven Linen Throw</h3>
+<p class="font-body-md text-on-surface-variant text-sm">Color: Natural Oat</p>
+</div>
+<span class="font-body-lg text-body-md font-medium text-primary">$180.00</span>
+</div>
+<div class="flex justify-between items-end mt-4">
+<!-- Stepper -->
+<div class="flex items-center border border-outline-variant rounded bg-surface">
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="w-8 text-center font-body-md text-sm text-primary">2</span>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<button class="font-label-md text-label-sm text-on-surface-variant hover:text-error transition-colors underline underline-offset-4">Remove</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary Sidebar -->
+<div class="w-full lg:w-[400px] shrink-0">
+<div class="bg-surface-container-low p-8 rounded-lg sticky top-28">
+<h2 class="font-headline-md text-headline-md mb-6 border-b border-surface-variant pb-4">Order Summary</h2>
+<div class="flex flex-col gap-4 mb-8 font-body-md text-body-md text-on-surface-variant">
+<div class="flex justify-between">
+<span>Subtotal</span>
+<span class="text-primary font-medium">$485.00</span>
+</div>
+<div class="flex justify-between">
+<span>Shipping</span>
+<span>Calculated at checkout</span>
+</div>
+<div class="flex justify-between">
+<span>Taxes</span>
+<span>Calculated at checkout</span>
+</div>
+</div>
+<div class="flex justify-between items-center mb-8 pt-6 border-t border-surface-variant">
+<span class="font-headline-md text-body-lg font-medium text-primary">Total</span>
+<span class="font-headline-md text-headline-lg font-semibold text-primary">$485.00</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-DEFAULT font-label-md text-label-md hover:bg-secondary transition-colors duration-300 mb-4 shadow-[0_10px_30px_rgba(26,26,26,0.1)] hover:shadow-[0_15px_40px_rgba(144,76,49,0.2)]">
+                        Proceed to Checkout
+                    </button>
+<div class="flex items-center justify-center gap-2 text-on-surface-variant mt-6">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+<span class="font-body-md text-sm">Secure Checkout</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-container-low full-width mt-auto">
+<div class="w-full py-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-start">
+<div class="mb-8 md:mb-0">
+<h2 class="font-display-lg text-headline-md text-primary mb-4">Sellora</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 Sellora. All rights reserved.</p>
+</div>
+<nav class="flex flex-wrap gap-6 font-label-sm text-label-sm">
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 ease-in-out underline underline-offset-4" href="#">Sustainability</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 ease-in-out underline underline-offset-4" href="#">Shipping</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 ease-in-out underline underline-offset-4" href="#">Returns</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 ease-in-out underline underline-offset-4" href="#">Contact</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 ease-in-out underline underline-offset-4" href="#">Privacy</a>
+</nav>
+</div>
+</footer>
+</body></html>

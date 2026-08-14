@@ -88,10 +88,6 @@ export const checkoutService = async (userId, shippingAddress) => {
 export const getMyOrdersService = async (userId) => {
   const orders = await findOrdersByUserId(userId);
 
-  if (orders.length === 0) {
-    throw new ApiError(404, 'No orders found');
-  }
-
   return orders;
 };
 

@@ -20,10 +20,6 @@ export const createCategoryService = async (categoryData) => {
 export const getCategoryService = async () => {
   const categories = await findAllCategories();
 
-  if (categories.length === 0) {
-    throw new ApiError(404, 'No category found');
-  }
-
   return categories;
 };
 

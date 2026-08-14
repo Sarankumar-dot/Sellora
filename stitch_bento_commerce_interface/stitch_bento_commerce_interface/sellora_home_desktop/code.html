@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sellora - Elevated Minimalism</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#474746",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#464746",
+                      "on-secondary-container": "#783920",
+                      "inverse-primary": "#c8c6c5",
+                      "outline-variant": "#c4c7c7",
+                      "surface-container-high": "#e9e8e7",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "primary": "#000000",
+                      "outline": "#747878",
+                      "surface-container-highest": "#e3e2e2",
+                      "on-surface-variant": "#444748",
+                      "on-secondary-fixed": "#380d00",
+                      "tertiary": "#000000",
+                      "background": "#fbf9f9",
+                      "tertiary-fixed": "#e3e2e0",
+                      "secondary": "#904c31",
+                      "surface-container": "#efeded",
+                      "secondary-container": "#fea685",
+                      "on-tertiary-container": "#838482",
+                      "secondary-fixed-dim": "#ffb59a",
+                      "inverse-on-surface": "#f2f0f0",
+                      "inverse-surface": "#303031",
+                      "surface-container-low": "#f5f3f3",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#72351c",
+                      "on-surface": "#1b1c1c",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#1c1b1b",
+                      "on-primary-fixed": "#1c1b1b",
+                      "surface-dim": "#dbdad9",
+                      "error": "#ba1a1a",
+                      "surface": "#fbf9f9",
+                      "tertiary-fixed-dim": "#c7c6c5",
+                      "surface-bright": "#fbf9f9",
+                      "primary-fixed": "#e5e2e1",
+                      "on-tertiary": "#ffffff",
+                      "surface-variant": "#e3e2e2",
+                      "surface-tint": "#5f5e5e",
+                      "on-background": "#1b1c1c",
+                      "on-tertiary-fixed": "#1a1c1b",
+                      "on-primary": "#ffffff",
+                      "on-primary-container": "#858383",
+                      "tertiary-container": "#1a1c1b",
+                      "secondary-fixed": "#ffdbce"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-mobile": "16px",
+                      "gutter-desktop": "32px",
+                      "margin-mobile": "20px",
+                      "container-max": "1280px",
+                      "unit": "8px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #fbf9f9;
+        }
+        .ambient-shadow {
+            box-shadow: 0 10px 30px rgba(26, 26, 26, 0.05);
+        }
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(26, 26, 26, 0.08);
+        }
+      </style>
+</head>
+<body class="font-body-md text-body-md text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-background top-0 sticky z-50 transition-colors duration-300">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
+<!-- Navigation Links (Left) -->
+<nav class="hidden md:flex space-x-8 items-center">
+<a class="text-on-surface-variant font-medium font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="#">New Arrivals</a>
+<a class="text-on-surface-variant font-medium font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="#">Collections</a>
+<a class="text-on-surface-variant font-medium font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="#">Journal</a>
+<a class="text-on-surface-variant font-medium font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="#">About</a>
+</nav>
+<!-- Brand Logo (Center) -->
+<div class="flex-shrink-0 absolute left-1/2 transform -translate-x-1/2">
+<a class="font-display-lg text-headline-lg font-semibold tracking-tighter text-primary" href="#">Sellora</a>
+</div>
+<!-- Trailing Icon Actions (Right) -->
+<div class="flex space-x-6 items-center">
+<button class="text-primary hover:text-secondary transition-colors duration-300 opacity-80 hover:opacity-100 hover:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="text-primary hover:text-secondary transition-colors duration-300 opacity-80 hover:opacity-100 hover:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative w-full h-[870px] min-h-[600px] bg-surface-container-low flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 w-full h-full">
+<div class="bg-cover bg-center w-full h-full opacity-90 mix-blend-multiply" data-alt="A striking editorial photograph of a minimalist ceramic vase on a raw concrete pedestal. The lighting is soft and directional, creating gentle shadows. The background is an expansive, neutral off-white studio space. The mood is calm, curated, and luxurious, fitting a high-end minimalist design aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAPShsBLBh0JbFCjSTc0Qb0IH0k6D8oxT9AwhsDJq4XJADkK4ju8tNDyXaVJCwHbJeYV6oTcEPbbId0uPKW_wGle7QUk9NwklGti_qCMXafVO_04XH1d3TOjptBVd97z-AGTuebxSEv2wSot0M-uulNw6ppSQ-9zJ_r52C5HRjM-tcWZyzJThKP4BnWjIW3bh0etyI29cZzMc1HJzHpCvAg3ucykEaARFfCWbq7Up3tGP0WpRbxG2bW3g')"></div>
+</div>
+<div class="relative z-10 text-center max-w-3xl px-6 flex flex-col items-center">
+<h1 class="font-display-lg text-display-lg text-primary mb-6 drop-shadow-sm">Curated Objects for Mindful Living</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">Elevate your space with our latest collection of intentionally designed, artisan-crafted home goods.</p>
+<button class="bg-primary-container text-on-primary rounded-lg px-8 py-4 font-label-md text-label-md uppercase tracking-widest hover:bg-surface-tint transition-colors duration-300 shadow-sm">
+                    Shop Collection
+                </button>
+</div>
+</section>
+<!-- Category Strip -->
+<section class="py-12 bg-background border-b border-surface-variant">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex justify-center space-x-12 overflow-x-auto no-scrollbar py-4">
+<a class="flex flex-col items-center space-y-3 group min-w-[80px]" href="#">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="chair">chair</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-primary transition-colors">Furniture</span>
+</a>
+<a class="flex flex-col items-center space-y-3 group min-w-[80px]" href="#">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="light">light</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-primary transition-colors">Lighting</span>
+</a>
+<a class="flex flex-col items-center space-y-3 group min-w-[80px]" href="#">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="local_cafe">local_cafe</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-primary transition-colors">Ceramics</span>
+</a>
+<a class="flex flex-col items-center space-y-3 group min-w-[80px]" href="#">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="checkroom">checkroom</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-primary transition-colors">Textiles</span>
+</a>
+</div>
+</div>
+</section>
+<!-- New Arrivals - Bento Grid -->
+<section class="py-24 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex justify-between items-end mb-12">
+<h2 class="font-headline-lg text-headline-lg text-primary">New Arrivals</h2>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors pb-1 border-b border-transparent hover:border-primary" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter-mobile md:gap-gutter-desktop auto-rows-[400px]">
+<!-- Large Feature Item (Takes up 8 columns) -->
+<div class="md:col-span-8 group relative bg-surface-container-lowest rounded-xl overflow-hidden hover-lift cursor-pointer flex flex-col justify-end p-8">
+<div class="absolute inset-0 w-full h-full bg-surface-container-low -z-10">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out mix-blend-multiply" data-alt="A wide editorial shot of a modern, minimalist lounge chair upholstered in a soft, textured cream bouclé fabric. The chair sits on a light oak floor against a pure white background. The lighting is diffused, highlighting the tactile quality of the fabric. The aesthetic is warm minimalism and high-end residential." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgU194c7mDtYwCn7kmSr-RsxAK21_TVBv9krJE32w9gjuEyHGI2eFmW47GG1vWLtna7s50OUmS49AyvHI8BTXyIkJDY6yq7BLbhQR5zkHU5oxjr31px2nD6iOf8Y8DSauFuz8LU-eJCEf8dJk6ZrCNSFkk-DD8X2vgAb_XX9iFSSMXGB3ksbtQLtdBRm5iTVhHqfdayxJdzh8Cvfzm9KwATFC69eUXSb1M_mZscrNutprjw8BFmJcFsQ"/>
+</div>
+<div class="bg-surface-container-lowest/90 backdrop-blur-sm p-6 rounded-lg inline-block w-max self-start ambient-shadow">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">The Bouclé Lounge</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Tactile comfort meets structural elegance.</p>
+<span class="font-label-md text-label-md text-primary font-semibold">$1,250</span>
+</div>
+</div>
+<!-- Vertical Feature Item (Takes up 4 columns) -->
+<div class="md:col-span-4 group relative bg-surface-container-lowest rounded-xl overflow-hidden hover-lift cursor-pointer flex flex-col justify-end p-6">
+<div class="absolute inset-0 w-full h-full bg-surface-container-low -z-10">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out mix-blend-multiply" data-alt="A close-up photograph of a sleek, matte black minimalist table lamp casting a warm, subtle glow on a light ash wood surface. The background is a soft, out-of-focus off-white wall. The style is contemporary industrial elegance, focusing on clean geometric lines and premium materials." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIppClqLxOaAHuurTeXF6dOL6Tp4paSmSZJmfkTzL0YVQyWIRxJdeGo8EkDCtzskQcWX7Lo0InN2Hg3RI6QHRuwcBTCs1ZNGVmCe14a1yNuuh-OX-9rqi_FCsl5DJDwPgmbui7boy6-eGDmXw--KlBictQTtXC4X9GhqHHfItu5Dng_DnHB-3y4fsGg8O06BEh-GjaZG5TVtbo2R1kVE8rG8XqLxtS6aiTYi-7w1qPsjwT1ohsqOH8pA"/>
+</div>
+<div class="bg-surface-container-lowest/90 backdrop-blur-sm p-4 rounded-lg inline-block w-full ambient-shadow">
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Arc Table Lamp</h3>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Matte Black</span>
+<span class="font-label-md text-label-md text-primary font-semibold">$345</span>
+</div>
+</div>
+</div>
+<!-- Square Item (4 cols) -->
+<div class="md:col-span-4 group relative bg-surface-container-lowest rounded-xl overflow-hidden hover-lift cursor-pointer flex flex-col justify-end p-6">
+<div class="absolute inset-0 w-full h-full bg-surface-container-low -z-10">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out mix-blend-multiply" data-alt="A top-down view of a handcrafted ceramic serving bowl in a natural, earthy terracotta glaze. It sits on a textured linen cloth over a pale stone surface. The lighting is soft daylight, emphasizing the organic imperfections and artisanal quality of the ceramic piece. The aesthetic is wabi-sabi and refined rustic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMfpykPDUqfFbBPsQz-nwjpEbTYpRkCfRgjlYEWu0o7zSU14MjJkspCjc0dxJg_pYrMfiPSkmSfm4oeHUQ4HEP-4Osw5-2dYGaWONVoFr2mvXJ_2hlGr3mCOz9hCjqGKErSpCKlBMDwiUe9l2eD4jvh_rsF-4uCGcP1w-aH1tQA5Zfku8kiKR1WDX9eoRAgBA1zX2jnFzjrCe-NcnyapWknlZkN8cWsK8l6Ogrb10VGOmOKMYapI64Zg"/>
+</div>
+<div class="mt-auto">
+<div class="bg-surface-container-lowest/90 backdrop-blur-sm p-4 rounded-lg inline-block w-full ambient-shadow">
+<h3 class="font-headline-md text-[20px] leading-snug text-primary mb-1">Earthen Vessel</h3>
+<span class="font-label-md text-label-md text-primary font-semibold">$120</span>
+</div>
+</div>
+</div>
+<!-- Horizontal Item (8 cols) -->
+<div class="md:col-span-8 group relative bg-surface-container-lowest rounded-xl overflow-hidden hover-lift cursor-pointer flex flex-col justify-end p-8">
+<div class="absolute inset-0 w-full h-full bg-surface-container-low -z-10">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out mix-blend-multiply object-center" data-alt="A styled interior shot of a minimalist solid wood dining table in a spacious, light-filled room. The table has clean, angular lines and a matte finish. A single glass vase with dried botanicals sits in the center. The surrounding space is characterized by neutral tones, expansive white walls, and a sense of calm, airy sophistication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeIHWI9DSfSb8n1LGtqeAIaoy2FINTola9vc5Iv96jLOr-zOe1QyCGKjARm1c3ta1mfcRzc99oGOXsh7dWn-T29QTAtsPZWMSwraHt9l0EdyTj_TVWzgqwCJWiEFd1CZzxbNFxTb-5nhx0OK3cKKcjcoSEcFKyUyDyGXSekNz-surYb_mXhAFKQFwv-9vWrVybRfQzr4TvtKc4z-B8LXw_TBDFEhuhtxxRD9lMn5JyXeR3jaFcShOLdA"/>
+</div>
+<div class="bg-surface-container-lowest/90 backdrop-blur-sm p-6 rounded-lg inline-block w-max self-end ambient-shadow text-right">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Linear Dining Table</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Solid ash, crafted for generations.</p>
+<span class="font-label-md text-label-md text-primary font-semibold">$2,800</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Editorial Feature -->
+<section class="py-24 bg-surface-container">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="order-2 md:order-1">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mb-4 block">The Journal</span>
+<h2 class="font-display-lg text-headline-lg text-primary mb-6">Designing for Stillness</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">In a world of constant noise, we believe the objects in your home should offer a sense of quiet. Explore our philosophy on minimalist design and intentional curation.</p>
+<a class="inline-flex items-center space-x-2 text-primary font-label-md text-label-md hover:text-secondary transition-colors border-b border-primary hover:border-secondary pb-1" href="#">
+<span>Read the Editorial</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="order-1 md:order-2">
+<div class="aspect-[4/5] bg-surface-container-low rounded-lg overflow-hidden ambient-shadow">
+<img class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 transition-all duration-700" data-alt="A portrait-oriented artistic photograph capturing the interplay of light and shadow in a minimalist interior. A sheer curtain gently diffuses bright sunlight across a smooth plaster wall, illuminating a single, sculptural wooden chair. The palette is monochromatic, relying on varying shades of white, cream, and soft grey to convey a mood of serenity and architectural purity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBvjWYzEtnAzNOUkVrkSyAfw34n9exJWawNLx5gKhVNA5eX9AAy93D8CXz6YePwG_E57_CmaaeVyReR1DlGyPbXeXvQTXEWN1S2ZJHgOnf3fCc83fBSSJfR_9-dlxiA1ckIEAZL0Vg0oa5I5r8vc2PgOPAKgjHy8xr4QH9YsJUQIoPj1G5_Wh_nD14dZLk0Z6hfdBAjO-QwJKXcvYF3tmCtCv7CWL4_OvP-O8gK-RxttAtUUwCouNilg"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low text-on-surface w-full py-16 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-start">
+<div class="mb-12 md:mb-0">
+<h2 class="font-display-lg text-headline-md text-primary mb-4">Sellora</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-6">Elevating the everyday through mindful design and curated objects.</p>
+</div>
+<div class="flex flex-col md:flex-row gap-12 md:gap-24">
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-4 uppercase tracking-widest">Explore</h3>
+<ul class="space-y-3 font-body-md text-body-md text-on-surface-variant">
+<li><a class="hover:text-secondary transition-colors duration-200" href="#">New Arrivals</a></li>
+<li><a class="hover:text-secondary transition-colors duration-200" href="#">Collections</a></li>
+<li><a class="hover:text-secondary transition-colors duration-200" href="#">The Journal</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-4 uppercase tracking-widest">Support</h3>
+<ul class="space-y-3 font-body-md text-body-md text-on-surface-variant">
+<li><a class="hover:text-secondary transition-colors duration-200 underline underline-offset-4" href="#">Sustainability</a></li>
+<li><a class="hover:text-secondary transition-colors duration-200 underline underline-offset-4" href="#">Shipping</a></li>
+<li><a class="hover:text-secondary transition-colors duration-200 underline underline-offset-4" href="#">Returns</a></li>
+<li><a class="hover:text-secondary transition-colors duration-200 underline underline-offset-4" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-4 uppercase tracking-widest">Legal</h3>
+<ul class="space-y-3 font-body-md text-body-md text-on-surface-variant">
+<li><a class="hover:text-secondary transition-colors duration-200 underline underline-offset-4" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-secondary transition-colors duration-200 underline underline-offset-4" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto mt-16 pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Sellora. All rights reserved.</p>
+</div>
+</footer>
+</body></html>
