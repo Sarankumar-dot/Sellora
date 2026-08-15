@@ -54,16 +54,32 @@ export const getProductsFromDB = async (limit, offset, search, category, sort) =
     `;
 
   switch (sort) {
+    case 'price':
     case 'price_asc':
       query += ' ORDER BY price ASC';
       break;
 
+    case '-price':
     case 'price_desc':
       query += ' ORDER BY price DESC';
       break;
 
+    case 'name':
+      query += ' ORDER BY name ASC';
+      break;
+
+    case '-name':
+      query += ' ORDER BY name DESC';
+      break;
+
+    case 'createdAt':
+      query += ' ORDER BY created_at ASC';
+      break;
+
+    case '-createdAt':
     default:
       query += ' ORDER BY created_at DESC';
+      break;
   }
 
   query += ` LIMIT ${limit} OFFSET ${offset}`;

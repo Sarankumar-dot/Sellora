@@ -87,7 +87,12 @@ apiClient.interceptors.response.use(
 
 /**
  * Shared helper to unwrap standard backend response format
+ * Backend returns { success, statusCode, message, data } — callers need `data`.
  */
 export const unwrapResponse = (response) => {
-  return response.data;
+  const body = response.data;
+  if (body && typeof body === 'object' && Object.prototype.hasOwnProperty.call(body, 'data')) {
+    return body.data;
+  }
+  return body;
 };

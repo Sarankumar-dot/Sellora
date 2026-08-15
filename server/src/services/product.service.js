@@ -69,9 +69,9 @@ export const getProductsService = async (query) => {
 
   const search = query.search || '';
 
-  const category = query.category || null;
+  const category = query.categoryId || null;
 
-  const sort = query.sort || 'latest';
+  const sort = query.sort || '-createdAt';
 
   const products = await getProductsFromDB(limit, offset, search, category, sort);
 
