@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { apiClient } from '../../api/client';
+import { apiClient, unwrapResponse } from '../../api/client';
 
 const sellerProfileSchema = z.object({
   storeName: z.string().min(3, 'Store name must be at least 3 characters'),
@@ -29,12 +29,12 @@ export default function SellerProfilePage() {
   const [submitError, setSubmitError] = useState(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  // Fetch Seller Profile
+  // Fetch Seller Profile — returns snake_case DB row: { id, store_name, gst_number, pan_number, address, description, logo }
   const { data: profile, isLoading } = useQuery({
     queryKey: ['seller-profile'],
     queryFn: async () => {
       const response = await apiClient.get('/seller/profile');
-      return response.data;
+      return unwrapResponse(response);
     },
   });
 
@@ -60,7 +60,7 @@ export default function SellerProfilePage() {
   const updateProfileMutation = useMutation({
     mutationFn: async (data) => {
       const response = await apiClient.put('/seller/profile', data);
-      return response.data;
+      return unwrapResponse(response);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['seller-profile'] });

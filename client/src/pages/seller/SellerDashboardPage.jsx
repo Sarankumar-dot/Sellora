@@ -1,46 +1,53 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
-import { apiClient } from '../../api/client';
+import { apiClient, unwrapResponse } from '../../api/client';
 
 export default function SellerDashboardPage() {
   // Fetch Seller Profile
+  // Profile returns snake_case DB row: { id, store_name, gst_number, pan_number, address, description, logo }
   const { data: profile, isLoading: isLoadingProfile } = useQuery({
     queryKey: ['seller-profile'],
     queryFn: async () => {
       const response = await apiClient.get('/seller/profile');
-      return response.data;
+      return unwrapResponse(response);
     },
   });
 
   // Fetch Seller Orders
+  // Returns camelCase: [{ orderId, totalAmount, orderStatus, paymentStatus, customerName, items: [{ productId, productName, quantity, price }] }]
   const { data: orders = [], isLoading: isLoadingOrders } = useQuery({
     queryKey: ['seller-orders'],
     queryFn: async () => {
       const response = await apiClient.get('/seller/orders');
-      return response.data;
+      return unwrapResponse(response);
     },
   });
 
   // Fetch Products (for seller active products count)
+  // BACKEND GAP: GET /products limit is capped at 100 by Joi validation (common.validation.js).
+  // This client-side seller isolation workaround breaks once total platform products exceed 100.
+  // A real server-side sellerId filter on GET /products is needed for correctness at scale.
   const { data: productsData, isLoading: isLoadingProducts } = useQuery({
     queryKey: ['seller-products-count'],
     queryFn: async () => {
-      const response = await apiClient.get('/products', { params: { limit: 1000 } });
-      return response.data;
+      const response = await apiClient.get('/products', { params: { limit: 100 } });
+      return unwrapResponse(response);
     },
   });
 
+  // profile.id is the seller profile id (snake_case DB row)
   const sellerProducts = (productsData?.products || []).filter(
     (p) => p.seller_id === profile?.id
   );
 
+  // orderStatus is camelCase from getSellerOrdersService
   const pendingOrdersCount = orders.filter(
-    (o) => o.order_status === 'PENDING' || o.order_status === 'PROCESSING'
+    (o) => o.orderStatus === 'PENDING' || o.orderStatus === 'PROCESSING'
   ).length;
 
+  // totalAmount is the grouped order total from getSellerOrdersService
   const totalRevenue = orders.reduce((sum, o) => {
-    // Sum prices of order items or total_amount
-    const orderTotal = parseFloat(o.price ? o.price * o.quantity : o.total_amount || 0);
+    const orderTotal = parseFloat(o.totalAmount || 0);
     return sum + (isNaN(orderTotal) ? 0 : orderTotal);
   }, 0);
 
@@ -176,23 +183,31 @@ export default function SellerDashboardPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-surface-variant text-sm">
-                {orders.slice(0, 5).map((order, idx) => (
-                  <tr key={order.order_id || idx} className="hover:bg-surface-container-low transition-colors">
-                    <td className="py-4 px-4 font-semibold text-primary">#{order.order_id}</td>
-                    <td className="py-4 px-4 text-on-surface">{order.customer_name || 'Customer'}</td>
-                    <td className="py-4 px-4 text-on-surface-variant">{order.product_name || 'Product'} ({order.quantity})</td>
-                    <td className="py-4 px-4 font-semibold text-primary">${parseFloat(order.price * order.quantity || order.total_amount || 0).toFixed(2)}</td>
-                    <td className="py-4 px-4">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium uppercase tracking-wider ${
-                        order.order_status === 'DELIVERED'
-                          ? 'bg-secondary-container text-on-secondary-container'
-                          : 'bg-surface-container-high text-on-surface'
-                      }`}>
-                        {order.order_status || 'PENDING'}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
+                {orders.slice(0, 5).map((order, idx) => {
+                  // items is an array: [{ productName, quantity, price }]
+                  const firstItem = order.items?.[0];
+                  return (
+                    <tr key={order.orderId || idx} className="hover:bg-surface-container-low transition-colors">
+                      <td className="py-4 px-4 font-semibold text-primary">#{order.orderId}</td>
+                      <td className="py-4 px-4 text-on-surface">{order.customerName || 'Customer'}</td>
+                      <td className="py-4 px-4 text-on-surface-variant">
+                        {firstItem?.productName || 'Product'}
+                        {order.items?.length > 1 ? ` +${order.items.length - 1} more` : ''}
+                        {firstItem ? ` (qty: ${firstItem.quantity})` : ''}
+                      </td>
+                      <td className="py-4 px-4 font-semibold text-primary">${parseFloat(order.totalAmount || 0).toFixed(2)}</td>
+                      <td className="py-4 px-4">
+                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium uppercase tracking-wider ${
+                          order.orderStatus === 'DELIVERED'
+                            ? 'bg-secondary-container text-on-secondary-container'
+                            : 'bg-surface-container-high text-on-surface'
+                        }`}>
+                          {order.orderStatus || 'PENDING'}
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

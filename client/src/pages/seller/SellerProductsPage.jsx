@@ -1,29 +1,31 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { apiClient } from '../../api/client';
+import { apiClient, unwrapResponse } from '../../api/client';
 
 export default function SellerProductsPage() {
   const queryClient = useQueryClient();
   const [searchTerm, setSearchTerm] = useState('');
   const [deletingId, setDeletingId] = useState(null);
 
-  // Fetch Seller Profile to get seller.id
+  // Fetch Seller Profile to get seller.id (DB row — snake_case: id, store_name, ...)
   const { data: profile, isLoading: isLoadingProfile } = useQuery({
     queryKey: ['seller-profile'],
     queryFn: async () => {
       const response = await apiClient.get('/seller/profile');
-      return response.data;
+      return unwrapResponse(response);
     },
   });
 
-  // WORKAROUND NOTICE: The backend GET /products endpoint currently lacks a sellerId filter parameter.
-  // We fetch GET /products?limit=1000 to retrieve products and filter by seller_id on the client-side.
+  // BACKEND GAP: GET /products limit is capped at 100 by Joi validation (common.validation.js).
+  // Client-side seller isolation (filtering by seller_id) breaks once total platform products exceed 100.
+  // A real server-side sellerId filter on GET /products is needed for correctness at scale.
+  // Using limit=100 as the max permitted value until that endpoint is implemented.
   const { data: productsData, isLoading: isLoadingProducts } = useQuery({
     queryKey: ['all-products-for-seller'],
     queryFn: async () => {
-      const response = await apiClient.get('/products', { params: { limit: 1000 } });
-      return response.data;
+      const response = await apiClient.get('/products', { params: { limit: 100 } });
+      return unwrapResponse(response);
     },
   });
 

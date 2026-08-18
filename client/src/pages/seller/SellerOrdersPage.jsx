@@ -1,29 +1,29 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { apiClient } from '../../api/client';
+import { apiClient, unwrapResponse } from '../../api/client';
 
 export default function SellerOrdersPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('ALL');
 
-  // Fetch Seller Orders
+  // Returns camelCase: [{ orderId, totalAmount, orderStatus, paymentStatus, customerName, items: [{ productId, productName, quantity, price }] }]
   const { data: orders = [], isLoading } = useQuery({
     queryKey: ['seller-orders'],
     queryFn: async () => {
       const response = await apiClient.get('/seller/orders');
-      return response.data;
+      return unwrapResponse(response);
     },
   });
 
   const filteredOrders = orders.filter((order) => {
     const matchesSearch =
-      order.order_id?.toString().includes(searchTerm) ||
-      order.customer_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      order.product_name?.toLowerCase().includes(searchTerm.toLowerCase());
+      order.orderId?.toString().includes(searchTerm) ||
+      order.customerName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      order.items?.some(item => item.productName?.toLowerCase().includes(searchTerm.toLowerCase()));
 
     const matchesStatus =
       statusFilter === 'ALL' ||
-      order.order_status?.toUpperCase() === statusFilter;
+      order.orderStatus?.toUpperCase() === statusFilter;
 
     return matchesSearch && matchesStatus;
   });
@@ -106,19 +106,26 @@ export default function SellerOrdersPage() {
               </thead>
               <tbody className="divide-y divide-surface-variant text-sm">
                 {filteredOrders.map((order, idx) => {
-                  const itemTotal = order.price && order.quantity ? order.price * order.quantity : order.total_amount || 0;
+                  // items: [{ productId, productName, quantity, price }]
+                  const firstItem = order.items?.[0];
+                  const itemTotal = order.totalAmount || 0;
                   return (
-                    <tr key={order.order_id || idx} className="hover:bg-surface-container-low transition-colors">
+                    <tr key={order.orderId || idx} className="hover:bg-surface-container-low transition-colors">
                       <td className="py-4 px-6 font-semibold text-primary">
-                        #{order.order_id}
+                        #{order.orderId}
                       </td>
                       <td className="py-4 px-6 text-on-surface font-medium">
-                        {order.customer_name || 'Customer'}
+                        {order.customerName || 'Customer'}
                       </td>
                       <td className="py-4 px-6">
                         <div>
-                          <p className="font-label-md text-label-md text-primary line-clamp-1">{order.product_name || 'Product'}</p>
-                          <p className="font-body-md text-xs text-on-surface-variant">Qty: {order.quantity || 1} @ ${parseFloat(order.price || itemTotal).toFixed(2)}</p>
+                          <p className="font-label-md text-label-md text-primary line-clamp-1">
+                            {firstItem?.productName || 'Product'}
+                            {order.items?.length > 1 ? ` +${order.items.length - 1} more` : ''}
+                          </p>
+                          <p className="font-body-md text-xs text-on-surface-variant">
+                            Qty: {firstItem?.quantity || 1} @ ${parseFloat(firstItem?.price || 0).toFixed(2)}
+                          </p>
                         </div>
                       </td>
                       <td className="py-4 px-6 font-semibold text-primary">
@@ -126,22 +133,22 @@ export default function SellerOrdersPage() {
                       </td>
                       <td className="py-4 px-6">
                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium uppercase tracking-wider ${
-                          order.payment_status === 'PAID'
+                          order.paymentStatus === 'PAID'
                             ? 'bg-secondary-container text-on-secondary-container'
                             : 'bg-error-container text-on-error-container'
                         }`}>
-                          {order.payment_status || 'PENDING'}
+                          {order.paymentStatus || 'PENDING'}
                         </span>
                       </td>
                       <td className="py-4 px-6">
                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium uppercase tracking-wider ${
-                          order.order_status === 'DELIVERED'
+                          order.orderStatus === 'DELIVERED'
                             ? 'bg-secondary-container text-on-secondary-container'
-                            : order.order_status === 'SHIPPED' || order.order_status === 'PROCESSING'
+                            : order.orderStatus === 'SHIPPED' || order.orderStatus === 'PROCESSING'
                             ? 'bg-primary/10 text-primary'
                             : 'bg-surface-container-high text-on-surface'
                         }`}>
-                          {order.order_status || 'PENDING'}
+                          {order.orderStatus || 'PENDING'}
                         </span>
                       </td>
                     </tr>

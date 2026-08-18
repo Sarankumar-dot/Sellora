@@ -28,8 +28,9 @@ const PRESET_LOGOS = [
 
 export default function SellerOnboardingPage() {
   const navigate = useNavigate();
-  const { checkAuth } = useAuth();
+  const { checkAuth, user } = useAuth();
   const [submitError, setSubmitError] = useState(null);
+  const [isFinishingSetup, setIsFinishingSetup] = useState(false);
 
   const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm({
     resolver: zodResolver(onboardingSchema),
@@ -51,9 +52,27 @@ export default function SellerOnboardingPage() {
       return response.data;
     },
     onSuccess: async () => {
-      // Refresh AuthContext so user.role is updated to seller immediately
-      await checkAuth();
-      navigate('/seller/dashboard');
+      setIsFinishingSetup(true);
+      try {
+        // First refresh: this should issue a new access token with role=seller
+        await checkAuth();
+        // Verify the role actually flipped by checking /auth/me directly
+        const meRes = await apiClient.get('/auth/me');
+        const role = meRes.data?.data?.role;
+        if (role === 'seller') {
+          navigate('/seller/dashboard');
+        } else {
+          // Role not yet reflected — try one more refresh then navigate
+          await checkAuth();
+          navigate('/seller/dashboard');
+        }
+      } catch {
+        // If refresh fails entirely, surface a retry button instead of silently failing
+        setIsFinishingSetup(false);
+        setSubmitError(
+          'Your seller account was created, but we could not verify your new role automatically. Please use the retry button below, or log out and log back in.'
+        );
+      }
     },
     onError: (error) => {
       setSubmitError(error.response?.data?.message || 'Failed to complete seller onboarding. Please verify your details.');
@@ -84,10 +103,38 @@ export default function SellerOnboardingPage() {
           <p className="font-body-md text-body-md text-on-surface-variant">Set up your storefront profile to start offering your curated products.</p>
         </div>
 
+        {isFinishingSetup && (
+          <div className="mb-8 p-4 bg-primary/10 border border-primary/20 text-primary rounded-lg flex items-center gap-3">
+            <span className="material-symbols-outlined animate-spin">progress_activity</span>
+            <p className="font-body-md text-sm">Finishing setup — activating seller role...</p>
+          </div>
+        )}
+
         {submitError && (
           <div className="mb-8 p-4 bg-error-container text-on-error-container rounded-lg flex items-start gap-3">
             <span className="material-symbols-outlined">error</span>
-            <p className="font-body-md text-sm">{submitError}</p>
+            <div className="flex-1">
+              <p className="font-body-md text-sm">{submitError}</p>
+              {submitError.includes('could not verify') && (
+                <button
+                  type="button"
+                  onClick={async () => {
+                    setSubmitError(null);
+                    setIsFinishingSetup(true);
+                    try {
+                      await checkAuth();
+                      navigate('/seller/dashboard');
+                    } catch {
+                      setIsFinishingSetup(false);
+                      setSubmitError('Retry failed. Please log out and log back in to activate your seller account.');
+                    }
+                  }}
+                  className="mt-2 text-sm font-label-md underline hover:no-underline"
+                >
+                  Retry activating seller account
+                </button>
+              )}
+            </div>
           </div>
         )}
 
@@ -205,10 +252,14 @@ export default function SellerOnboardingPage() {
           <div className="pt-6">
             <button
               type="submit"
-              disabled={onboardingMutation.isPending}
+              disabled={onboardingMutation.isPending || isFinishingSetup}
               className="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors disabled:opacity-70 shadow-sm"
             >
-              {onboardingMutation.isPending ? 'Submitting Application...' : 'Complete Onboarding & Enter Dashboard'}
+              {isFinishingSetup
+                ? 'Activating seller account...'
+                : onboardingMutation.isPending
+                ? 'Submitting Application...'
+                : 'Complete Onboarding & Enter Dashboard'}
             </button>
           </div>
         </form>
